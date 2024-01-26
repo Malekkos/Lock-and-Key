@@ -28,7 +28,8 @@
 }
 
 .iconContainer {
-  /* margin: 10px 15px; */
+  /* margin: 10px 115px; */
+  /* padding: 0px0px; */
   width: 5rem;
   display: flex;
   justify-content:center;
@@ -50,13 +51,37 @@
   text-decoration: none;
   color:#f0dedef8;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+  transition-property: transform ;
+  transition-duration: 0.2s;
+  transition-timing-function:ease ;
+  /* transition-delay: ; */
 }
 
 .exclamIcon {
   /* height: 1.2rem; */
   /* width: 0.2rem; */
   color: whitesmoke;
-  /* border: solid; */
+  /* border: 1px solid; */
+  padding-right: 10px
+}
+.creds {
+  display: none;
+  color: white;
+}
+
+:hover.link {
+  color: #E31C25;
+  transform: translateY(-2px);
+  rotate: 20px;
+}
+
+.exclamIcon:hover .creds {
+  display: block;
+  /* position: absolute; */
+  /* background-color: white; */
+  /* color: black; */
+  /* content:attr("pass: ADMIN123"); */
 }
 
 /* At  830px, minimize links into one rollout folder*/

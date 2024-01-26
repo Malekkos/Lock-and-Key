@@ -21,6 +21,8 @@ function Navbar () {
         </div>
         <div className="iconContainer">
           <FontAwesomeIcon className="exclamIcon" icon={faExclamation} size="2xl" style={{color: "whitesmoke",}} />
+            <p className="creds">pass: ADmeeN123</p>
+            <p className="creds">user: cRocks</p>
         </div>
       </nav>
     </>
