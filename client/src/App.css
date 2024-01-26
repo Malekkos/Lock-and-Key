@@ -1,8 +1,11 @@
-
+* {
+  background-color: #191c27;
+}
 .nav {
   display: flex;
   justify-content: space-evenly;
-  background-color: #FCEDDA;
+  background-color: #191c27;
+  width: 100vw
 }
 
 .lockIcon {
@@ -12,44 +15,48 @@
   width: 4vw;
   height: 4vh;
 }
-.icon {
-  /* width: 20%; */
-  display: flex;
-  align-items: baseline;
-  align-self: baseline;
+/* .icon { */
+/* } */
+
+#logo {
+  height: 2rem;
+  display:flex;
   justify-self: left;
+  color: whitesmoke;
+  position: sticky;
+  width: 2rem;
 }
 
 .iconContainer {
-  margin: 0px 15px;
-  width: 20vw;
+  /* margin: 10px 15px; */
+  width: 5rem;
   display: flex;
-  justify-self: left;
-  align-items: flex-end;
+  justify-content:center;
+  align-items: center;
 }
 .linksContainer {
+  background-color: #191c27;
   width: 80%;
   display: flex;
-  justify-content: right;
+  justify-content: center;
   /* justify-items: right; */
 }
 .link {
-  width:auto;
-  font-size: 17px;
-  padding: 2px 7px;
-  margin: 0px 5px;
+  width:fit-content;
+  font-size: 18px;
+  padding: 2px 15px;
+  margin: 20px 5px;
   font-style: normal;
   text-decoration: none;
-  text-decoration-thickness: 2px;
-  color:#EE4E34;
-  border-bottom: 2px #9e3121;
-  border-left: 2px #d44e39;
-  border-style: groove;
-  border-top: none;
-  border-right: none;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: -20px;
+  color:#f0dedef8;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+.exclamIcon {
+  /* height: 1.2rem; */
+  /* width: 0.2rem; */
+  color: whitesmoke;
+  /* border: solid; */
+}
 
-/* At  680px, should transition into a box containing all the links*/
+/* At  830px, minimize links into one rollout folder*/
