@@ -9,14 +9,9 @@
 }
 
 .lockIcon {
-  /* display: flex; */
-  /* justify-self: left; */
-  /* align-self: baseline; */
   width: 4vw;
   height: 4vh;
 }
-/* .icon { */
-/* } */
 
 #logo {
   height: 2rem;
@@ -28,8 +23,6 @@
 }
 
 .iconContainer {
-  /* margin: 10px 115px; */
-  /* padding: 0px0px; */
   width: 5rem;
   display: flex;
   justify-content:center;
