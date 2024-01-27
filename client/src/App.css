@@ -88,10 +88,14 @@
   border-left: 1px solid black
 }
 
-.verifyBtn:hover::after{
-  content: "?";
+/* .verifyBtn:hover::after{
+  content: "dfgsdfg";
   color: #f0dedef8;
   background-color: blue;
+} */
+
+.locked {
+  display: none;
 }
 /* At  830px, minimize links into one rollout folder*/
 
