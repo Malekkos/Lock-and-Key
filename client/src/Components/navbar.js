@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLock, faExclamation } from "@fortawesome/free-solid-svg-icons"
+import { faLock } from "@fortawesome/free-solid-svg-icons"
 function Navbar () {
+
   return (
     <>
       <nav className="nav" >
@@ -18,11 +19,6 @@ function Navbar () {
           <NavLink to="/firstSecret" className="link">First Secret</NavLink>
           <NavLink to="/secondSecret" className="link">Second Secret</NavLink>
           <NavLink to="/thirdSecret" className="link">Third Secret</NavLink>
-        </div>
-        <div className="iconContainer">
-          <FontAwesomeIcon className="exclamIcon" icon={faExclamation} size="2xl" style={{color: "whitesmoke",}} />
-            <p className="creds">pass: ADmeeN123</p>
-            <p className="creds">user: cRocks</p>
         </div>
       </nav>
     </>

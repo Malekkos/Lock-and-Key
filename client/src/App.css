@@ -39,11 +39,10 @@
   background-color: #191c27;
   width: 80%;
   display: flex;
-  justify-content: center;
-  /* justify-items: right; */
+  justify-content: right;
 }
 .link {
-  width:fit-content;
+  width: fit-content;
   font-size: 18px;
   padding: 2px 15px;
   margin: 20px 5px;
@@ -51,37 +50,17 @@
   text-decoration: none;
   color:#f0dedef8;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
   transition-property: transform ;
   transition-duration: 0.2s;
   transition-timing-function:ease ;
-  /* transition-delay: ; */
 }
 
-.exclamIcon {
-  /* height: 1.2rem; */
-  /* width: 0.2rem; */
-  color: whitesmoke;
-  /* border: 1px solid; */
-  padding-right: 10px
+.active {
+  color: #E31C25;
 }
-.creds {
-  display: none;
-  color: white;
-}
-
 :hover.link {
   color: #E31C25;
   transform: translateY(-2px);
-  rotate: 20px;
-}
-
-.exclamIcon:hover .creds {
-  display: block;
-  /* position: absolute; */
-  /* background-color: white; */
-  /* color: black; */
-  /* content:attr("pass: ADMIN123"); */
 }
 
 /* At  830px, minimize links into one rollout folder*/
