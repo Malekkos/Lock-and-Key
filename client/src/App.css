@@ -55,5 +55,87 @@
   color: #E31C25;
   transform: translateY(-2px);
 }
+.main {
+  display: flex;
+  justify-content: space-evenly;
+}
 
+.secretsContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: left;
+}
+
+.bronzeLock {
+  color: #CD7F32;
+}
+.silverLock {
+  color: #C0C0C0;
+}
+.goldLock {
+  color: #FFD700
+}
+
+.verifyBtn {
+  appearance: none;
+  color: #f0dedef8;
+  background-color: #1b1919;
+  width: 4rem;
+  height: 2rem;
+  font-size: 19px;
+  margin: 0.8rem 3rem;
+  border: none;
+  border-left: 1px solid black
+}
+
+.verifyBtn:hover::after{
+  content: "?";
+  color: #f0dedef8;
+  background-color: blue;
+}
 /* At  830px, minimize links into one rollout folder*/
+
+
+/* CSS */
+.button-73 {
+  appearance: none;
+  background-color: #FFFFFF;
+  border-radius: 40em;
+  border-style: none;
+  box-shadow: #ADCFFF 0 -12px 6px inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -.24px;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.3rem;
+  quotes: auto;
+  text-align: center;
+  text-decoration: none;
+  transition: all .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-73:hover {
+  background-color: #FFC229;
+  box-shadow: #FF6314 0 -6px 8px inset;
+  transform: scale(1.125);
+}
+
+.button-73:active {
+  transform: scale(1.025);
+}
+
+@media (min-width: 768px) {
+  .button-73 {
+    font-size: 1.5rem;
+    padding: .75rem 2rem;
+  }
+}
