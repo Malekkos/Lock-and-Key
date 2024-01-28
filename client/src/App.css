@@ -116,8 +116,6 @@
 .instructionsContainer {
   display: flex;
   flex-flow: column nowrap;
-  /* justify-items: center; */
-  /* justify-content: center; */
   align-items: center;
 }
 
