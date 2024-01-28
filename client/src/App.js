@@ -16,7 +16,7 @@ function App() {
      <BrowserRouter>
       <Navbar /> 
       <Routes>
-        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/firstSecret" element={<FirstSecret />} />
         <Route path="/secondSecret" element={<SecondSecret />} />
