@@ -81,16 +81,19 @@ function Home () {
             <FontAwesomeIcon id="firstLock" name="bronzeLock" className="unlocked bronzeLock" icon={faLock} size="2xl" />
             <FontAwesomeIcon id="secondLock" name="bronzeLock" className="locked bronzeLock" icon={faUnlock} size="2xl" />
             <input type="button" id="firstButton" className="verifyBtn" onClick={() => onClick("fgsfger", "bronzeLock")} value="Verify"></input>
+            <p class="locked">MY SUPER SECRET SECRET OF ALL TIME</p>
           </div>
           <div id="secondSecret">
             <FontAwesomeIcon id="thirdLock" name="silverLock" className="unlocked silverLock" icon={faLock} size="2xl" />
             <FontAwesomeIcon id="fourthLock" name="silverLock" className="locked silverLock" icon={faUnlock} size="2xl" />
             <input type="button" id="secondButton" className="verifyBtn" onClick={() => onClick("dasf", "silverLock")} value="Verify"></input>
+            <p class="locked">MY SUPER SECRET SECRET OF ALL TIME</p>
           </div>
           <div id="thirdSecret">
             <FontAwesomeIcon id="fifthLock" name="goldLock" className="unlocked goldLock" icon={faLock} size="2xl" />
             <FontAwesomeIcon id="sixthLock" name="goldLock" className="locked goldLock" icon={faUnlock} size="2xl" />
             <input type="button" id="thirdButton" className="verifyBtn" onClick={() => onClick("asdfasdf", "goldLock")} value="Verify"></input>
+            <p class="locked">MY SUPER SECRET SECRET OF ALL TIME</p>
           </div>
         </div>
         <div className="instructionsContainer">
