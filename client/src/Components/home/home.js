@@ -8,8 +8,9 @@ function Home () {
   // implement useEffect to check my token and see what perms it has
   // that will be deciding if the lock is already shown, or if it is unlocked
   // dom
-  const [locked, setLocked] = useState(true)
-  const [unlocked, setUnlocked] = useState(true)
+  const [loggedIn, setLoggindIn] = useState(false)
+  const [errorMessage, setErrorMessage] = useState()
+
   let onLoad = window.onload = ("DOMContentLoaded", event => {
     console.log('loaded')
     let firstButton = document.getElementById("firstButton")
@@ -67,14 +68,24 @@ function Home () {
 
   //Create an error message for the if statement in onClick, or make a error message hidden until done
 
-  function onClick (token, lockType) { //probably has token?
+  function onClick (token, lockType, lockNumber) { //probably has token?
     let lock = document.getElementsByName(lockType)
-    lock[1].classList.forEach(val => {
-      if(val === "locked" && token) {
-        setTimeout(() => lock[0].classList.add("locked"), 1000)
-        setTimeout(() => lock[1].classList.remove("locked"), 1000)
-      }
-    })
+    let error = document.getElementById(`errorMessage${lockNumber}`)
+    if(loggedIn === false) {
+      setErrorMessage("You need to login first, thats authentication!")
+      error.classList.remove("locked")
+    } else if (lock[1].classList.contains("locked") && token /*have to find out how to test token, think the testing script is for servers only. TBD*/) {
+      setErrorMessage("")
+      setTimeout(() => lock[0].classList.add("locked"), 1000)
+      setTimeout(() => lock[1].classList.remove("locked"), 1000)
+    }
+    // lock[1].classList.forEach(val => {
+    //   if(val === "locked" && token) {
+
+    //   } else {
+    //     console.log("Its unlocked, stupid. Or no token")
+    //   }
+    // })
   }
   return (
     <>
@@ -83,19 +94,22 @@ function Home () {
           <div id="firstSecret">
             <FontAwesomeIcon id="firstLock" name="bronzeLock" className="unlocked bronzeLock" icon={faLock} size="2xl" />
             <FontAwesomeIcon id="secondLock" name="bronzeLock" className="locked bronzeLock" icon={faUnlock} size="2xl" />
-            <input type="button" id="firstButton" className="verifyBtn" onClick={() => onClick("fgsfger", "bronzeLock")} value="Verify"></input>
+            <input type="button" id="firstButton" className="verifyBtn" onClick={() => onClick("fgsfger", "bronzeLock", "One")} value="Verify"></input>
+            <p id="errorMessageOne" className="errorMessage locked">{errorMessage}</p>
             <p className="locked">{/*this data will be from a get call, made with axios(most likely). Should have error message here if call fails(eg. no token)*/}</p>
           </div>
           <div id="secondSecret">
             <FontAwesomeIcon id="thirdLock" name="silverLock" className="unlocked silverLock" icon={faLock} size="2xl" />
             <FontAwesomeIcon id="fourthLock" name="silverLock" className="locked silverLock" icon={faUnlock} size="2xl" />
-            <input type="button" id="secondButton" className="verifyBtn" onClick={() => onClick("dasf", "silverLock")} value="Verify"></input>
+            <input type="button" id="secondButton" className="verifyBtn" onClick={() => onClick("dasf", "silverLock", "Two")} value="Verify"></input>
+            <p id="errorMessageTwo" className="errorMessage locked">{errorMessage}</p>
             <p className="locked">{/*this data will be from a get call, made with axios(most likely). Should have error message here if call fails(eg. no token)*/}</p>
           </div>
           <div id="thirdSecret">
             <FontAwesomeIcon id="fifthLock" name="goldLock" className="unlocked goldLock" icon={faLock} size="2xl" />
             <FontAwesomeIcon id="sixthLock" name="goldLock" className="locked goldLock" icon={faUnlock} size="2xl" />
-            <input type="button" id="thirdButton" className="verifyBtn" onClick={() => onClick("asdfasdf", "goldLock")} value="Verify"></input>
+            <input type="button" id="thirdButton" className="verifyBtn" onClick={() => onClick("asdfasdf", "goldLock", "Three")} value="Verify"></input>
+            <p id="errorMessageThree" className="errorMessage locked">{errorMessage}</p>
             <p className="locked">{/*this data will be from a get call, made with axios(most likely). Should have error message here if call fails(eg. no token)*/}</p>
           </div>
         </div>
