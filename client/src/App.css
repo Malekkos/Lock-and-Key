@@ -94,6 +94,41 @@
   border-left: 1px solid black
 }
 
+.authMods {
+  font-weight: 700;
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: seashell;
+}
+
+.homeHeader {
+  color: #e2dfdf;
+
+}
+
+.homeText {
+  color: #C0C0C0;
+  font-weight: 500;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+}
+
+.instructionsContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  /* justify-items: center; */
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.mainInstructions {
+  display:flex;
+  justify-content: center;
+  flex-flow: column wrap;
+  justify-items: center;
+  align-items: center;
+}
+
 .locked {
   display: none;
 }

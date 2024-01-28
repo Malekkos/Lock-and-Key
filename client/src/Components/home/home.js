@@ -5,9 +5,6 @@ import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons"
 
 
 function Home () {
-  // implement useEffect to check my token and see what perms it has
-  // that will be deciding if the lock is already shown, or if it is unlocked
-  // dom
   const [loggedIn, setLoggindIn] = useState(false)
   const [errorMessage, setErrorMessage] = useState()
 
@@ -61,12 +58,11 @@ function Home () {
       sixthLock.animate(alreadyUnlocked, timing)
     }, false)
   })
+  // implement useEffect to check my token and see what perms it has
+  // that will be deciding if the lock is already shown, or if it is unlocked
   useEffect(() => {
-    // console.log("loaded, useEffect")
     onLoad()
   }, [])
-
-  //Create an error message for the if statement in onClick, or make a error message hidden until done
 
   function onClick (token, lockType, lockNumber) { //probably has token?
     let lock = document.getElementsByName(lockType)
@@ -79,13 +75,6 @@ function Home () {
       setTimeout(() => lock[0].classList.add("locked"), 1000)
       setTimeout(() => lock[1].classList.remove("locked"), 1000)
     }
-    // lock[1].classList.forEach(val => {
-    //   if(val === "locked" && token) {
-
-    //   } else {
-    //     console.log("Its unlocked, stupid. Or no token")
-    //   }
-    // })
   }
   return (
     <>
@@ -114,10 +103,10 @@ function Home () {
           </div>
         </div>
         <div className="instructionsContainer">
-          <h2>Thanks for visiting!</h2>
+          <h2 className="homeHeader">Thanks for visiting!</h2>
           <div className="mainInstructions">
-            <p>This is a demo project to showcase an understanding in <span src="https://csrc.nist.gov/glossary/term/authentication#:~:text=The%20process%20of%20verifying%20the,resources%20in%20an%20information%20system">Authentication</span> & Authorization</p>
-            <p>Complete some, ultimately arbitrary, tasks and be rewarded with a few of my secrets!</p>
+            <p className="homeText">This is a demo project to showcase my understanding of <span className="authMods">Authentication</span> & <span className="authMods">Authorization</span></p>
+            <p className="homeText">Complete some, ultimately arbitrary, tasks and be rewarded with a few of my secrets!</p>
           </div>
         </div>
       </div>
