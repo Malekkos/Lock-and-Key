@@ -68,7 +68,7 @@ function Home () {
     let lock = document.getElementsByName(lockType)
     let error = document.getElementById(`errorMessage${lockNumber}`)
     if(loggedIn === false) {
-      setErrorMessage("You need to login first, thats authentication!")
+      setErrorMessage("You need to login first. That's authentication!")
       error.classList.remove("locked")
     } else if (lock[1].classList.contains("locked") && token /*have to find out how to test token, think the testing script is for servers only. TBD*/) {
       setErrorMessage("")

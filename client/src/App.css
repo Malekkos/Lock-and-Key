@@ -127,8 +127,15 @@
   align-items: center;
 }
 
+.errorMessage {
+  color: crimson;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 14px
+}
+
 .locked {
   display: none;
 }
+/* 1120, shrink home text*/
 /* at 890px, max changes to right most text in home to scrunch */
 /* At  760px, minimize links into one rollout folder*/
