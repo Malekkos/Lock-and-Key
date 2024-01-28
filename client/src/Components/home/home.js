@@ -10,8 +10,8 @@ function Home () {
   // dom
   const [locked, setLocked] = useState(true)
   const [unlocked, setUnlocked] = useState(true)
-
-  window.onload = ("DOMContentLoaded", event => {
+  let onLoad = window.onload = ("DOMContentLoaded", event => {
+    console.log('loaded')
     let firstButton = document.getElementById("firstButton")
     let secondButton = document.getElementById("secondButton")
     let thirdButton = document.getElementById("thirdButton")
@@ -60,7 +60,10 @@ function Home () {
       sixthLock.animate(alreadyUnlocked, timing)
     }, false)
   })
-
+  useEffect(() => {
+    // console.log("loaded, useEffect")
+    onLoad()
+  }, [])
 
   //Create an error message for the if statement in onClick, or make a error message hidden until done
 
