@@ -58,6 +58,7 @@
 .main {
   display: flex;
   justify-content: space-evenly;
+  padding-top: 3rem
 }
 
 .secretsContainer {
@@ -132,6 +133,32 @@
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 14px
 }
+
+.loginContainer {
+  padding-top: 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputsContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.passContainer {
+  display: flex;
+  /* flex-flow: column nowrap; */
+  /* justify-items: center; */
+  align-items: center;
+}
+
+/* .loginUsername {
+  color: 
+} */
 
 .locked {
   display: none;

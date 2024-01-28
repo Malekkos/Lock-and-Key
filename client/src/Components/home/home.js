@@ -7,6 +7,7 @@ import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons"
 function Home () {
   const [loggedIn, setLoggindIn] = useState(false)
   const [errorMessage, setErrorMessage] = useState()
+  const [creds, setCreds ] = useState({username: "", password: ""})
 
   let onLoad = window.onload = ("DOMContentLoaded", event => {
     console.log('loaded')
@@ -60,6 +61,17 @@ function Home () {
   })
   // implement useEffect to check my token and see what perms it has
   // that will be deciding if the lock is already shown, or if it is unlocked
+  let onChange = (event, type) => {
+    // console.log(event)
+    // console.log(type)
+    setCreds()
+    console.log(creds)
+  }
+
+  let onSubmit = event => {
+    setCreds()
+  }
+
   useEffect(() => {
     onLoad()
   }, [])
@@ -108,6 +120,19 @@ function Home () {
             <p className="homeText">This is a demo project to showcase my understanding of <span className="authMods">Authentication</span> & <span className="authMods">Authorization</span></p>
             <p className="homeText">Complete some, ultimately arbitrary, tasks and be rewarded with a few of my secrets!</p>
           </div>
+        <div className="loginContainer">
+          <div className="inputsContainer">
+            <div className="passContainer">
+              <h4 className="homeText">Username</h4>
+              <input onChange={(event) => onChange(event.target.value, "username")} className="loginUsername" type="text" />
+            </div>
+            <div className="passContainer">
+              <h4 className="homeText">Password</h4>
+              <input onChange={(event) => onChange(event.target.value, "password")} className="loginPassword" type="password" />
+            </div>
+          <input onSubmit={() => onSubmit("")} type="submit" className="authMods" value="Login" />
+          </div>
+        </div>
         </div>
       </div>
     </>
