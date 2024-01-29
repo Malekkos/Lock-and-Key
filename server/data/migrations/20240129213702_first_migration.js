@@ -19,6 +19,10 @@ exports.up = function(knex) {
       .inTable("roles")
       .onDelete("RESTRICT")
     })
+    .createTable("secrets", secrets => {
+      secrets.increments("secret_id")
+      secrets.string("secret", 200).notNullable()
+    })
 };
 
 /**
@@ -27,6 +31,7 @@ exports.up = function(knex) {
  */
 exports.down = function(knex) {
   return knex.schema
+    .dropTableIfExists("secrets")
     .dropTableIfExists('users')
     .dropTableIfExists('roles')
 };
