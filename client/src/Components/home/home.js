@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react" 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons"
+import axios from "axios"
 
 
 
 function Home () {
-  const [loggedIn, setLoggindIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
   const [errorMessage, setErrorMessage] = useState()
   const [creds, setCreds ] = useState({username: "", password: ""})
 
@@ -64,12 +65,18 @@ function Home () {
   let onChange = (event, type) => {
     // console.log(event)
     // console.log(type)
-    setCreds()
-    console.log(creds)
+    console.log(creds.username)
+    if(type === "username") {
+      setCreds({username: event, password: creds.password})
+    } else {
+      setCreds({username: creds.username, password: event})
+    }
   }
 
   let onSubmit = event => {
-    setCreds()
+    // axios.post() server needs to be built first
+    event.preventDefault()
+    setLoggedIn(true)
   }
 
   useEffect(() => {
@@ -120,7 +127,7 @@ function Home () {
             <p className="homeText">This is a demo project to showcase my understanding of <span className="authMods">Authentication</span> & <span className="authMods">Authorization</span></p>
             <p className="homeText">Complete some, ultimately arbitrary, tasks and be rewarded with a few of my secrets!</p>
           </div>
-        <div className="loginContainer">
+        <form onSubmit={(event) => onSubmit(event)} className="loginContainer">
           <div className="inputsContainer">
             <div className="passContainer">
               <h4 className="homeText">Username</h4>
@@ -130,9 +137,9 @@ function Home () {
               <h4 className="homeText">Password</h4>
               <input onChange={(event) => onChange(event.target.value, "password")} className="loginPassword" type="password" />
             </div>
-          <input onSubmit={() => onSubmit("")} type="submit" className="authMods" value="Login" />
+          <input type="submit" className="authMods" value="Login" />
           </div>
-        </div>
+        </form>
         </div>
       </div>
     </>
