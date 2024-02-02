@@ -22,8 +22,12 @@ router.post("/register", usernameTaken, async (req, res, next) => {
 })
 
 router.post("/login", (req, res, next) => {
-  console.log("running")
   let { username, password } = req.body
+
+  if(!username || !password) {
+    next({ status: 401, message: "Username or Password missing"})
+  }
+
   Users.findBy({ username })
   .then(([user]) => {
     if(user && bcrypt.compareSync(password, user.password)) {
