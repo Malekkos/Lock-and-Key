@@ -15,4 +15,4 @@ async function findBy(filter) {
 // need to create add
 
 
-module.exports = { findBy, add }
+module.exports = { findBy }

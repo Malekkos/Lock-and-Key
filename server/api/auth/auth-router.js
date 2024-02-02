@@ -22,6 +22,7 @@ router.post("/register", usernameTaken, async (req, res, next) => {
 })
 
 router.post("/login", (req, res, next) => {
+  console.log("running")
   let { username, password } = req.body
   Users.findBy({ username })
   .then(([user]) => {

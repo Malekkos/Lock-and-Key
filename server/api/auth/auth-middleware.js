@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken")
 const Users = require("../users/users-model")
 
 const restricted = (req, res, next) => {
+  console.log("RESTRICTED!!!!!!!!!!!!!!!")
   const token = req.headers.authorization
   if(token) {
     jwt.verify(token, JWT_SECRET, (error, decoded) => {
