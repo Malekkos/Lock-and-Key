@@ -29,7 +29,8 @@ async function getSecret(secret) {
 }
 
 // THOUGHTS: Copied, unfortunately. I need to, once this project is in a satisfactory state, change this or at least understand what this does instrisically. ATM, I don't, but it works.
-// DESC: Method for adding a user. Not sure what transaction does for the DB, should check it out sometime.
+// cont:  Not sure what transaction does for the DB, should check it out sometime.
+// DESC: Method for adding a user.
 async function add({ username, password, role_type}) {
   let created_user_id
   await db.transaction(async trx => {
@@ -47,8 +48,6 @@ async function add({ username, password, role_type}) {
   return findById(created_user_id)
 }
 
-
-// need to create add
 
 
 module.exports = { findBy, add, getSecret }
