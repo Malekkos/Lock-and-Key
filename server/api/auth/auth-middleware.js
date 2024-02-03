@@ -4,13 +4,13 @@ const jwt = require("jsonwebtoken")
 const Users = require("../users/users-model")
 
 const restricted = (req, res, next) => {
-  console.log("RESTRICTED!!!!!!!!!!!!!!!")
   const token = req.headers.authorization
   if(token) {
     jwt.verify(token, JWT_SECRET, (error, decoded) => {
       if(error) {
         next({ status: 401, message: "Token invalid" })
       } else {
+        console.log("you are good")
         req.decodedJWT = decoded
         next()
       }
@@ -21,7 +21,10 @@ const restricted = (req, res, next) => {
 }
 
 const only = role_type => (req, res, next) => {
-  if(req.decodedJWT.role_type !== role_type) {
+  console.log("here")
+  console.log("needed type:", role_type)
+  console.log("current type:", req.decodedJWT.role)
+  if(req.decodedJWT.role !== role_type) {
     next({ status: 403, message: "Wrong permissions!"})
   } else {
     next()
