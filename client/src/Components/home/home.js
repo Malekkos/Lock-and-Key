@@ -5,11 +5,29 @@ import axios from "axios"
 
 
 
+
 function Home () {
   const [loggedIn, setLoggedIn] = useState(false)
   const [errorMessage, setErrorMessage] = useState()
   const [creds, setCreds ] = useState({username: "", password: ""})
+  const [greetingMessage, setGreetingMessage] = useState()
+  
 
+  //THOUGHTS: Maybe set a timer on greetingMessage
+  function callServer() {
+    axios.post("http://localhost:9000/api/auth/login", creds)
+    .then(res => {
+      setLoggedIn(true)
+      setGreetingMessage(res.data.message)
+      setCreds({username: "", password: ""})
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err.response.data.message)
+    })
+  }
+
+  //THOUGHTS: I should move the animation to a separate folder, probably called animation
   let onLoad = window.onload = ("DOMContentLoaded", event => {
     console.log('loaded')
     let firstButton = document.getElementById("firstButton")
@@ -60,6 +78,7 @@ function Home () {
       sixthLock.animate(alreadyUnlocked, timing)
     }, false)
   })
+
   // implement useEffect to check my token and see what perms it has
   // that will be deciding if the lock is already shown, or if it is unlocked
   let onChange = (event, type) => {
@@ -129,15 +148,16 @@ function Home () {
           </div>
         <form onSubmit={(event) => onSubmit(event)} className="loginContainer">
           <div className="inputsContainer">
+            <p className="authMods">{greetingMessage}</p>
             <div className="passContainer">
               <h4 className="homeText">Username</h4>
-              <input onChange={(event) => onChange(event.target.value, "username")} className="loginUsername" type="text" />
+              <input onChange={(event) => onChange(event.target.value, "username")} className="loginUsername" value={creds.username} type="text" />
             </div>
             <div className="passContainer">
               <h4 className="homeText">Password</h4>
-              <input onChange={(event) => onChange(event.target.value, "password")} className="loginPassword" type="password" />
+              <input onChange={(event) => onChange(event.target.value, "password")} className="loginPassword" value={creds.password} type="password" />
             </div>
-          <input type="submit" className="authMods" value="Login" />
+          <input onClick={() => callServer()} type="submit" className="authMods" value="Login" />
           </div>
         </form>
         </div>
