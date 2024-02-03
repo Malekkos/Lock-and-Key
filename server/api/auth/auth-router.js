@@ -45,6 +45,7 @@ router.post("/login", (req, res, next) => {
   }) 
 })
 
+// THOUGHTS: I should dive into the options for... well, options. I think there is a lot I'm not utilizing
 // Method to build a token for the user, supplying params for said token and whatnot
 function buildToken(user) {
   const payload = {
