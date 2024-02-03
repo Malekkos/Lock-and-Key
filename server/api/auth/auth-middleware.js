@@ -18,13 +18,13 @@ const restricted = (req, res, next) => {
     next({ status: 401, message: "Token required" })
   }
 }
-
+//req.decodedJWT.role.includes(role_type.allowed)
 const only = role_type => (req, res, next) => {
-  console.log("decoded:", req.decodedJWT.role, "  passed: ", role_type)
-  if(req.decodedJWT.role !== role_type) {
-    next({ status: 403, message: "Wrong permissions!"})
-  } else {
+  console.log("decoded:", req.decodedJWT.role, "  passed: ", role_type.allowed)
+  if(role_type.allowed.includes(req.decodedJWT.role)) {
     next()
+  } else {
+    next({ status: 403, message: "Wrong permissions!"})
   }
 }
 

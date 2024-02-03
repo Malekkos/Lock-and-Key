@@ -22,6 +22,7 @@ async function findById(user_id) {
 async function getSecret(secret) {
   const data = await db("secrets")
   .where("secret_id", secret)
+  .first()
   return data
 }
 
