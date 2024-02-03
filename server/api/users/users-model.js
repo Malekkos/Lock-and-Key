@@ -19,6 +19,12 @@ async function findById(user_id) {
   return data
   }
 
+async function getSecret(secret) {
+  const data = await db("secrets")
+  .where("secret_id", secret)
+  return data
+}
+
 async function add({ username, password, role_type}) {
   let created_user_id
   await db.transaction(async trx => {
@@ -40,4 +46,4 @@ async function add({ username, password, role_type}) {
 // need to create add
 
 
-module.exports = { findBy, add }
+module.exports = { findBy, add, getSecret }

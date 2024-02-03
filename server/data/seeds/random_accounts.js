@@ -22,6 +22,11 @@ exports.seed = async function(knex) {
       username: "admin",
       password: "$2a$10$dFwWjD8hi8K2I9/Y65MWi.WU0qn9eAVaiBoRSShTvuJVGw8XpsCiq",
       role_id: 4,
+    },
+    {
+      username: "slayer",
+      password: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo1LCJ1c2VybmFtZSI6InNsYXllciIsInJvbGUiOiJuZXdfdXNlciIsImlhdCI6MTcwNjkxOTA5OCwiZXhwIjoxNzA3MDA1NDk4fQ.8SzgCH36eBahsNa4FS4Di1Vp-0ZpHML1sGFnEjEDIEc",
+      role_id: 2,
     }
     ])
     await knex("secrets").insert([
