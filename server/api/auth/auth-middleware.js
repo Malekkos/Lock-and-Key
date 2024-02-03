@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken")
 
 const Users = require("../users/users-model")
 
+// Checks authorization token in header
 const restricted = (req, res, next) => {
   const token = req.headers.authorization
   if(token) {
@@ -18,9 +19,9 @@ const restricted = (req, res, next) => {
     next({ status: 401, message: "Token required" })
   }
 }
-//req.decodedJWT.role.includes(role_type.allowed)
+
+// Verifies role name
 const only = role_type => (req, res, next) => {
-  console.log("decoded:", req.decodedJWT.role, "  passed: ", role_type.allowed)
   if(role_type.allowed.includes(req.decodedJWT.role)) {
     next()
   } else {
@@ -28,6 +29,7 @@ const only = role_type => (req, res, next) => {
   }
 }
 
+// checker for register to see if an username is taken
 const usernameTaken = async (req, res, next) => {
   const { username } = req.body
 

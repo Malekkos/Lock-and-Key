@@ -6,10 +6,12 @@ const { JWT_SECRET, BCRYPT_ROUNDS } = require("../secrets")
 
 const Users = require("../users/users-model")
 
+// Method to create an account
 router.post("/register", usernameTaken, async (req, res, next) => {
   let { username, password} = req.body
   const role_type = "new_user"
   const hash = bcrypt.hashSync(password, BCRYPT_ROUNDS)
+
   password = hash
 
   await Users.add({"username": username, "password": password, "role_type": role_type})
@@ -21,6 +23,7 @@ router.post("/register", usernameTaken, async (req, res, next) => {
   })
 })
 
+// Method to login to an existing account, I should make it so that logging in places a token in the auth header autimatically(it might?)
 router.post("/login", (req, res, next) => {
   let { username, password } = req.body
 
@@ -42,6 +45,7 @@ router.post("/login", (req, res, next) => {
   }) 
 })
 
+// Method to build a token for the user, supplying params for said token and whatnot
 function buildToken(user) {
   const payload = {
     subject: user.user_id,

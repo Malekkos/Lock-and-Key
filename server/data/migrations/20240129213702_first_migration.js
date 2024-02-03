@@ -2,6 +2,10 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
+
+// THOUGHTS: I don't actually understand what .unsigned() does, need to look it up.
+
+// Schema for DB tables 
 exports.up = function(knex) {
   return knex.schema
     .createTable("roles", roles => {
@@ -29,6 +33,8 @@ exports.up = function(knex) {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
+
+//Rollback for tables
 exports.down = function(knex) {
   return knex.schema
     .dropTableIfExists("secrets")

@@ -1,6 +1,6 @@
 const db = require("../../data/db-config")
 
-
+// Method for finding a specific user given a condition(username, in this instance)
 async function findBy(filter) {
   const data = await db("users as u")
     .leftJoin("roles as r", "r.role_id", "u.role_id")
@@ -10,6 +10,7 @@ async function findBy(filter) {
   return data
 }
 
+// Method for finding a specific user given there ID
 async function findById(user_id) {
   const data = await db("users as u")
     .leftJoin("roles as r", "r.role_id", "u.role_id")
@@ -19,6 +20,7 @@ async function findById(user_id) {
   return data
   }
 
+  // Method for getting the correct secret from the DB
 async function getSecret(secret) {
   const data = await db("secrets")
   .where("secret_id", secret)
@@ -26,6 +28,8 @@ async function getSecret(secret) {
   return data
 }
 
+// THOUGHTS: Copied, unfortunately. I need to, once this project is in a satisfactory state, change this or at least understand what this does instrisically. ATM, I don't, but it works.
+// DESC: Method for adding a user. Not sure what transaction does for the DB, should check it out sometime.
 async function add({ username, password, role_type}) {
   let created_user_id
   await db.transaction(async trx => {

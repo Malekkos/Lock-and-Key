@@ -1,5 +1,8 @@
 
+// THOUGHTS: I have a fairly okay understanding of most of this, but not pool. Like, I know that it makes foreign keys work, but HOW does it do it?
+// cont: Should look into it.
 
+// Config for the database
 const sharedConfig = {
   client: 'sqlite3',
   useNullAsDefault: true,
