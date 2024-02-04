@@ -12,6 +12,10 @@ import Home from "./Components/home/home"
 import axios from "axios"
 
 function App() {
+  //DESC: The directory, sorta, for my various links
+  //THOUGHTS: I need to eventually go through and change the path names to be test or something,
+  // cont. because that is what they are going to be, not the actual secrets. It's currently
+  // cont. misleading.
   return (
      <BrowserRouter>
       <Navbar /> 

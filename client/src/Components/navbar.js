@@ -3,6 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLock } from "@fortawesome/free-solid-svg-icons"
 function Navbar () {
 
+  //DESC: Standard nav bar
+  //THOUGHTS: Considering trying my hand at the exclamation icon again, but at
+  // cont. pretty much the end. I think I can do it now that I've had a taste of 
+  // cont. javascript animation methods, but we'll see.
   return (
     <>
       <nav className="nav" >
