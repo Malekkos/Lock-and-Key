@@ -86,7 +86,11 @@ function Home () {
   }
 
   //DESC: login call using axios, sets several other state params while its at it
-  //THOUGHTS: None
+  //THOUGHTS: I'm recieving 2 things in data, the message and the token. Is including the token
+  // cont. insecure? That could very well be a gateway to a security breach, at least for a 
+  // cont. large company. In this environemnt, its not biggy, but food for thought nontheless.
+  // cont. And, the only reason we were including token was so that I could manually grab it and
+  // cont. test it with postman, so I think I can safely remove it. TBD.
   //IDEAS: Set a timer on greetingMessage, maybe a fade animation idk
   // cont. need to make the catch make a call to the error setter function and have it display the
   // cont. login error, incorrect creds in this situation. That does remind me, I think I have to 
