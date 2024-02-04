@@ -102,31 +102,23 @@ function Home () {
     let lock = document.getElementsByName(lockType)
     let error = document.getElementById(`errMessage${lockNumber}`)
     if(loggedIn === false) {
-      errorChecker(error)
+      errorChecker(error, "You need to be logged in first!")
       error.classList.remove("locked")
     } else if (lock[1].classList.contains("locked") && token /*have to find out how to test token, think the testing script is for servers only. TBD*/) {
-      setErrorMessage("")
+      setErrorMessage(initialError)
       setTimeout(() => lock[0].classList.add("locked"), 1000)
       setTimeout(() => lock[1].classList.remove("locked"), 1000)
     }
   }
 
   // Function that takes in the errorNum(to be specific) and assigns it to the place it needs to go
-  function errorChecker(errorNum) {
-    // console.log(errorNum.textContent)
+  // Clears other errors while its at it
+  function errorChecker(errorNum, message) {
     let currError = errorNum.id
-    console.log(typeof(currError))
     setErrorMessage({
-      ...errorMessage, 
-      [currError]: "adfsasdfwer"
+      ...initialError, 
+      [currError]: message
     })
-    // setErrorMessage()
-    console.log(errorMessage)
-    // setErrorMessage(errorMessage.errorNum = "farty hardy")
-    // define an object in state containing all possible errors.
-    // Have said errors in the return, like under errorMessageOne
-    // When a new error comes up, wipe other errors
-
   }
 
   return (
