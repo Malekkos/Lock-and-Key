@@ -4,24 +4,21 @@ import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons"
 import axios from "axios"
 import lockAnim from "../../animations/lockAnimation"
 
-
+axios.defaults.withCredentials = true
 
 function Home () {
 
   //DESC: Your gerneral state
   //THOUGHTS: None, really. Maybe set an initialGreetingMessage? Like with error? More QOL than anything
   const initialError = {errMessageOne: "", errMessageTwo: "", errMessageThree: "", errMessageFour: ""}
-  
+  const initialSecrets = {secretOne: "", secretTwo: "", secretThree: ""}
+
+  const [secrets, setSecrets] = useState(initialSecrets)
   const [loggedIn, setLoggedIn] = useState(false)
   const [errorMessage, setErrorMessage] = useState(initialError)
   const [creds, setCreds ] = useState({username: "", password: ""})
   const [greetingMessage, setGreetingMessage] = useState()
   
-  //DESC: Animation method for making the locks move and jiggle
-  //THOUGHTS: I should move the animation to a separate folder, probably called animation. ~ DONE
-  // cont. It's lightweight enough that I think there shouldn't be any errors with the animation,
-  // cont. but I should maybe make some await statements to totally nullify that. TBD. Also,
-  // cont. this is my first time ever using animation so be merciful.
   let onLoad = window.onload = lockAnim
 
   //DESC: Simple onChange for the input fields, username and password
@@ -100,6 +97,10 @@ function Home () {
     })
   }
 
+  function secretAdder(secretNum, message) {
+
+  }
+
   //DESC: Main meat of the home page
   //THOUGHTS: Looks like I'll probably do the same thing I did with error that I will with putting secrets.
   // cont. Possibly, I'll make it so you have to hover over the lock, after verifying, and have a little box
@@ -121,21 +122,21 @@ function Home () {
             <FontAwesomeIcon id="secondLock" name="bronzeLock" className="locked bronzeLock" icon={faUnlock} size="2xl" />
             <input type="button" id="firstButton" className="verifyBtn" onClick={() => onClick("fgsfger", "bronzeLock", "One")} value="Verify"></input>
             <p id="errMessageOne" className="errorMessage locked">{errorMessage.errMessageOne}</p>
-            <p className="locked">{/*this data will be from a get call, made with axios. Should have error message here if call fails(eg. no token)*/}</p>
+            <p className="locked">{secrets.secretOne}</p>
           </div>
           <div id="secondSecret">
             <FontAwesomeIcon id="thirdLock" name="silverLock" className="unlocked silverLock" icon={faLock} size="2xl" />
             <FontAwesomeIcon id="fourthLock" name="silverLock" className="locked silverLock" icon={faUnlock} size="2xl" />
             <input type="button" id="secondButton" className="verifyBtn" onClick={() => onClick("dasf", "silverLock", "Two")} value="Verify"></input>
             <p id="errMessageTwo" className="errorMessage locked">{errorMessage.errMessageTwo}</p>
-            <p className="locked">{/*this data will be from a get call, made with axios. Should have error message here if call fails(eg. no token)*/}</p>
+            <p className="locked">{secrets.secretTwo}</p>
           </div>
           <div id="thirdSecret">
             <FontAwesomeIcon id="fifthLock" name="goldLock" className="unlocked goldLock" icon={faLock} size="2xl" />
             <FontAwesomeIcon id="sixthLock" name="goldLock" className="locked goldLock" icon={faUnlock} size="2xl" />
             <input type="button" id="thirdButton" className="verifyBtn" onClick={() => onClick("asdfasdf", "goldLock", "Three")} value="Verify"></input>
             <p id="errMessageThree" className="errorMessage locked">{errorMessage.errMessageThree}</p>
-            <p className="locked">{/*this data will be from a get call, made with axios. Should have error message here if call fails(eg. no token)*/}</p>
+            <p className="locked">{secrets.secretThree}</p>
           </div>
         </div>
         <div className="instructionsContainer">

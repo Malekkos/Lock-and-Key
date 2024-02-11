@@ -1,5 +1,9 @@
 
-
+  //DESC: Animation method for making the locks move and jiggle
+  //THOUGHTS: I should move the animation to a separate folder, probably called animation. ~ DONE
+  // cont. It's lightweight enough that I think there shouldn't be any errors with the animation,
+  // cont. but I should maybe make some await statements to totally nullify that. TBD. Also,
+  // cont. this is my first time ever using animation so be merciful.
 const lockAnim = ("DOMContentLoaded", event => {
   console.log('loaded')
   let firstButton = document.getElementById("firstButton")
