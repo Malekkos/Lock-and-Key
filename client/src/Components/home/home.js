@@ -58,6 +58,7 @@ function Home () {
     })
     .catch(err => {
       console.log(err.response.data.message)
+      errorChecker("errMessageFour", err.response.data.message)
     })
   }
 
@@ -89,12 +90,22 @@ function Home () {
   // DESC: Function that takes in the errorNum(to be specific) and assigns it to the place it needs to go,
   // cont. clears other errors while its at it
   function errorChecker(errorNum, message) {
+  if(typeof(errorNum) !== "string") {
     let currError = errorNum.id
-
     setErrorMessage({
       ...initialError, 
       [currError]: message
     })
+  } else {
+    console.log("happened!")
+    let currError = errorNum
+    setErrorMessage({
+      ...initialError, 
+      [currError]: message
+    })
+  }
+    // console.log(currError)
+    
   }
 
   function secretAdder(secretNum, message) {
@@ -121,21 +132,21 @@ function Home () {
             <FontAwesomeIcon id="firstLock" name="bronzeLock" className="unlocked bronzeLock" icon={faLock} size="2xl" />
             <FontAwesomeIcon id="secondLock" name="bronzeLock" className="locked bronzeLock" icon={faUnlock} size="2xl" />
             <input type="button" id="firstButton" className="verifyBtn" onClick={() => onClick("fgsfger", "bronzeLock", "One")} value="Verify"></input>
-            <p id="errMessageOne" className="errorMessage locked">{errorMessage.errMessageOne}</p>
+            <p id="errMessageOne" className="errorMessage">{errorMessage.errMessageOne}</p>
             <p className="locked">{secrets.secretOne}</p>
           </div>
           <div id="secondSecret">
             <FontAwesomeIcon id="thirdLock" name="silverLock" className="unlocked silverLock" icon={faLock} size="2xl" />
             <FontAwesomeIcon id="fourthLock" name="silverLock" className="locked silverLock" icon={faUnlock} size="2xl" />
             <input type="button" id="secondButton" className="verifyBtn" onClick={() => onClick("dasf", "silverLock", "Two")} value="Verify"></input>
-            <p id="errMessageTwo" className="errorMessage locked">{errorMessage.errMessageTwo}</p>
+            <p id="errMessageTwo" className="errorMessage">{errorMessage.errMessageTwo}</p>
             <p className="locked">{secrets.secretTwo}</p>
           </div>
           <div id="thirdSecret">
             <FontAwesomeIcon id="fifthLock" name="goldLock" className="unlocked goldLock" icon={faLock} size="2xl" />
             <FontAwesomeIcon id="sixthLock" name="goldLock" className="locked goldLock" icon={faUnlock} size="2xl" />
             <input type="button" id="thirdButton" className="verifyBtn" onClick={() => onClick("asdfasdf", "goldLock", "Three")} value="Verify"></input>
-            <p id="errMessageThree" className="errorMessage locked">{errorMessage.errMessageThree}</p>
+            <p id="errMessageThree" className="errorMessage">{errorMessage.errMessageThree}</p>
             <p className="locked">{secrets.secretThree}</p>
           </div>
         </div>
@@ -148,7 +159,7 @@ function Home () {
           </div>
     { loggedIn ? "" : <form onSubmit={(event) => onSubmit(event)} className="loginContainer">
         <div className="inputsContainer">
-            <p id="errorMessageFour" className="errorMessage locked">{errorMessage.errMessageFour}</p>
+            <p id="errorMessageFour" className="errorMessage">{errorMessage.errMessageFour}</p>
             <div className="passContainer">
               <h4 className="homeText">Username</h4>
               <input onChange={(event) => onChange(event.target.value, "username")} className="loginUsername" value={creds.username} type="text" />

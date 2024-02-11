@@ -36,12 +36,11 @@ router.post("/login", (req, res, next) => {
     if(user && bcrypt.compareSync(password, user.password)) {
       const token = buildToken(user)
       res.cookie("token", token, {
-        httpOnly: true,
+        httpOnly: false,
         secure: false,
         maxeAge: 100000,
         signed: true,
       })
-      // res.send("Cookie Set")
       res.status(200).json({ message: `Welcome back, ${username}` })
     } else {
       next({ status: 401, message: "Invalid credentials"})
