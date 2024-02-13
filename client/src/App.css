@@ -65,6 +65,7 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: left;
+  width: 24rem;
 }
 
 .bronzeLock {
@@ -118,6 +119,7 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  width: 29rem;
 }
 
 .mainInstructions {
@@ -151,18 +153,67 @@
 
 .passContainer {
   display: flex;
-  /* flex-flow: column nowrap; */
-  /* justify-items: center; */
   align-items: center;
+
 }
 
-/* .loginUsername {
-  color: 
-} */
+.homeText {
+  margin-right: 0.6rem
+}
 
+.loginUsername, .loginPassword {
+  color: #009698;
+}
+
+.secret {
+
+  color: #0e9ca5
+}
+.secretContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  width: 12rem;
+}
 .locked {
   display: none;
 }
-/* 1120, shrink home text*/
-/* at 890px, max changes to right most text in home to scrunch */
-/* At  760px, minimize links into one rollout folder*/
+
+#loginButton {
+  border: none;
+}
+
+#loginButton:hover {
+  transition-property: all ;
+  transition-duration: 0.2s;
+  transition-timing-function:ease-in-out ;
+  transform: translateY(-1.5px);
+  color: #0e9ca5;
+  border-bottom: 0.2px solid;
+  border-bottom-left-radius: 7%;
+  border-bottom-right-radius: 7%;
+}
+
+#loginButton:hover {
+  transition-property: color ;
+  transition-duration: 0.2s;
+  transition-timing-function:ease-in-out ;
+  /* transform: translateY(-1.5px); */
+  color: #0e9ca5;
+  /* border-bottom: 0.2px solid; */
+  /* border-bottom-left-radius: 7%; */
+  /* border-bottom-right-radius: 7%; */
+}
+
+#loginButton:hover {
+  transition-property: all;
+  transition-duration: 1.2s;
+  transition-timing-function:ease;
+  background-color: #192236;
+  background-blend-mode: screen;
+}
+/* at 612px is when home page needs reformmating into something more compact */
+/* at 540px is when the navbar needs to be reformmated into bars and onclick*/

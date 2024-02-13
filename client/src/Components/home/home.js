@@ -86,7 +86,7 @@ function Home () {
       setErrorMessage(initialError)
       setTimeout(() => lock[0].classList.add("locked"), 1000)
       setTimeout(() => lock[1].classList.remove("locked"), 1000)
-      secretAdder(lockNumber)
+      setTimeout(() => secretAdder(lockNumber), 1000)
     }
   }
 
@@ -110,10 +110,9 @@ function Home () {
 
   function secretAdder(num) {
     const lower = num.toLowerCase()
-
     axios.get(`http://localhost:9000/api/users/secret_${lower}`, {headers: {"Authorization": localStorage.token}})
     .then(res => {
-      console.log(res.data.secret)
+      // console.log(res.data.secret)
       setSecrets({
         [`secret${lower}`]: res.data.secret
       })
@@ -144,21 +143,27 @@ function Home () {
             <FontAwesomeIcon id="secondLock" name="bronzeLock" className="locked bronzeLock" icon={faUnlock} size="2xl" />
             <input type="button" id="firstButton" className="verifyBtn" onClick={() => onClick("fgsfger", "bronzeLock", "One")} value="Verify"></input>
             <p id="errMessageOne" className="errorMessage">{errorMessage.errMessageOne}</p>
-            <p className="secret">{secrets.secretone}</p>
+            <div class="secretContainer">
+              <p className="secret">{secrets.secretone}</p>
+            </div>
           </div>
           <div id="secondSecret">
             <FontAwesomeIcon id="thirdLock" name="silverLock" className="unlocked silverLock" icon={faLock} size="2xl" />
             <FontAwesomeIcon id="fourthLock" name="silverLock" className="locked silverLock" icon={faUnlock} size="2xl" />
             <input type="button" id="secondButton" className="verifyBtn" onClick={() => onClick("dasf", "silverLock", "Two")} value="Verify"></input>
             <p id="errMessageTwo" className="errorMessage">{errorMessage.errMessageTwo}</p>
-            <p className="secret">{secrets.secrettwo}</p>
+            <div class="secretContainer">
+              <p className="secret">{secrets.secrettwo}</p>
+            </div>
           </div>
           <div id="thirdSecret">
             <FontAwesomeIcon id="fifthLock" name="goldLock" className="unlocked goldLock" icon={faLock} size="2xl" />
             <FontAwesomeIcon id="sixthLock" name="goldLock" className="locked goldLock" icon={faUnlock} size="2xl" />
             <input type="button" id="thirdButton" className="verifyBtn" onClick={() => onClick("asdfasdf", "goldLock", "Three")} value="Verify"></input>
             <p id="errMessageThree" className="errorMessage">{errorMessage.errMessageThree}</p>
-            <p className="secret">{secrets.secretthree}</p>
+            <div class="secretContainer">
+              <p className="secret">{secrets.secretthree}</p>
+            </div>
           </div>
         </div>
         <div className="instructionsContainer">
@@ -179,7 +184,7 @@ function Home () {
               <h4 className="homeText">Password</h4>
               <input onChange={(event) => onChange(event.target.value, "password")} className="loginPassword" value={creds.password} type="password" />
             </div>
-            <input type="submit" className="authMods" value="Login" /> 
+            <input id="loginButton" type="submit" className="authMods" value="Login" /> 
           </div>
         </form>}
         </div>
