@@ -6,6 +6,7 @@ const { restricted, only } = require("../auth/auth-middleware")
 
 // Method for getting the first secret
 router.get("/secret_one", restricted, only({ allowed: ["acquaintance", "friend", "best_friend"]}), (req, res, next) => {
+  console.log("this is the req.body", req.body)
   Users.getSecret(1)
   .then(secret => {
     res.status(200).json(secret)

@@ -48,12 +48,14 @@ function Home () {
   let onSubmit = event => {
     event.preventDefault()
     
-    axios.post("http://localhost:9000/api/auth/login", creds)
+    axios.post("http://localhost:9000/api/auth/login", creds, {headers: {"Authorization": "googaa"}})
     .then(res => {
+      localStorage.setItem("token", res.data.token)
       setLoggedIn(true)
       setErrorMessage(initialError)
       setGreetingMessage(res.data.message)
       setCreds({username: "", password: ""})
+      
       console.log(res)
     })
     .catch(err => {
@@ -84,6 +86,7 @@ function Home () {
       setErrorMessage(initialError)
       setTimeout(() => lock[0].classList.add("locked"), 1000)
       setTimeout(() => lock[1].classList.remove("locked"), 1000)
+      secretAdder(lockNumber)
     }
   }
 
@@ -97,19 +100,33 @@ function Home () {
       [currError]: message
     })
   } else {
-    console.log("happened!")
     let currError = errorNum
     setErrorMessage({
       ...initialError, 
       [currError]: message
     })
   }
-    // console.log(currError)
-    
   }
 
-  function secretAdder(secretNum, message) {
+  function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+  function secretAdder(num) {
+    const lower = num.toLowerCase()
+    // const headers = new Headers()
+    // const cookie = headers.get("authorization")
+    // console.log("this is the cookie: ", cookie)
+    // console.log("this is the lowercase version of passed num: ", lower)
 
+    axios.get(`http://localhost:9000/api/users/secret_${lower}`, {headers: {"Authorization": localStorage.token}})
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err.response.data.message)
+    })
   }
 
   //DESC: Main meat of the home page

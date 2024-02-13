@@ -15,13 +15,19 @@ const JWT_SECRET = require("./secrets/index")
 // cont 2: Don't think its bad to have, but its on my hit list if something turns sour
 
 // THOUGHTS 2: Just realized, I need to still add all the testing for my endpoints and functions. I brought in supertest and jest for a reason.
-
 server.use(helmet())
 server.use(express.json())
 server.use(cors)
 server.use(cookieParser(JWT_SECRET.JWT_SECRET))
 
 // server.
+
+server.use((req, res, next) => {
+  // res.append('Access-Control-Allow-Origin', ['*']);
+  res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.append('Access-Control-Allow-Headers', 'Authorization');
+  next();
+})
 
 // Simple pathways for server to recieve request on the routers.
 server.use("/api/auth", authRouter)
