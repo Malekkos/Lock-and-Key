@@ -11,7 +11,7 @@ function Home () {
   //DESC: Your gerneral state
   //THOUGHTS: None, really. Maybe set an initialGreetingMessage? Like with error? More QOL than anything
   const initialError = {errMessageOne: "", errMessageTwo: "", errMessageThree: "", errMessageFour: ""}
-  const initialSecrets = {secretOne: "", secretTwo: "", secretThree: ""}
+  const initialSecrets = {secretone: "", secrettwo: "", secretthree: ""}
 
   const [secrets, setSecrets] = useState(initialSecrets)
   const [loggedIn, setLoggedIn] = useState(false)
@@ -108,21 +108,15 @@ function Home () {
   }
   }
 
-  function getCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
-}
   function secretAdder(num) {
     const lower = num.toLowerCase()
-    // const headers = new Headers()
-    // const cookie = headers.get("authorization")
-    // console.log("this is the cookie: ", cookie)
-    // console.log("this is the lowercase version of passed num: ", lower)
 
     axios.get(`http://localhost:9000/api/users/secret_${lower}`, {headers: {"Authorization": localStorage.token}})
     .then(res => {
-      console.log(res)
+      console.log(res.data.secret)
+      setSecrets({
+        [`secret${lower}`]: res.data.secret
+      })
     })
     .catch(err => {
       console.log(err.response.data.message)
@@ -150,21 +144,21 @@ function Home () {
             <FontAwesomeIcon id="secondLock" name="bronzeLock" className="locked bronzeLock" icon={faUnlock} size="2xl" />
             <input type="button" id="firstButton" className="verifyBtn" onClick={() => onClick("fgsfger", "bronzeLock", "One")} value="Verify"></input>
             <p id="errMessageOne" className="errorMessage">{errorMessage.errMessageOne}</p>
-            <p className="locked">{secrets.secretOne}</p>
+            <p className="secret">{secrets.secretone}</p>
           </div>
           <div id="secondSecret">
             <FontAwesomeIcon id="thirdLock" name="silverLock" className="unlocked silverLock" icon={faLock} size="2xl" />
             <FontAwesomeIcon id="fourthLock" name="silverLock" className="locked silverLock" icon={faUnlock} size="2xl" />
             <input type="button" id="secondButton" className="verifyBtn" onClick={() => onClick("dasf", "silverLock", "Two")} value="Verify"></input>
             <p id="errMessageTwo" className="errorMessage">{errorMessage.errMessageTwo}</p>
-            <p className="locked">{secrets.secretTwo}</p>
+            <p className="secret">{secrets.secrettwo}</p>
           </div>
           <div id="thirdSecret">
             <FontAwesomeIcon id="fifthLock" name="goldLock" className="unlocked goldLock" icon={faLock} size="2xl" />
             <FontAwesomeIcon id="sixthLock" name="goldLock" className="locked goldLock" icon={faUnlock} size="2xl" />
             <input type="button" id="thirdButton" className="verifyBtn" onClick={() => onClick("asdfasdf", "goldLock", "Three")} value="Verify"></input>
             <p id="errMessageThree" className="errorMessage">{errorMessage.errMessageThree}</p>
-            <p className="locked">{secrets.secretThree}</p>
+            <p className="secret">{secrets.secretthree}</p>
           </div>
         </div>
         <div className="instructionsContainer">

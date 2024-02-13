@@ -24,6 +24,8 @@ router.post("/register", usernameTaken, async (req, res, next) => {
 })
 
 // Method to login to an existing account, I should make it so that logging in places a token in the auth header autimatically(it might?)
+// THOUGHTS: Leaving the cookie for now, despite myself not knowing if its particularily useful. Its not being used meaningfully
+// cont. : at the moment, but I'm hoping to make it work for persistance sake(not loggin in constantly)
 router.post("/login", (req, res, next) => {
   let { username, password } = req.body
 
@@ -34,19 +36,15 @@ router.post("/login", (req, res, next) => {
   Users.findBy({ username })
   .then(([user]) => {
     if(user && bcrypt.compareSync(password, user.password)) {
-      // const newHeader = new Headers();
       const token = buildToken(user)
+
       res.cookie("token", token, {
         httpOnly: false,
         secure: false,
         maxeAge: 100000,
         signed: true,
       })
-      // Headers.set("Authorization", token)
-      // newHeader.append("Authorization", "null")
-      // newHeader.set("Authorization", token)
-      // res.set("Access-Control-Expose-Headers", "Authorization")
-      // localStorage.setItem("token", token)
+
       res.status(200).json({ message: `Welcome back, ${username}`, token })
     } else {
       next({ status: 401, message: "Invalid credentials"})

@@ -6,7 +6,7 @@ const Users = require("../users/users-model")
 // Checks authorization token in header
 const restricted = (req, res, next) => {
   const token = req.headers.authorization
-  console.log("this is the token from headers.authorization: ", token)
+
   if(token) {
     jwt.verify(token, JWT_SECRET, (error, decoded) => {
       if(error) {
@@ -19,9 +19,6 @@ const restricted = (req, res, next) => {
   } else {
     next({ status: 401, message: "Token required" })
   }
-// } else {
-  // next({ status: 401, message: "Error recieving token"})
-// }
 }
 
 // Verifies role name

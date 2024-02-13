@@ -20,10 +20,9 @@ server.use(express.json())
 server.use(cors)
 server.use(cookieParser(JWT_SECRET.JWT_SECRET))
 
-// server.
-
+// THOUGHTS: Add while trying to apply the Authorization header, as well as the token, so that I could grab it for later
+// cont: I dont actually know how useful it is, I need to come by later, delete this, and see if it bricks the project
 server.use((req, res, next) => {
-  // res.append('Access-Control-Allow-Origin', ['*']);
   res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.append('Access-Control-Allow-Headers', 'Authorization');
   next();

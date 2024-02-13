@@ -37,7 +37,7 @@ exports.seed = async function(knex) {
 
   await knex("secrets").insert([
     {secret: "I've seen The Office maybe 12 times, all episodes. I stopped liking the show after the 6th go around. Don't know why I kept watching."},
-    {secret: "I started a stealing spree of 3d printed blocks of cheese from my school(they were used as doorstops). Ended up getting my friend interrogated by campus security. Fond memory, to be honest."},
-    {secret: "While hiking with a girl I had a crush on, we came upon a Snapple bottle filled with a dark yellow substance. I picked it up, threw it up as high as I could, and witnessed it shatter, splashing old trucker pee everywhere. Torpedoed my chance with her, but I found it hilarious."},
+    {secret: "I started a stealing spree of 3d printed blocks of cheese from my school(they were used as doorstops). Ended up getting my friend interrogated by campus security. Threatened him with a felony(really?). Fond memory, to be honest."},
+    {secret: "While hiking with a girl I had a crush on, we came upon a Snapple bottle filled with a dark yellow substance. I picked it up, threw it up as high as I could, and watched it shatter, splashing old trucker pee everywhere. I don't know why I did it, and it torpedoed my chance with her, but I found it hilarious."},
   ])
 };
