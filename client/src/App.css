@@ -137,11 +137,14 @@
 }
 
 .loginContainer {
+  width: 100%;
   padding-top: 2rem;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  border-bottom-left-radius: 2%;
+  border-bottom-right-radius: 2%;
 }
 
 .inputsContainer {
@@ -166,7 +169,6 @@
 }
 
 .secret {
-
   color: #0e9ca5
 }
 .secretContainer {
@@ -183,13 +185,54 @@
 }
 
 #loginButton {
+  background-color: #192236;
+  margin-bottom: 0.6rem;
   border: none;
 }
 
+.instructionsContainer {
+  background-color: #009698;
+  /* border-top-left-radius: 2%; */
+  /* border-top-right-radius: 2%; */
+  border-radius: 2%
+}
+
+.homeHeader {
+  background-color: #009698;
+}
+
+.mainInstructions, .loginContainer {
+  background-color:#1b1919;
+  /* box-shadow: 0px 19px 38px 0px rgba(0,0,0,0.3); */
+  box-shadow: 0 10px 44px 20px rgba(0,0,0,0.50), 0 22px 22px rgba(0,0,0,0.16);
+  /* box */
+}
+
+.mainInstructions {
+  background-color: #1b1919;
+}
+
+.loginContainer {
+  background-color:#192236;
+}
+
+.homeText {
+  width: 95%;
+  background-color: #1b1919;
+}
+
+.loginText {
+  background-color: #192236;
+}
+
+.inputsContainer, .passContainer {
+  background-color:#192236;
+}
+
 #loginButton:hover {
-  transition-property: all ;
+  transition-property: all;
   transition-duration: 0.2s;
-  transition-timing-function:ease-in-out ;
+  transition-timing-function:ease;
   transform: translateY(-1.5px);
   color: #0e9ca5;
   border-bottom: 0.2px solid;
@@ -200,17 +243,13 @@
 #loginButton:hover {
   transition-property: color ;
   transition-duration: 0.2s;
-  transition-timing-function:ease-in-out ;
-  /* transform: translateY(-1.5px); */
+  transition-timing-function:ease ;
   color: #0e9ca5;
-  /* border-bottom: 0.2px solid; */
-  /* border-bottom-left-radius: 7%; */
-  /* border-bottom-right-radius: 7%; */
 }
 
 #loginButton:hover {
   transition-property: all;
-  transition-duration: 1.2s;
+  transition-duration: 0.11s;
   transition-timing-function:ease;
   background-color: #192236;
   background-blend-mode: screen;

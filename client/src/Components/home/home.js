@@ -81,7 +81,7 @@ function Home () {
 
     if(loggedIn === false) {
       errorChecker(error, "You need to be logged in first!")
-      error.classList.remove("locked")
+      // error.classList.remove("locked")
     } else if (lock[1].classList.contains("locked") && token /*have to find out how to test token, think the testing script is for servers only. TBD*/) {
       setErrorMessage(initialError)
       setTimeout(() => lock[0].classList.add("locked"), 1000)
@@ -112,13 +112,12 @@ function Home () {
     const lower = num.toLowerCase()
     axios.get(`http://localhost:9000/api/users/secret_${lower}`, {headers: {"Authorization": localStorage.token}})
     .then(res => {
-      // console.log(res.data.secret)
       setSecrets({
         [`secret${lower}`]: res.data.secret
       })
     })
-    .catch(err => {
-      console.log(err.response.data.message)
+    .catch(error => {
+      errorChecker(`errMessage${num}`, error.response.data.message)
     })
   }
 
@@ -177,11 +176,11 @@ function Home () {
         <div className="inputsContainer">
             <p id="errorMessageFour" className="errorMessage">{errorMessage.errMessageFour}</p>
             <div className="passContainer">
-              <h4 className="homeText">Username</h4>
+              <h4 className="homeText loginText">Username</h4>
               <input onChange={(event) => onChange(event.target.value, "username")} className="loginUsername" value={creds.username} type="text" />
             </div>
             <div className="passContainer">
-              <h4 className="homeText">Password</h4>
+              <h4 className="homeText loginText">Password</h4>
               <input onChange={(event) => onChange(event.target.value, "password")} className="loginPassword" value={creds.password} type="password" />
             </div>
             <input id="loginButton" type="submit" className="authMods" value="Login" /> 
