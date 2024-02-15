@@ -53,25 +53,16 @@ export const lockAnim = ("DOMContentLoaded", event => {
   }, false)
 })
 
-
+//DESC: animation for the hoverVerify button, simply adds a question mark on a delay
+//THOUGHTS: NONE
 export const hoverVerify = ("DOMContentLoaded", () => {
   let button = document.getElementsByClassName("verifyBtn")
-
-  let colorChange = [
-    
-  ]
-
-  let timing = {
-    duration: 1000,
-    iterations: 1,
-  }
 
   for (let val of button) {
     val.addEventListener("mouseover", event => {
       setTimeout(() => {
         event.target.value = "Verify?"
       }, 300)
-      // val.animate()
     })
     val.addEventListener("mouseleave", event => {
       setTimeout(() => {
@@ -79,9 +70,4 @@ export const hoverVerify = ("DOMContentLoaded", () => {
       }, 200)
     })
   }
-  // button.addEventListener("mouseover", (event) => {
-  //   event.target.value = "Verify?"
-  // }) 
-
-
 })
