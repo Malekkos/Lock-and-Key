@@ -4,8 +4,7 @@
   // cont. It's lightweight enough that I think there shouldn't be any errors with the animation,
   // cont. but I should maybe make some await statements to totally nullify that. TBD. Also,
   // cont. this is my first time ever using animation so be merciful.
-const lockAnim = ("DOMContentLoaded", event => {
-  console.log('loaded')
+export const lockAnim = ("DOMContentLoaded", event => {
   let firstButton = document.getElementById("firstButton")
   let secondButton = document.getElementById("secondButton")
   let thirdButton = document.getElementById("thirdButton")
@@ -27,7 +26,6 @@ const lockAnim = ("DOMContentLoaded", event => {
     {transform: "rotate(-20deg)"},
     {transform: "rotate(20deg)"},
     {transform: "rotate(0deg)"}
-
   ]
 
   let timing = {
@@ -55,4 +53,35 @@ const lockAnim = ("DOMContentLoaded", event => {
   }, false)
 })
 
-export default lockAnim
+
+export const hoverVerify = ("DOMContentLoaded", () => {
+  let button = document.getElementsByClassName("verifyBtn")
+
+  let colorChange = [
+    
+  ]
+
+  let timing = {
+    duration: 1000,
+    iterations: 1,
+  }
+
+  for (let val of button) {
+    val.addEventListener("mouseover", event => {
+      setTimeout(() => {
+        event.target.value = "Verify?"
+      }, 300)
+      // val.animate()
+    })
+    val.addEventListener("mouseleave", event => {
+      setTimeout(() => {
+        event.target.value = "Verify"
+      }, 200)
+    })
+  }
+  // button.addEventListener("mouseover", (event) => {
+  //   event.target.value = "Verify?"
+  // }) 
+
+
+})

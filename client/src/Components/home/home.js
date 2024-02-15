@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons"
 import axios from "axios"
-import lockAnim from "../../animations/lockAnimation"
+import {lockAnim, hoverVerify} from "../../animations/lockAnimation"
 
 axios.defaults.withCredentials = true
 
@@ -20,6 +20,7 @@ function Home () {
   const [greetingMessage, setGreetingMessage] = useState()
   
   let onLoad = window.onload = lockAnim
+  let onLoadVerify = window.onload = hoverVerify
 
   //DESC: Simple onChange for the input fields, username and password
   //THOUGHTS: This DEFINTELY needs some params to check length and characters and whatnot, but thats
@@ -69,6 +70,7 @@ function Home () {
   // cont. bandaid, in my opinion, but I've yet to think of a better solution. TBD
   useEffect(() => {
     onLoad()
+    onLoadVerify()
   }, [])
 
   // DESC: click method on verify button to check which is clicked, get its place, and make changes to its class and let animations work fluidly
@@ -136,6 +138,7 @@ function Home () {
   return (
     <>
       <div className="main">
+        <div>
         <div className="secretsContainer">
           <div id="firstSecret">
             <FontAwesomeIcon id="firstLock" name="bronzeLock" className="unlocked bronzeLock" icon={faLock} size="2xl" />
@@ -165,6 +168,8 @@ function Home () {
             </div>
           </div>
         </div>
+      </div>
+      <div>
         <div className="instructionsContainer">
           <h2 className="homeHeader">Thanks for visiting!</h2>
           <div className="mainInstructions">
@@ -188,6 +193,7 @@ function Home () {
         </form>}
         </div>
       </div>
+    </div>
     </>
   )
 }
