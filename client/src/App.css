@@ -269,7 +269,45 @@
   border-color: black;
 }
 
+.regMain {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
+.regContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 30rem;
+}
+
+.regUsername, .regPassword {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  width: 80%;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.regCredsContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.regPasswordText, .regUsernameText {
+  padding-right: 1rem;
+  font-size: 20px;
+}
+
+.regInput {
+  width: 10rem;
+  height: 2rem;
+}
 
 /* 850px, Home page: need to change instruction part */
 /* 800px, Home page: need to edit the locks and verifies, they are going off screen */
