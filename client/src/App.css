@@ -270,6 +270,7 @@
 }
 
 .regMain {
+  margin-top: 2rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -294,7 +295,8 @@
 .regCredsContainer {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   margin-top: 2rem;
 }
@@ -307,6 +309,20 @@
 .regInput {
   width: 10rem;
   height: 2rem;
+  color: #009698;
+}
+
+.regInstructions {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.regInstrText {
+  font-size: 18px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #C0C0C0;
 }
 
 /* 850px, Home page: need to change instruction part */
