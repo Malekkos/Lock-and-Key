@@ -103,7 +103,7 @@
   border-width: 1px
 }
 
-.authMods {
+.authMods, #registerButton {
   font-weight: 700;
   font-size: 20px;
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -232,7 +232,7 @@
   background-color:#192236;
 }
 
-#loginButton:hover {
+#loginButton:hover, #registerButton:hover {
   transition-property: all;
   transition-duration: 0.2s;
   transition-timing-function:ease;
@@ -243,14 +243,14 @@
   border-bottom-right-radius: 7%;
 }
 
-#loginButton:hover {
+#loginButton:hover, #registerButton:hover {
   transition-property: color ;
   transition-duration: 0.2s;
   transition-timing-function:ease ;
   color: #0e9ca5;
 }
 
-#loginButton:hover {
+#loginButton:hover, #registerButton:hover {
   transition-property: all;
   transition-duration: 0.11s;
   transition-timing-function:ease;
@@ -323,6 +323,11 @@
   font-size: 18px;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #C0C0C0;
+}
+
+#registerButton {
+  border: none;
+  margin-top: 0.5rem;
 }
 
 /* 850px, Home page: need to change instruction part */

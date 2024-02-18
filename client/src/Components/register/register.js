@@ -1,12 +1,14 @@
 
 import React, { useState } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 function Register() {
   const initialError = ""
   const initialCreds = { username: "", password: "" }
   const [creds, setCreds] = useState(initialCreds)
   const [error, setError] = useState(initialError)
+  const navigate = useNavigate();
 
   const onChange = (event, type) => {
     event.preventDefault()
@@ -19,13 +21,21 @@ function Register() {
     console.log(creds)
   }
 
+
+  //THOUGHTS: Need to make a minimum txt amount
+  // cont: Maybe disable entering this route(/register) if there is a cookie
+  // cont: need a method to logout OR I can change the text of /register to logout.
+  // cont2 : That would probably be best
   const onSubmit = event => {
     event.preventDefault()
     axios.post("http://localhost:9000/api/auth/register", creds)
     .then(res => {
-      console.log(res)
+      console.log("this is the response: ", res)
       setError(initialError)
       setCreds(initialCreds)
+      localStorage.setItem("password", creds.password)
+      localStorage.setItem("username", res.data.username)
+      navigate("/")
     })
     .catch(err => {
       console.log(err.response.data.message)
@@ -33,6 +43,10 @@ function Register() {
     })
   }
 
+  //TODO: Redirect to home
+  //cont. : display welcome message
+  //cont. : Make error checking middleware for the backend that checks name 
+  //cont.2 : length(shouldnt be accepting a 0length value)
   return (
     <>
       <div className="regMain">
@@ -55,7 +69,7 @@ function Register() {
                 <input className="regInput" type="password" onChange={event => onChange(event, "password")} value={creds.password} />
               </div>
               <div className="submit">
-                <input className="regButton" type="submit" value="Register" />
+                <input id="registerButton" className="regButton" type="submit" value="Register" />
               </div>
             </div>
           </form>

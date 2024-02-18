@@ -49,9 +49,10 @@ function Home () {
   let onSubmit = event => {
     event.preventDefault()
     
-    axios.post("http://localhost:9000/api/auth/login", creds, {headers: {"Authorization": "googaa"}})
+    axios.post("http://localhost:9000/api/auth/login", creds)
     .then(res => {
-      localStorage.setItem("token", res.data.token)
+      localStorage.setItem("password", creds.password)
+      localStorage.setItem("username", creds.username)
       setLoggedIn(true)
       setErrorMessage(initialError)
       setGreetingMessage(res.data.message)
@@ -71,6 +72,17 @@ function Home () {
   useEffect(() => {
     onLoad()
     onLoadVerify()
+    if(localStorage.getItem("username")) {
+      console.log("this is the password in localStorage: ", localStorage.getItem("password"))
+      console.log("this is the username in localStorage: ", localStorage.getItem("username"))
+
+      axios.post("http://localhost:9000/api/auth/login", {username: localStorage.getItem("username"), password: localStorage.getItem("password")})
+      .then(res => {
+        // console.log(res)
+        setLoggedIn(true)
+        setGreetingMessage(`Hey, ${localStorage.getItem("username")}!`)
+      })
+    }
   }, [])
 
   // DESC: click method on verify button to check which is clicked, get its place, and make changes to its class and let animations work fluidly
