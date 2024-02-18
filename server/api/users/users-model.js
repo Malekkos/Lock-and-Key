@@ -18,28 +18,28 @@ async function findById(user_id) {
     .where("user_id", user_id)
 
   return data
-  }
+}
 
-  // Method for getting the correct secret from the DB
+// Method for getting the correct secret from the DB
 async function getSecret(secret) {
   const data = await db("secrets")
-  .where("secret_id", secret)
-  .first()
+    .where("secret_id", secret)
+    .first()
   return data
 }
 
 // THOUGHTS: Copied, unfortunately. I need to, once this project is in a satisfactory state, change this or at least understand what this does instrisically. ATM, I don't, but it works.
 // cont:  Not sure what transaction does for the DB, should check it out sometime.
 // DESC: Method for adding a user.
-async function add({ username, password, role_type}) {
+async function add({ username, password, role_type }) {
   let created_user_id
   await db.transaction(async trx => {
     let role_id_to_use
     const [role] = await trx("roles").where("role_type", role_type)
-    if(role) {
+    if (role) {
       role_id_to_use = role.role_id
     } else {
-      const [role_id] = await trx("roles").insert({ role_type: role_type})
+      const [role_id] = await trx("roles").insert({ role_type: role_type })
       role_id_to_use = role_id
     }
     const [user_id] = await trx("users").insert({ username, password, role_id: role_id_to_use })

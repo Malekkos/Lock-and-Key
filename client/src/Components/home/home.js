@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react" 
+import React, { useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons"
 import axios from "axios"
-import {lockAnim, hoverVerify} from "../../animations/lockAnimation"
+import { lockAnim, hoverVerify } from "../../animations/lockAnimation"
 
 axios.defaults.withCredentials = true
 
-function Home () {
+function Home() {
 
   //DESC: Your gerneral state
   //THOUGHTS: None, really. Maybe set an initialGreetingMessage? Like with error? More QOL than anything
-  const initialError = {errMessageOne: "", errMessageTwo: "", errMessageThree: "", errMessageFour: ""}
-  const initialSecrets = {secretone: "", secrettwo: "", secretthree: ""}
+  const initialError = { errMessageOne: "", errMessageTwo: "", errMessageThree: "", errMessageFour: "" }
+  const initialSecrets = { secretone: "", secrettwo: "", secretthree: "" }
 
   const [secrets, setSecrets] = useState(initialSecrets)
   const [loggedIn, setLoggedIn] = useState(false)
   const [errorMessage, setErrorMessage] = useState(initialError)
-  const [creds, setCreds ] = useState({username: "", password: ""})
+  const [creds, setCreds] = useState({ username: "", password: "" })
   const [greetingMessage, setGreetingMessage] = useState()
-  
+
   let onLoad = window.onload = lockAnim
   let onLoadVerify = window.onload = hoverVerify
 
@@ -27,10 +27,10 @@ function Home () {
   // cont. more near the end typa thing. In fact, that seems like something I should do on my server,
   // cont. have a middleware for checking the recieved values and then send a error, yada yada you get it
   let onChange = (event, type) => {
-    if(type === "username") {
-      setCreds({username: event, password: creds.password})
+    if (type === "username") {
+      setCreds({ username: event, password: creds.password })
     } else {
-      setCreds({username: creds.username, password: event})
+      setCreds({ username: creds.username, password: event })
     }
   }
 
@@ -48,20 +48,20 @@ function Home () {
   // cont. from it, if server isn't running? TBD
   let onSubmit = event => {
     event.preventDefault()
-    
+
     axios.post("http://localhost:9000/api/auth/login", creds)
-    .then(res => {
-      localStorage.setItem("password", creds.password)
-      localStorage.setItem("username", creds.username)
-      setLoggedIn(true)
-      setErrorMessage(initialError)
-      setGreetingMessage(res.data.message)
-      setCreds({username: "", password: ""})
-    })
-    .catch(err => {
-      console.log(err.response.data.message)
-      errorChecker("errMessageFour", err.response.data.message)
-    })
+      .then(res => {
+        localStorage.setItem("password", creds.password)
+        localStorage.setItem("username", creds.username)
+        setLoggedIn(true)
+        setErrorMessage(initialError)
+        setGreetingMessage(res.data.message)
+        setCreds({ username: "", password: "" })
+      })
+      .catch(err => {
+        console.log(err.response.data.message)
+        errorChecker("errMessageFour", err.response.data.message)
+      })
   }
 
   // DESC: Rendering method to get animation to work
@@ -70,12 +70,12 @@ function Home () {
   useEffect(() => {
     onLoad()
     onLoadVerify()
-    if(localStorage.getItem("username")) {
-      axios.post("http://localhost:9000/api/auth/login", {username: localStorage.getItem("username"), password: localStorage.getItem("password")})
-      .then(res => {
-        setLoggedIn(true)
-        setGreetingMessage(`Hey, ${localStorage.getItem("username")}!`)
-      })
+    if (localStorage.getItem("username")) {
+      axios.post("http://localhost:9000/api/auth/login", { username: localStorage.getItem("username"), password: localStorage.getItem("password") })
+        .then(res => {
+          setLoggedIn(true)
+          setGreetingMessage(`Hey, ${localStorage.getItem("username")}!`)
+        })
     }
   }, [])
 
@@ -83,11 +83,11 @@ function Home () {
   // THOUGHTS: token is a bit of a doozy, tbh. To get this to work... well, I don't know. I have to check some docs to see how I am supposed 
   // cont. to A. get the token out of the header and B. verify it. The verify bit already works over the server, so thats a secondary, or possibly
   // cont. null concern, so it's mainly determing the way to get token
-  function onClick (token, lockType, lockNumber) {
+  function onClick(token, lockType, lockNumber) {
     let lock = document.getElementsByName(lockType)
     let error = document.getElementById(`errMessage${lockNumber}`)
 
-    if(loggedIn === false) {
+    if (loggedIn === false) {
       errorChecker(error, "You need to be logged in first!")
     } else if (lock[1].classList.contains("locked") && token /*have to find out how to test token, think the testing script is for servers only. TBD*/) {
       setErrorMessage(initialError)
@@ -100,32 +100,32 @@ function Home () {
   // DESC: Function that takes in the errorNum(to be specific) and assigns it to the place it needs to go,
   // cont. clears other errors while its at it
   function errorChecker(errorNum, message) {
-  if(typeof(errorNum) !== "string") {
-    let currError = errorNum.id
-    setErrorMessage({
-      ...initialError, 
-      [currError]: message
-    })
-  } else {
-    let currError = errorNum
-    setErrorMessage({
-      ...initialError, 
-      [currError]: message
-    })
-  }
+    if (typeof (errorNum) !== "string") {
+      let currError = errorNum.id
+      setErrorMessage({
+        ...initialError,
+        [currError]: message
+      })
+    } else {
+      let currError = errorNum
+      setErrorMessage({
+        ...initialError,
+        [currError]: message
+      })
+    }
   }
 
   function secretAdder(num) {
     const lower = num.toLowerCase()
-    axios.get(`http://localhost:9000/api/users/secret_${lower}`, {headers: {"Authorization": localStorage.token}})
-    .then(res => {
-      setSecrets({
-        [`secret${lower}`]: res.data.secret
+    axios.get(`http://localhost:9000/api/users/secret_${lower}`, { headers: { "Authorization": localStorage.token } })
+      .then(res => {
+        setSecrets({
+          [`secret${lower}`]: res.data.secret
+        })
       })
-    })
-    .catch(error => {
-      errorChecker(`errMessage${num}`, error.response.data.message)
-    })
+      .catch(error => {
+        errorChecker(`errMessage${num}`, error.response.data.message)
+      })
   }
 
   //DESC: Main meat of the home page
@@ -144,61 +144,61 @@ function Home () {
     <>
       <div className="main">
         <div>
-        <div className="secretsContainer">
-          <div id="firstSecret">
-            <FontAwesomeIcon id="firstLock" name="bronzeLock" className="unlocked bronzeLock" icon={faLock} size="2xl" />
-            <FontAwesomeIcon id="secondLock" name="bronzeLock" className="locked bronzeLock" icon={faUnlock} size="2xl" />
-            <input type="button" id="firstButton" className="verifyBtn" onClick={() => onClick("fgsfger", "bronzeLock", "One")} value="Verify"></input>
-            <p id="errMessageOne" className="errorMessage">{errorMessage.errMessageOne}</p>
-            <div className="secretContainer">
-              <p className="secret">{secrets.secretone}</p>
+          <div className="secretsContainer">
+            <div id="firstSecret">
+              <FontAwesomeIcon id="firstLock" name="bronzeLock" className="unlocked bronzeLock" icon={faLock} size="2xl" />
+              <FontAwesomeIcon id="secondLock" name="bronzeLock" className="locked bronzeLock" icon={faUnlock} size="2xl" />
+              <input type="button" id="firstButton" className="verifyBtn" onClick={() => onClick("fgsfger", "bronzeLock", "One")} value="Verify"></input>
+              <p id="errMessageOne" className="errorMessage">{errorMessage.errMessageOne}</p>
+              <div className="secretContainer">
+                <p className="secret">{secrets.secretone}</p>
+              </div>
             </div>
-          </div>
-          <div id="secondSecret">
-            <FontAwesomeIcon id="thirdLock" name="silverLock" className="unlocked silverLock" icon={faLock} size="2xl" />
-            <FontAwesomeIcon id="fourthLock" name="silverLock" className="locked silverLock" icon={faUnlock} size="2xl" />
-            <input type="button" id="secondButton" className="verifyBtn" onClick={() => onClick("dasf", "silverLock", "Two")} value="Verify"></input>
-            <p id="errMessageTwo" className="errorMessage">{errorMessage.errMessageTwo}</p>
-            <div className="secretContainer">
-              <p className="secret">{secrets.secrettwo}</p>
+            <div id="secondSecret">
+              <FontAwesomeIcon id="thirdLock" name="silverLock" className="unlocked silverLock" icon={faLock} size="2xl" />
+              <FontAwesomeIcon id="fourthLock" name="silverLock" className="locked silverLock" icon={faUnlock} size="2xl" />
+              <input type="button" id="secondButton" className="verifyBtn" onClick={() => onClick("dasf", "silverLock", "Two")} value="Verify"></input>
+              <p id="errMessageTwo" className="errorMessage">{errorMessage.errMessageTwo}</p>
+              <div className="secretContainer">
+                <p className="secret">{secrets.secrettwo}</p>
+              </div>
             </div>
-          </div>
-          <div id="thirdSecret">
-            <FontAwesomeIcon id="fifthLock" name="goldLock" className="unlocked goldLock" icon={faLock} size="2xl" />
-            <FontAwesomeIcon id="sixthLock" name="goldLock" className="locked goldLock" icon={faUnlock} size="2xl" />
-            <input type="button" id="thirdButton" className="verifyBtn" onClick={() => onClick("asdfasdf", "goldLock", "Three")} value="Verify"></input>
-            <p id="errMessageThree" className="errorMessage">{errorMessage.errMessageThree}</p>
-            <div className="secretContainer">
-              <p className="secret">{secrets.secretthree}</p>
+            <div id="thirdSecret">
+              <FontAwesomeIcon id="fifthLock" name="goldLock" className="unlocked goldLock" icon={faLock} size="2xl" />
+              <FontAwesomeIcon id="sixthLock" name="goldLock" className="locked goldLock" icon={faUnlock} size="2xl" />
+              <input type="button" id="thirdButton" className="verifyBtn" onClick={() => onClick("asdfasdf", "goldLock", "Three")} value="Verify"></input>
+              <p id="errMessageThree" className="errorMessage">{errorMessage.errMessageThree}</p>
+              <div className="secretContainer">
+                <p className="secret">{secrets.secretthree}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <div className="instructionsContainer">
-          <h2 className="homeHeader">Thanks for visiting!</h2>
-          <div className="mainInstructions">
-            <p className="homeText">This is a demo project to showcase my understanding of <span className="authMods">Authentication</span> & <span className="authMods">Authorization</span></p>
-            <p className="homeText">Complete some arbitrary tasks and be rewarded with a few of my secrets!</p>
-            <p className="authMods">{greetingMessage}</p>
-          </div>
-    { loggedIn ? "" : <form onSubmit={(event) => onSubmit(event)} className="loginContainer">
-        <div className="inputsContainer">
-            <p id="errorMessageFour" className="errorMessage">{errorMessage.errMessageFour}</p>
-            <div className="passContainer">
-              <h4 className="homeText loginText">Username</h4>
-              <input onChange={(event) => onChange(event.target.value, "username")} className="loginUsername" value={creds.username} type="text" />
+        <div>
+          <div className="instructionsContainer">
+            <h2 className="homeHeader">Thanks for visiting!</h2>
+            <div className="mainInstructions">
+              <p className="homeText">This is a demo project to showcase my understanding of <span className="authMods">Authentication</span> & <span className="authMods">Authorization</span></p>
+              <p className="homeText">Complete some arbitrary tasks and be rewarded with a few of my secrets!</p>
+              <p className="authMods">{greetingMessage}</p>
             </div>
-            <div className="passContainer">
-              <h4 className="homeText loginText">Password</h4>
-              <input onChange={(event) => onChange(event.target.value, "password")} className="loginPassword" value={creds.password} type="password" />
-            </div>
-            <input id="loginButton" type="submit" className="authMods" value="Login" /> 
+            {loggedIn ? "" : <form onSubmit={(event) => onSubmit(event)} className="loginContainer">
+              <div className="inputsContainer">
+                <p id="errorMessageFour" className="errorMessage">{errorMessage.errMessageFour}</p>
+                <div className="passContainer">
+                  <h4 className="homeText loginText">Username</h4>
+                  <input onChange={(event) => onChange(event.target.value, "username")} className="loginUsername" value={creds.username} type="text" />
+                </div>
+                <div className="passContainer">
+                  <h4 className="homeText loginText">Password</h4>
+                  <input onChange={(event) => onChange(event.target.value, "password")} className="loginPassword" value={creds.password} type="password" />
+                </div>
+                <input id="loginButton" type="submit" className="authMods" value="Login" />
+              </div>
+            </form>}
           </div>
-        </form>}
         </div>
       </div>
-    </div>
     </>
   )
 }

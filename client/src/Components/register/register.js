@@ -28,17 +28,17 @@ function Register() {
   const onSubmit = event => {
     event.preventDefault()
     axios.post("http://localhost:9000/api/auth/register", creds)
-    .then(res => {
-      setError(initialError)
-      setCreds(initialCreds)
-      localStorage.setItem("password", creds.password)
-      localStorage.setItem("username", res.data.username)
-      localStorage.removeItem("token")
-      navigate("/")
-    })
-    .catch(err => {
-      setError(err.response.data.message)
-    })
+      .then(res => {
+        setError(initialError)
+        setCreds(initialCreds)
+        localStorage.setItem("password", creds.password)
+        localStorage.setItem("username", res.data.username)
+        localStorage.removeItem("token")
+        navigate("/")
+      })
+      .catch(err => {
+        setError(err.response.data.message)
+      })
   }
 
   //TODO: Redirect to home
@@ -55,7 +55,7 @@ function Register() {
             <p className="regInstrText">to complete, with the purposes of</p>
             <p className="regInstrText">increasing your user privilege</p>
           </div>
-          { error ? <p className="errorMessage">{error}</p> : "" }
+          {error ? <p className="errorMessage">{error}</p> : ""}
           <form className="reg" onSubmit={event => onSubmit(event)}>
             <div className="regCredsContainer">
               <div className="regUsername">

@@ -1,6 +1,7 @@
 * {
   background-color: #191c27;
 }
+
 .nav {
   display: flex;
   justify-content: space-evenly;
@@ -15,7 +16,7 @@
 
 #logo {
   height: 2rem;
-  display:flex;
+  display: flex;
   justify-self: left;
   color: whitesmoke;
   position: sticky;
@@ -25,15 +26,17 @@
 .iconContainer {
   width: 5rem;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
 }
+
 .linksContainer {
   background-color: #191c27;
   width: 80%;
   display: flex;
   justify-content: right;
 }
+
 .link {
   width: fit-content;
   font-size: 18px;
@@ -41,20 +44,22 @@
   margin: 20px 5px;
   font-style: normal;
   text-decoration: none;
-  color:#f0dedef8;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  transition-property: transform ;
+  color: #f0dedef8;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  transition-property: transform;
   transition-duration: 0.2s;
-  transition-timing-function:ease ;
+  transition-timing-function: ease;
 }
 
 .active {
   color: #E31C25;
 }
+
 :hover.link {
   color: #E31C25;
   transform: translateY(-2px);
 }
+
 .main {
   display: flex;
   justify-content: space-evenly;
@@ -73,11 +78,13 @@
   width: 5rem;
   height: 2.5rem;
 }
+
 .silverLock {
   color: #C0C0C0;
   width: 5rem;
   height: 2.5rem;
 }
+
 .goldLock {
   color: #FFD700;
   width: 5rem;
@@ -103,7 +110,8 @@
   border-width: 1px
 }
 
-.authMods, #registerButton {
+.authMods,
+#registerButton {
   font-weight: 700;
   font-size: 20px;
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -118,7 +126,7 @@
 .homeText {
   color: #C0C0C0;
   font-weight: 500;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
 }
 
@@ -130,7 +138,7 @@
 }
 
 .mainInstructions {
-  display:flex;
+  display: flex;
   justify-content: center;
   flex-flow: column wrap;
   justify-items: center;
@@ -139,7 +147,7 @@
 
 .errorMessage {
   color: crimson;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 14px
 }
 
@@ -171,13 +179,15 @@
   margin-right: 0.6rem
 }
 
-.loginUsername, .loginPassword {
+.loginUsername,
+.loginPassword {
   color: #009698;
 }
 
 .secret {
   color: #0e9ca5
 }
+
 .secretContainer {
   display: flex;
   flex-flow: column nowrap;
@@ -187,6 +197,7 @@
   align-content: center;
   width: 12rem;
 }
+
 .locked {
   display: none;
 }
@@ -206,9 +217,10 @@
   background-color: #009698;
 }
 
-.mainInstructions, .loginContainer {
-  background-color:#1b1919;
-  box-shadow: 0 30px 44px 20px rgba(0,0,0,0.50), 0 22px 22px rgba(0,0,0,0.16);
+.mainInstructions,
+.loginContainer {
+  background-color: #1b1919;
+  box-shadow: 0 30px 44px 20px rgba(0, 0, 0, 0.50), 0 22px 22px rgba(0, 0, 0, 0.16);
 }
 
 .mainInstructions {
@@ -216,7 +228,7 @@
 }
 
 .loginContainer {
-  background-color:#192236;
+  background-color: #192236;
 }
 
 .homeText {
@@ -228,14 +240,16 @@
   background-color: #192236;
 }
 
-.inputsContainer, .passContainer {
-  background-color:#192236;
+.inputsContainer,
+.passContainer {
+  background-color: #192236;
 }
 
-#loginButton:hover, #registerButton:hover {
+#loginButton:hover,
+#registerButton:hover {
   transition-property: all;
   transition-duration: 0.2s;
-  transition-timing-function:ease;
+  transition-timing-function: ease;
   transform: translateY(-1.5px);
   color: #0e9ca5;
   border-bottom: 0.2px solid;
@@ -243,17 +257,19 @@
   border-bottom-right-radius: 7%;
 }
 
-#loginButton:hover, #registerButton:hover {
-  transition-property: color ;
+#loginButton:hover,
+#registerButton:hover {
+  transition-property: color;
   transition-duration: 0.2s;
-  transition-timing-function:ease ;
+  transition-timing-function: ease;
   color: #0e9ca5;
 }
 
-#loginButton:hover, #registerButton:hover {
+#loginButton:hover,
+#registerButton:hover {
   transition-property: all;
   transition-duration: 0.11s;
-  transition-timing-function:ease;
+  transition-timing-function: ease;
   background-color: #192236;
   background-blend-mode: screen;
 }
@@ -264,7 +280,7 @@
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
   background-image: linear-gradient(to right, #0059b3, #003366);
-  border-style:groove;
+  border-style: groove;
   border-width: 0.2px;
   border-color: black;
 }
@@ -283,7 +299,8 @@
   width: 30rem;
 }
 
-.regUsername, .regPassword {
+.regUsername,
+.regPassword {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -301,7 +318,8 @@
   margin-top: 2rem;
 }
 
-.regPasswordText, .regUsernameText {
+.regPasswordText,
+.regUsernameText {
   padding-right: 1rem;
   font-size: 20px;
 }
@@ -321,7 +339,7 @@
 
 .regInstrText {
   font-size: 18px;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #C0C0C0;
 }
 

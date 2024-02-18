@@ -7,9 +7,9 @@ const Users = require("../users/users-model")
 const restricted = (req, res, next) => {
   const token = req.headers.authorization
 
-  if(token) {
+  if (token) {
     jwt.verify(token, JWT_SECRET, (error, decoded) => {
-      if(error) {
+      if (error) {
         next({ status: 401, message: "Token invalid" })
       } else {
         req.decodedJWT = decoded
@@ -23,10 +23,10 @@ const restricted = (req, res, next) => {
 
 // Verifies role name
 const only = role_type => (req, res, next) => {
-  if(role_type.allowed.includes(req.decodedJWT.role)) {
+  if (role_type.allowed.includes(req.decodedJWT.role)) {
     next()
   } else {
-    next({ status: 403, message: "Wrong permissions!"})
+    next({ status: 403, message: "Wrong permissions!" })
   }
 }
 
@@ -34,9 +34,9 @@ const only = role_type => (req, res, next) => {
 const usernameTaken = async (req, res, next) => {
   const { username } = req.body
 
-  const [ exists ] = await Users.findBy({"username": username})
-  if(exists !== undefined) {
-    next({ status: 401, message: "This username is already in use"})
+  const [exists] = await Users.findBy({ "username": username })
+  if (exists !== undefined) {
+    next({ status: 401, message: "This username is already in use" })
   } else {
     next()
   }

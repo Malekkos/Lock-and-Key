@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLock } from "@fortawesome/free-solid-svg-icons"
-function Navbar () {
+function Navbar() {
 
   //DESC: Standard nav bar
   //THOUGHTS: Considering trying my hand at the exclamation icon again, but at
@@ -14,8 +14,8 @@ function Navbar () {
           <NavLink to="/" id="logo" className={({ active, pending, transitioning }) => [
             pending ? "pending" : "",
             active ? "active" : "",
-            transitioning ? "transitioning": "",
-          ].join(" ")}><FontAwesomeIcon icon={faLock} size="2xl" style={{color: "whitesmoke",}} /></NavLink>
+            transitioning ? "transitioning" : "",
+          ].join(" ")}><FontAwesomeIcon icon={faLock} size="2xl" style={{ color: "whitesmoke", }} /></NavLink>
         </div>
         <div className="linksContainer">
           <NavLink to="/" className="link">Home</NavLink>

@@ -1,9 +1,9 @@
 
-  //DESC: Animation method for making the locks move and jiggle
-  //THOUGHTS: I should move the animation to a separate folder, probably called animation. ~ DONE
-  // cont. It's lightweight enough that I think there shouldn't be any errors with the animation,
-  // cont. but I should maybe make some await statements to totally nullify that. TBD. Also,
-  // cont. this is my first time ever using animation so be merciful.
+//DESC: Animation method for making the locks move and jiggle
+//THOUGHTS: I should move the animation to a separate folder, probably called animation. ~ DONE
+// cont. It's lightweight enough that I think there shouldn't be any errors with the animation,
+// cont. but I should maybe make some await statements to totally nullify that. TBD. Also,
+// cont. this is my first time ever using animation so be merciful.
 export const lockAnim = ("DOMContentLoaded", event => {
   let firstButton = document.getElementById("firstButton")
   let secondButton = document.getElementById("secondButton")
@@ -22,10 +22,10 @@ export const lockAnim = ("DOMContentLoaded", event => {
     { transform: "scale(1)" }
   ]
   let alreadyUnlocked = [
-    {transform: "rotate(0deg)"},
-    {transform: "rotate(-20deg)"},
-    {transform: "rotate(20deg)"},
-    {transform: "rotate(0deg)"}
+    { transform: "rotate(0deg)" },
+    { transform: "rotate(-20deg)" },
+    { transform: "rotate(20deg)" },
+    { transform: "rotate(0deg)" }
   ]
 
   let timing = {
