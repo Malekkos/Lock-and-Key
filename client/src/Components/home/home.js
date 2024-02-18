@@ -57,8 +57,6 @@ function Home () {
       setErrorMessage(initialError)
       setGreetingMessage(res.data.message)
       setCreds({username: "", password: ""})
-      
-      console.log(res)
     })
     .catch(err => {
       console.log(err.response.data.message)
@@ -73,12 +71,8 @@ function Home () {
     onLoad()
     onLoadVerify()
     if(localStorage.getItem("username")) {
-      console.log("this is the password in localStorage: ", localStorage.getItem("password"))
-      console.log("this is the username in localStorage: ", localStorage.getItem("username"))
-
       axios.post("http://localhost:9000/api/auth/login", {username: localStorage.getItem("username"), password: localStorage.getItem("password")})
       .then(res => {
-        // console.log(res)
         setLoggedIn(true)
         setGreetingMessage(`Hey, ${localStorage.getItem("username")}!`)
       })
@@ -95,7 +89,6 @@ function Home () {
 
     if(loggedIn === false) {
       errorChecker(error, "You need to be logged in first!")
-      // error.classList.remove("locked")
     } else if (lock[1].classList.contains("locked") && token /*have to find out how to test token, think the testing script is for servers only. TBD*/) {
       setErrorMessage(initialError)
       setTimeout(() => lock[0].classList.add("locked"), 1000)
@@ -157,7 +150,7 @@ function Home () {
             <FontAwesomeIcon id="secondLock" name="bronzeLock" className="locked bronzeLock" icon={faUnlock} size="2xl" />
             <input type="button" id="firstButton" className="verifyBtn" onClick={() => onClick("fgsfger", "bronzeLock", "One")} value="Verify"></input>
             <p id="errMessageOne" className="errorMessage">{errorMessage.errMessageOne}</p>
-            <div class="secretContainer">
+            <div className="secretContainer">
               <p className="secret">{secrets.secretone}</p>
             </div>
           </div>
@@ -166,7 +159,7 @@ function Home () {
             <FontAwesomeIcon id="fourthLock" name="silverLock" className="locked silverLock" icon={faUnlock} size="2xl" />
             <input type="button" id="secondButton" className="verifyBtn" onClick={() => onClick("dasf", "silverLock", "Two")} value="Verify"></input>
             <p id="errMessageTwo" className="errorMessage">{errorMessage.errMessageTwo}</p>
-            <div class="secretContainer">
+            <div className="secretContainer">
               <p className="secret">{secrets.secrettwo}</p>
             </div>
           </div>
@@ -175,7 +168,7 @@ function Home () {
             <FontAwesomeIcon id="sixthLock" name="goldLock" className="locked goldLock" icon={faUnlock} size="2xl" />
             <input type="button" id="thirdButton" className="verifyBtn" onClick={() => onClick("asdfasdf", "goldLock", "Three")} value="Verify"></input>
             <p id="errMessageThree" className="errorMessage">{errorMessage.errMessageThree}</p>
-            <div class="secretContainer">
+            <div className="secretContainer">
               <p className="secret">{secrets.secretthree}</p>
             </div>
           </div>

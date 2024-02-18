@@ -18,7 +18,6 @@ function Register() {
     } else {
       setCreds({ username: creds.username, password: event.target.value })
     }
-    console.log(creds)
   }
 
 
@@ -30,7 +29,6 @@ function Register() {
     event.preventDefault()
     axios.post("http://localhost:9000/api/auth/register", creds)
     .then(res => {
-      console.log("this is the response: ", res)
       setError(initialError)
       setCreds(initialCreds)
       localStorage.setItem("password", creds.password)
@@ -38,7 +36,6 @@ function Register() {
       navigate("/")
     })
     .catch(err => {
-      console.log(err.response.data.message)
       setError(err.response.data.message)
     })
   }
