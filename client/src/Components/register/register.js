@@ -33,6 +33,7 @@ function Register() {
       setCreds(initialCreds)
       localStorage.setItem("password", creds.password)
       localStorage.setItem("username", res.data.username)
+      localStorage.removeItem("token")
       navigate("/")
     })
     .catch(err => {
