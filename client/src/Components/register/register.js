@@ -29,11 +29,13 @@ function Register() {
     event.preventDefault()
     axios.post("http://localhost:9000/api/auth/register", creds)
       .then(res => {
+        console.log(res)
         setError(initialError)
         setCreds(initialCreds)
         localStorage.setItem("password", creds.password)
         localStorage.setItem("username", res.data.username)
-        localStorage.removeItem("token")
+        localStorage.setItem("registerLogin", true)
+        localStorage.setItem("token", res.data.token)
         navigate("/")
       })
       .catch(err => {

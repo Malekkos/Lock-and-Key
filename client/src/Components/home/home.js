@@ -53,6 +53,8 @@ function Home() {
       .then(res => {
         localStorage.setItem("password", creds.password)
         localStorage.setItem("username", creds.username)
+        localStorage.setItem("token", res.data.token)
+        localStorage.removeItem("registerLogin")
         setLoggedIn(true)
         setErrorMessage(initialError)
         setGreetingMessage(res.data.message)
@@ -71,8 +73,9 @@ function Home() {
     onLoad()
     onLoadVerify()
     if (localStorage.getItem("username")) {
-      axios.post("http://localhost:9000/api/auth/login", { username: localStorage.getItem("username"), password: localStorage.getItem("password") })
+      axios.post("http://localhost:9000/api/auth/login", { username: localStorage.getItem("username"), password: localStorage.getItem("password"), registerLogin: localStorage.getItem("registerLogin") })
         .then(res => {
+          console.log(res)
           setLoggedIn(true)
           setGreetingMessage(`Hey, ${localStorage.getItem("username")}!`)
         })
@@ -119,6 +122,7 @@ function Home() {
     const lower = num.toLowerCase()
     axios.get(`http://localhost:9000/api/users/secret_${lower}`, { headers: { "Authorization": localStorage.token } })
       .then(res => {
+        console.log(res)
         setSecrets({
           [`secret${lower}`]: res.data.secret
         })

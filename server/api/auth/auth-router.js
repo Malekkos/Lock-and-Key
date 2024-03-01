@@ -15,7 +15,9 @@ router.post("/register", usernameTaken, async (req, res, next) => {
 
   await Users.add({ "username": username, "password": password, "role_type": role_type })
     .then(user => {
-      res.status(201).json({ username: user[0].username, password })
+      const token = buildToken(user)
+
+      res.set("Authorization", token).status(201).json({ username: user[0].username, password })
     })
     .catch(error => {
       next(error)
@@ -26,19 +28,23 @@ router.post("/register", usernameTaken, async (req, res, next) => {
 // THOUGHTS: Leaving the cookie for now, despite myself not knowing if its particularily useful. Its not being used meaningfully
 // cont. : at the moment, but I'm hoping to make it work for persistance sake(not loggin in constantly)
 router.post("/login", (req, res, next) => {
-  let { username, password } = req.body
-
+  let { username, password, registerLogin } = req.body
+  // console.log(header)
   if (!username || !password) {
     next({ status: 401, message: "Username or Password missing" })
   }
 
   Users.findBy({ username })
     .then(([user]) => {
-      console.log(user)
       if (user && bcrypt.compareSync(password, user.password)) {
+        if (registerLogin) {
+        console.log("there is already an authorization")
+        res.status(200).json({ message: `Welcome back, ${username}`})
+        } else {
         const token = buildToken(user)
-
+        res.set("Authorization", token)
         res.status(200).json({ message: `Welcome back, ${username}`, token })
+      }
       } else {
         next({ status: 401, message: "Invalid credentials" })
       }
