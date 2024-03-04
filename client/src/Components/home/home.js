@@ -59,6 +59,7 @@ function Home() {
         setErrorMessage(initialError)
         setGreetingMessage(res.data.message)
         setCreds({ username: "", password: "" })
+        window.location.reload()
       })
       .catch(err => {
         console.log(err.response.data.message)
@@ -74,11 +75,15 @@ function Home() {
     onLoadVerify()
     if (localStorage.getItem("username")) {
       axios.post("http://localhost:9000/api/auth/login", { username: localStorage.getItem("username"), password: localStorage.getItem("password"), registerLogin: localStorage.getItem("registerLogin") })
-        .then(res => {
-          console.log(res)
-          setLoggedIn(true)
-          setGreetingMessage(`Hey, ${localStorage.getItem("username")}!`)
-        })
+      .then(res => {
+        console.log(res)
+        setLoggedIn(true)
+        setGreetingMessage(`Hey, ${localStorage.getItem("username")}!`)
+      })
+    }
+    if(localStorage.getItem("registerLogin")) {
+      window.location.reload()
+      localStorage.removeItem("registerLogin")
     }
   }, [])
 

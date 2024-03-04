@@ -17,7 +17,7 @@ router.post("/register", usernameTaken, async (req, res, next) => {
     .then(user => {
       const token = buildToken(user)
 
-      res.set("Authorization", token).status(201).json({ username: user[0].username, password })
+      res.set("Authorization", token).status(201).json({ username: user[0].username, password, token })
     })
     .catch(error => {
       next(error)

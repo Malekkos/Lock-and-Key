@@ -1,7 +1,26 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLock } from "@fortawesome/free-solid-svg-icons"
+import React, { useState, useEffect } from "react"
 function Navbar() {
+  
+  let [logOut, setLogOut] = useState(false)  
+  const navigate = useNavigate();
+
+
+  useEffect(() => {
+    if(localStorage.length > 0) {
+      setLogOut(true)
+    }
+  }, [])
+
+  let onclick = (event) => {
+    event.preventDefault()
+
+    localStorage.clear()
+    navigate("/")
+    window.location.reload()
+  }
 
   //DESC: Standard nav bar
   //THOUGHTS: Considering trying my hand at the exclamation icon again, but at
@@ -19,7 +38,7 @@ function Navbar() {
         </div>
         <div className="linksContainer">
           <NavLink to="/" className="link">Home</NavLink>
-          <NavLink to="/register" className="link">Register</NavLink>
+          { logOut ?  <p className="link logOut" onClick={(event) => onclick(event)}>Log Out</p> : <NavLink to="/register" className="link">Register</NavLink>}
           <NavLink to="/firstSecret" className="link">First Secret</NavLink>
           <NavLink to="/secondSecret" className="link">Second Secret</NavLink>
           <NavLink to="/thirdSecret" className="link">Third Secret</NavLink>

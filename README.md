@@ -3,8 +3,6 @@ An intro project to demonstrate my understanding of Authorization and Authentica
 
 TODO Today: 
 
-~~ Logout button. useEffect, maybe? have it checking the same stuff as home for already logged in, replacing the register button if credentials exist inside of localStorage. Would replace it to Log Out. Can probably forgo a warning box, not really necessary considering the scope of the project(tiny).
-
  ~~ Develop the first coding game, catching the Kevin James. Will likely be a javascript animation type of deal, I need to read up a little or watch a video on it. Should be that we have an icon that kinda runs away from the mouse when getting close.
 
 TODO LATER: 

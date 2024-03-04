@@ -36,7 +36,9 @@ function Register() {
         localStorage.setItem("username", res.data.username)
         localStorage.setItem("registerLogin", true)
         localStorage.setItem("token", res.data.token)
-        navigate("/")
+        // window.location.reload()
+        // navigate("/")
+        setTimeout(() => navigate("/"), 1000)
       })
       .catch(err => {
         setError(err.response.data.message)
