@@ -352,6 +352,36 @@
   cursor: pointer;
 }
 
+/* \/\/\/\/ First Secret \/\/\/\/ */
+
+.firstSecretInstructions {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+  justify-items:center;
+  justify-content: center;
+}
+
+.firstSecretLine {
+  color: #C0C0C0;
+  width: 40%;
+  margin-top: 0.5rem;
+}
+
+.gameOneSpace {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  height: 70vh;
+
+}
+
+.kevinJamesPNG {
+  width: 7rem;
+}
+
 /* 850px, Home page: need to change instruction part */
 /* 800px, Home page: need to edit the locks and verifies, they are going off screen */
 /* 550px, nav bar: Should morph into bars*/
