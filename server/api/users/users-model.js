@@ -1,6 +1,6 @@
 const db = require("../../data/db-config")
 
-// Method for finding a specific user given a condition(username, in this instance)
+//DESC: Method for finding a specific user given a condition(username, in this instance)
 async function findBy(filter) {
   const data = await db("users as u")
     .leftJoin("roles as r", "r.role_id", "u.role_id")
@@ -10,7 +10,7 @@ async function findBy(filter) {
   return data
 }
 
-// Method for finding a specific user given there ID
+//DESC: Method for finding a specific user given there ID
 async function findById(user_id) {
   const data = await db("users as u")
     .leftJoin("roles as r", "r.role_id", "u.role_id")
@@ -20,7 +20,7 @@ async function findById(user_id) {
   return data
 }
 
-// Method for getting the correct secret from the DB
+//DESC: Method for getting the correct secret from the DB
 async function getSecret(secret) {
   const data = await db("secrets")
     .where("secret_id", secret)
@@ -28,15 +28,16 @@ async function getSecret(secret) {
   return data
 }
 
+//DESC: Method to increase perms, checks using the username
 async function increasePerms(username) {
   const data = await db.raw(`update users set role_id = role_id + 1 where username = '${username}'`)
 
   return data
 }
 
+// DESC: Method for adding a user.
 // THOUGHTS: Copied, unfortunately. I need to, once this project is in a satisfactory state, change this or at least understand what this does instrisically. ATM, I don't, but it works.
 // cont:  Not sure what transaction does for the DB, should check it out sometime.
-// DESC: Method for adding a user.
 async function add({ username, password, role_type }) {
   let created_user_id
   await db.transaction(async trx => {
