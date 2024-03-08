@@ -61,8 +61,8 @@ router.put("/increase", (req, res, next) => {
   .then(() => {
     res.status(200).json({message: "You have successfully increased your permissions"})
   })
-  .catch(error => {
-    next(error)
+  .catch(() => {
+    next({message: "You are already at the highest perm level"})
   })
 })
 
