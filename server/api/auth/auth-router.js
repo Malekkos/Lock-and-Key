@@ -6,7 +6,7 @@ const { JWT_SECRET, BCRYPT_ROUNDS } = require("../secrets")
 
 const Users = require("../users/users-model")
 
-// Method to create an account
+//DESC: Method to create an account
 router.post("/register", usernameTaken, async (req, res, next) => {
   let { username, password } = req.body
   const role_type = "new_user"
@@ -24,7 +24,7 @@ router.post("/register", usernameTaken, async (req, res, next) => {
     })
 })
 
-// Method to login to an existing account, I should make it so that logging in places a token in the auth header autimatically(it might?)
+//DESC: Method to login to an existing account, I should make it so that logging in places a token in the auth header autimatically(it might?)
 // THOUGHTS: Leaving the cookie for now, despite myself not knowing if its particularily useful. Its not being used meaningfully
 // cont. : at the moment, but I'm hoping to make it work for persistance sake(not loggin in constantly)
 router.post("/login", (req, res, next) => {
@@ -54,20 +54,20 @@ router.post("/login", (req, res, next) => {
     })
 })
 
+//DESC: Endpoint to hit to induce a permission increase in the database. 
 router.put("/increase", (req, res, next) => {
-  let { username } = req.body // Need to pass the username
-  console.log (username)
+  let { username } = req.body
   Users.increasePerms(username)
-  .then(val => {
-    console.log(val)
-    res.status(200).json(val)
+  .then(() => {
+    res.status(200).json({message: "You have successfully increased your permissions"})
   })
   .catch(error => {
     next(error)
   })
 })
+
+//DESC: Method to build a token for the user, supplying params for said token and whatnot
 // THOUGHTS: I should dive into the options for... well, options. I think there is a lot I'm not utilizing
-// Method to build a token for the user, supplying params for said token and whatnot
 function buildToken(user) {
   const payload = {
     subject: user.user_id,
