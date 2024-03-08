@@ -19,7 +19,7 @@ function FirstSecret() {
   return (
     <>
     <div className="firstSecretInstructions" title="Instructions">
-      <p className="firstSecretLine">Please, help me! Theres a Kevin James png loose on this page, and||if we don't catch it he'll make another half baked film where he's the funny, clumsy fat guy who keeps falling down! I'll upgrade your permissions if you help me with this.</p>
+      <p className="firstSecretLine">Please, help me! Theres a Kevin James png loose on this page, and if we don't catch it he'll make another half baked film where he's the funny, clumsy fat guy who keeps falling down! I'll upgrade your permissions if you help me with this.</p>
       {/* <p className="firstSecretLine">if we don't catch it he'll make another half baked film where he's the </p> */}
       {/* <p className="firstSecretLine">funny, clumsy fat guy who keeps falling down!</p> */}
       {/* <p className="firstSecretLine">I'll upgrade your permissions if you help me with this.</p> */}
