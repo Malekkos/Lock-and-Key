@@ -1,9 +1,11 @@
 
 import { jamesRuns } from "../../animations/firstSecretAnimation"
 import React, { useState, useEffect } from "react"
-
+import axios from "axios"
 
 function FirstSecret() {
+
+  let [message, setMessage] = useState({message: ""})
 
 
   //DESC: onclick for the kevin png to make him stop moving
@@ -13,6 +15,14 @@ function FirstSecret() {
   // cont. Image in the elements tab of console, and it was following it.
   let onclick = (event) => {
     event.target.style.position = "static"
+    axios.put("http://localhost:9000/api/auth/increase", { "username": localStorage.getItem("username") })
+    .then(res => {
+      console.log(res.data)
+      setMessage(res.data)
+    })
+    .catch(error => {
+      setMessage(error)
+    })
   }
 
   //DESC: runs the animation everytime the screen is entered/rendered
@@ -30,6 +40,7 @@ function FirstSecret() {
     <>
       <div className="firstSecretInstructions" title="Instructions">
         <p className="firstSecretLine">Please, help me! Theres a Kevin James png loose on this page, and if we don't catch it he'll make another half baked film where he's the funny, clumsy fat guy who keeps falling down! I'll upgrade your permissions if you help me with this.</p>
+        <p className="permIncreaseMessage">{message.message}</p>
         {/* <p className="firstSecretLine">if we don't catch it he'll make another half baked film where he's the </p> */}
         {/* <p className="firstSecretLine">funny, clumsy fat guy who keeps falling down!</p> */}
         {/* <p className="firstSecretLine">I'll upgrade your permissions if you help me with this.</p> */}

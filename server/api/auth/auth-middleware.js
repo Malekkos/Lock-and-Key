@@ -23,6 +23,8 @@ const restricted = (req, res, next) => {
 
 // Verifies role name
 const only = role_type => (req, res, next) => {
+  console.log(role_type)
+  console.log(req.decodedJWT.role)
   if (role_type.allowed.includes(req.decodedJWT.role)) {
     next()
   } else {
