@@ -3,7 +3,7 @@ An intro project to demonstrate my understanding of Authorization and Authentica
 
 TODO Today: 
 
- ~~ Develop the first coding game, catching the Kevin James. Will likely be a javascript animation type of deal, I need to read up a little or watch a video on it. Should be that we have an icon that kinda runs away from the mouse when getting close.
+ ~~ Implement onClick for catching Kevin James. Should make him stop, once you click on him, to save my users eyes/stomach
 
 TODO LATER: 
 
