@@ -54,6 +54,18 @@ router.post("/login", (req, res, next) => {
     })
 })
 
+router.put("/increase", (req, res, next) => {
+  let { username } = req.body // Need to pass the username
+  console.log (username)
+  Users.increasePerms(username)
+  .then(val => {
+    console.log(val)
+    res.status(200).json(val)
+  })
+  .catch(error => {
+    next(error)
+  })
+})
 // THOUGHTS: I should dive into the options for... well, options. I think there is a lot I'm not utilizing
 // Method to build a token for the user, supplying params for said token and whatnot
 function buildToken(user) {

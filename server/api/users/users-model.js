@@ -28,6 +28,12 @@ async function getSecret(secret) {
   return data
 }
 
+async function increasePerms(username) {
+  const data = await db.raw(`update users set role_id = role_id + 1 where username = '${username}'`)
+
+  return data
+}
+
 // THOUGHTS: Copied, unfortunately. I need to, once this project is in a satisfactory state, change this or at least understand what this does instrisically. ATM, I don't, but it works.
 // cont:  Not sure what transaction does for the DB, should check it out sometime.
 // DESC: Method for adding a user.
@@ -50,4 +56,4 @@ async function add({ username, password, role_type }) {
 
 
 
-module.exports = { findBy, add, getSecret }
+module.exports = { findBy, add, getSecret, increasePerms }

@@ -21,7 +21,8 @@ exports.up = function (knex) {
         .notNullable()
         .references("role_id")
         .inTable("roles")
-        .onDelete("RESTRICT")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE")
     })
     .createTable("secrets", secrets => {
       secrets.increments("secret_id")
