@@ -3,9 +3,15 @@ An intro project to demonstrate my understanding of Authorization and Authentica
 
 TODO Today: 
 
- ~~ Implement a method to increase user permissions. Currently, they are referencing numbers in the database when checking what perms they have, so it would need to increment it. At least, I think its numbers? Its the foreign key that would need to be incremented, but I don't actually know if you can modify that without a load of hoopla. If that doesn't work, I can always reassign the value manually, thats worst case though cus it's gonna take a lot of if statements.
+ ~~ Done for today
 
 TODO LATER: 
+
+  \/\/\/\/\/\/\/\/ TOP PRIO \/\/\/\/\/\/\/\/
+ 
+ ~~ I need to figure out how to add headers into the req.headers section, specifically under the name authorization. This is how im checking perms and dispensing the secret data. The big issue is doing it from the client. Need to look more into HOW to do this, Possibly a react documentation thing. It's a issue for tomorrow, I need a break.
+
+  /\/\/\/\/\/\/\/\ TOP PRIO /\/\/\/\/\/\/\/\
 
  ~~ Add another middleware that checks perm level, if it is at 4, then throw an error detailing why. This would be on the put endpoint
 
