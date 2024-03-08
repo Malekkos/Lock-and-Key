@@ -7,6 +7,8 @@ TODO Today:
 
 TODO LATER: 
 
+ ~~ Add another middleware that checks perm level, if it is at 4, then throw an error detailing why. This would be on the put endpoint
+
  ~~ Need to have persistent state so Kevin can't be used to farm permissions, also don't want it to be going at all after completing it. I need to look into the React dev stuff, I remember there was a way to persist state across all levels without using something like a localStorage check, but I'm blanking on how to do it. I think its a sign of incompetence to rely on localStorage to do everything for me lol.
 
  ~~ Pretty much decided that I'm gonna use localStorage for managing user activity, but it's rather insecure now. Since I can, and already am, passing the tokens down to with requests, I should have the verification procedure run throught those
