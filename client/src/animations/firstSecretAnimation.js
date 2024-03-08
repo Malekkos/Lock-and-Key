@@ -19,7 +19,7 @@ export const jamesRuns = ("DOMContentLoaded", event => {
   function iterate() {
     let width = container.offsetWidth
     let height = container.offsetHeight
-    if(y + kevin.offsetHeight >= container.clientHeight || y < 0) {
+    if(y + kevin.offsetHeight >= height || y < 0) {
       dirY *= -1
     }
     if(x + kevin.offsetWidth >= width || x < 0) {
