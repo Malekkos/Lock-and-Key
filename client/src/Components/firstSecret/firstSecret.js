@@ -6,6 +6,16 @@ import React, { useState, useEffect } from "react"
 function FirstSecret() {
 
 
+  //DESC: onclick for the kevin png to make him stop moving
+  //THOUGHTS: I had to use a strange onclick method, specifically onMouseDown,
+  // cont. onClick would not work for some reason. Maybe it can't work on moving
+  // cont. elements, thought I can't really imagine why. I hovered over the moving
+  // cont. Image in the elements tab of console, and it was following it.
+  let onclick = (event) => {
+    event.target.style.position = "static"
+  }
+
+  //DESC: runs the animation everytime the screen is entered/rendered
   useEffect(() => {
     jamesRuns()
   }, [])
@@ -26,7 +36,7 @@ function FirstSecret() {
     </div>
     <div className="gameOneMain">
       <div id="gameOneSpace" className="gameOneSpace">
-        <img id="kevinJames" className="kevinJamesPNG" alt="Kevin James PNG" src="https://ih1.redbubble.net/image.5269047441.5510/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.jpg" />
+        <img onMouseDown={(event) => onclick(event)}id="kevinJames" className="kevinJamesPNG" alt="Kevin James PNG" src="https://ih1.redbubble.net/image.5269047441.5510/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.jpg" />
       </div>
     </div>
     </>
