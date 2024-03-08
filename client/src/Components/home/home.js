@@ -75,13 +75,13 @@ function Home() {
     onLoadVerify()
     if (localStorage.getItem("username")) {
       axios.post("http://localhost:9000/api/auth/login", { username: localStorage.getItem("username"), password: localStorage.getItem("password"), registerLogin: localStorage.getItem("registerLogin") })
-      .then(res => {
-        console.log(res)
-        setLoggedIn(true)
-        setGreetingMessage(`Hey, ${localStorage.getItem("username")}!`)
-      })
+        .then(res => {
+          console.log(res)
+          setLoggedIn(true)
+          setGreetingMessage(`Hey, ${localStorage.getItem("username")}!`)
+        })
     }
-    if(localStorage.getItem("registerLogin")) {
+    if (localStorage.getItem("registerLogin")) {
       window.location.reload()
       localStorage.removeItem("registerLogin")
     }

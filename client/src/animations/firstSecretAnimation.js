@@ -30,16 +30,16 @@ export const jamesRuns = ("DOMContentLoaded", event => {
 
   kevin.style.left = 0
   kevin.style.top = 0
-  
+
   function iterate() {
     let width = container.offsetWidth
     let height = container.offsetHeight
 
-    if(y + kevin.offsetHeight >= height || y < 0) {
+    if (y + kevin.offsetHeight >= height || y < 0) {
       dirY *= -1
     }
 
-    if(x + kevin.offsetWidth >= width || x < 0) {
+    if (x + kevin.offsetWidth >= width || x < 0) {
       dirX *= -1
     }
 
@@ -48,7 +48,7 @@ export const jamesRuns = ("DOMContentLoaded", event => {
     kevin.style.left = x + "px";
     kevin.style.top = y + "px";
 
-    if(kevin.style.position === "static") {
+    if (kevin.style.position === "static") {
       return
     }
 
