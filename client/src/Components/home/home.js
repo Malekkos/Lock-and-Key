@@ -62,7 +62,6 @@ function Home() {
         window.location.reload()
       })
       .catch(err => {
-        console.log(err.response.data.message)
         errorChecker("errMessageFour", err.response.data.message)
       })
   }
@@ -73,19 +72,20 @@ function Home() {
   useEffect(() => {
     onLoad()
     onLoadVerify()
-    console.log(localStorage)
+
     if (localStorage.getItem("username")) {
       axios.post("http://localhost:9000/api/auth/login", { username: localStorage.getItem("username"), password: localStorage.getItem("password"), registerLogin: localStorage.getItem("registerLogin") })
         .then(res => {
-          console.log("this is the response in useEffect Login:", res)
           setLoggedIn(true)
           setGreetingMessage(`Hey, ${localStorage.getItem("username")}!`)
         })
     }
+
     if (localStorage.getItem("registerLogin")) {
       window.location.reload()
       localStorage.removeItem("registerLogin")
     }
+
   }, [])
 
   // DESC: click method on verify button to check which is clicked, get its place, and make changes to its class and let animations work fluidly
@@ -127,13 +127,13 @@ function Home() {
   function secretAdder(num) {
     const lower = num.toLowerCase()
     let token = localStorage.getItem("token")
+
     if(localStorage.getItem("tokenToBePassed")) {
       token = localStorage.getItem("tokenToBePassed")
     }
-    console.log(localStorage.getItem("token"))
+
     axios.get(`http://localhost:9000/api/users/secret_${lower}`, { headers: { "Authorization": token}})
       .then(res => {
-        console.log(res)
         setSecrets({
           [`secret${lower}`]: res.data.secret
         })

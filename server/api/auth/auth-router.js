@@ -11,6 +11,7 @@ router.post("/register", usernameTaken, async (req, res, next) => {
   let { username, password } = req.body
   const role_type = "new_user"
   const hash = bcrypt.hashSync(password, BCRYPT_ROUNDS)
+  
   password = hash
 
   await Users.add({ "username": username, "password": password, "role_type": role_type })
@@ -29,7 +30,7 @@ router.post("/register", usernameTaken, async (req, res, next) => {
 // cont. : at the moment, but I'm hoping to make it work for persistance sake(not loggin in constantly)
 router.post("/login", (req, res, next) => {
   let { username, password, registerLogin } = req.body
-  // console.log(header)
+
   if (!username || !password) {
     next({ status: 401, message: "Username or Password missing" })
   }
@@ -38,10 +39,10 @@ router.post("/login", (req, res, next) => {
     .then(([user]) => {
       if (user && bcrypt.compareSync(password, user.password)) {
         if (registerLogin) {
-        console.log("there is already an authorization")
         res.status(200).json({ message: `Welcome back, ${username}`})
         } else {
         const token = buildToken(user)
+
         req.headers.authorization = token
         res.set("Authorization", token).status(200).json({ message: `Welcome back, ${username}`, token })
       }
@@ -57,13 +58,13 @@ router.post("/login", (req, res, next) => {
 //DESC: Endpoint to hit to induce a permission increase in the database. 
 router.put("/increase", (req, res, next) => {
   let { username } = req.body
+
   Users.increasePerms(username)
   .then(() => {
     Users.findBy({ username })
     .then(([user]) => {
-      console.log("this is the user in increase:", user)
       const token = buildToken(user)
-      console.log("this is the token in increase:", token)
+
       req.headers.authorization = token
       res.status(200).json({message: "You have successfully increased your permissions", token})
     })
@@ -87,7 +88,7 @@ function buildToken(user) {
   const options = {
     expiresIn: "1d",
   }
-  console.log(payload)
+
   return jwt.sign(payload, JWT_SECRET, options)
 }
 

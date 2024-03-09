@@ -15,9 +15,9 @@ function FirstSecret() {
   // cont. Image in the elements tab of console, and it was following it.
   let onclick = (event) => {
     event.target.style.position = "static"
+    
     axios.put("http://localhost:9000/api/auth/increase", { "username": localStorage.getItem("username") })
     .then(res => {
-      console.log(res.data)
       setMessage(res.data)
       localStorage.setItem("tokenToBePassed", res.data.token)
     })
