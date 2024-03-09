@@ -19,6 +19,7 @@ function FirstSecret() {
     .then(res => {
       console.log(res.data)
       setMessage(res.data)
+      localStorage.setItem("tokenToBePassed", res.data.token)
     })
     .catch(error => {
       setMessage(error)

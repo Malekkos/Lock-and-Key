@@ -8,7 +8,7 @@ axios.defaults.withCredentials = true
 
 function Home() {
 
-  //DESC: Your gerneral state
+  //DESC: Your general state
   //THOUGHTS: None, really. Maybe set an initialGreetingMessage? Like with error? More QOL than anything
   const initialError = { errMessageOne: "", errMessageTwo: "", errMessageThree: "", errMessageFour: "" }
   const initialSecrets = { secretone: "", secrettwo: "", secretthree: "" }
@@ -73,10 +73,11 @@ function Home() {
   useEffect(() => {
     onLoad()
     onLoadVerify()
+    console.log(localStorage)
     if (localStorage.getItem("username")) {
       axios.post("http://localhost:9000/api/auth/login", { username: localStorage.getItem("username"), password: localStorage.getItem("password"), registerLogin: localStorage.getItem("registerLogin") })
         .then(res => {
-          console.log(res)
+          console.log("this is the response in useEffect Login:", res)
           setLoggedIn(true)
           setGreetingMessage(`Hey, ${localStorage.getItem("username")}!`)
         })
@@ -125,8 +126,12 @@ function Home() {
 
   function secretAdder(num) {
     const lower = num.toLowerCase()
+    let token = localStorage.getItem("token")
+    if(localStorage.getItem("tokenToBePassed")) {
+      token = localStorage.getItem("tokenToBePassed")
+    }
     console.log(localStorage.getItem("token"))
-    axios.get(`http://localhost:9000/api/users/secret_${lower}`, { headers: { "Authorization": localStorage.token } })
+    axios.get(`http://localhost:9000/api/users/secret_${lower}`, { headers: { "Authorization": token}})
       .then(res => {
         console.log(res)
         setSecrets({

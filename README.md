@@ -1,19 +1,27 @@
 # Lock-and-Key
 An intro project to demonstrate my understanding of Authorization and Authentication
 
+
+To run:
+--clone project
+--cd into client, run npm start
+--split console/open another
+--in second console, cd into server, run npm run server
+
+
 TODO Today: 
 
   \/\/\/\/\/\/\/\/ TOP PRIO \/\/\/\/\/\/\/\/
  
- ~~ I need to figure out how to add headers into the req.headers section, specifically under the name authorization. This is how im checking perms and dispensing the secret data. The big issue is doing it from the client. Need to look more into HOW to do this, Possibly a react documentation thing. It's a issue for tomorrow, I need a break.
+ ~~ Current issue with the passed header not containing the correct content(only timestamps so far). This is resolved when logging out and then logging in. That is garbage. Somehow, need to make it so that the passed header contains, at the very least, the role_type
 
   /\/\/\/\/\/\/\/\ TOP PRIO /\/\/\/\/\/\/\/\
 
 TODO LATER: 
 
+ ~~ in onClick function in home.js, theres a redudnant use of token. Should remove that.
 
-
- ~~ Should add a loading overlay when stuff is running, aka when you register, it seems like nothing is happening
+ ~~ Should add a loading overlay when stuff is running, aka when you register, it seems like nothing is happening while you wait for it to redirect you
 
  ~~ Add another middleware that checks perm level, if it is at 4, then throw an error detailing why. This would be on the put endpoint
 

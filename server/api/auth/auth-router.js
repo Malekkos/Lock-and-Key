@@ -43,7 +43,7 @@ router.post("/login", (req, res, next) => {
         } else {
         const token = buildToken(user)
         req.headers.authorization = token
-        res.status(200).json({ message: `Welcome back, ${username}`, token })
+        res.set("Authorization", token).status(200).json({ message: `Welcome back, ${username}`, token })
       }
       } else {
         next({ status: 401, message: "Invalid credentials" })
@@ -61,9 +61,10 @@ router.put("/increase", (req, res, next) => {
   .then(() => {
     Users.findBy({ username })
     .then(([user]) => {
-      console.log(user)
+      console.log("this is the user in increase:", user)
       const token = buildToken(user)
-      console.log(token)
+      console.log("this is the token in increase:", token)
+      req.headers.authorization = token
       res.status(200).json({message: "You have successfully increased your permissions", token})
     })
     .catch(error => {
