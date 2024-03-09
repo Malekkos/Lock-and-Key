@@ -3,15 +3,17 @@ An intro project to demonstrate my understanding of Authorization and Authentica
 
 TODO Today: 
 
- ~~ Done for today
-
-TODO LATER: 
-
   \/\/\/\/\/\/\/\/ TOP PRIO \/\/\/\/\/\/\/\/
  
  ~~ I need to figure out how to add headers into the req.headers section, specifically under the name authorization. This is how im checking perms and dispensing the secret data. The big issue is doing it from the client. Need to look more into HOW to do this, Possibly a react documentation thing. It's a issue for tomorrow, I need a break.
 
   /\/\/\/\/\/\/\/\ TOP PRIO /\/\/\/\/\/\/\/\
+
+TODO LATER: 
+
+
+
+ ~~ Should add a loading overlay when stuff is running, aka when you register, it seems like nothing is happening
 
  ~~ Add another middleware that checks perm level, if it is at 4, then throw an error detailing why. This would be on the put endpoint
 
