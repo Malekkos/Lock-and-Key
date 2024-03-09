@@ -11,11 +11,7 @@ To run:
 
 TODO Today: 
 
-  \/\/\/\/\/\/\/\/ TOP PRIO \/\/\/\/\/\/\/\/
- 
- ~~ Current issue with the passed header not containing the correct content(only timestamps so far). This is resolved when logging out and then logging in. That is garbage. Somehow, need to make it so that the passed header contains, at the very least, the role_type
-
-  /\/\/\/\/\/\/\/\ TOP PRIO /\/\/\/\/\/\/\/\
+ ~~ Done for today
 
 TODO LATER: 
 
