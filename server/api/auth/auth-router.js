@@ -59,7 +59,16 @@ router.put("/increase", (req, res, next) => {
   let { username } = req.body
   Users.increasePerms(username)
   .then(() => {
-    res.status(200).json({message: "You have successfully increased your permissions"})
+    console.log("ran")
+    Users.findBy({ username })
+    .then(([user]) => {
+      console.log(user)
+      const token = buildToken(user)
+      res.status(200).json({message: "You have successfully increased your permissions", token})
+    })
+    .catch(error => {
+      next(error)
+    })
   })
   .catch(() => {
     next({message: "You are already at the highest perm level"})

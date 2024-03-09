@@ -125,6 +125,7 @@ function Home() {
 
   function secretAdder(num) {
     const lower = num.toLowerCase()
+    console.log(localStorage.getItem("token"))
     axios.get(`http://localhost:9000/api/users/secret_${lower}`, { headers: { "Authorization": localStorage.token } })
       .then(res => {
         console.log(res)
