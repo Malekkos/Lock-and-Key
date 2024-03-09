@@ -5,7 +5,7 @@ const Users = require("../users/users-model")
 
 // Checks authorization token in header
 const restricted = (req, res, next) => {
-  console.log("these are the req.headers.authorization:", req.headers.authorization)
+  // console.log("these are the req.headers.authorization:", req.headers.authorization)
   const token = req.headers.authorization
   console.log("this is the token:", token)
   if (token) {
@@ -24,7 +24,7 @@ const restricted = (req, res, next) => {
 
 // Verifies role name
 const only = role_type => (req, res, next) => {
-  console.log(role_type)
+  // console.log(role_type)
   console.log("this is the decodedJWT:", req.decodedJWT)
   if (role_type.allowed.includes(req.decodedJWT.role)) {
     next()

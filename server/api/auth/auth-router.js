@@ -42,7 +42,7 @@ router.post("/login", (req, res, next) => {
         res.status(200).json({ message: `Welcome back, ${username}`})
         } else {
         const token = buildToken(user)
-        res.set("Authorization", token)
+        req.headers.authorization = token
         res.status(200).json({ message: `Welcome back, ${username}`, token })
       }
       } else {
@@ -59,11 +59,11 @@ router.put("/increase", (req, res, next) => {
   let { username } = req.body
   Users.increasePerms(username)
   .then(() => {
-    console.log("ran")
     Users.findBy({ username })
     .then(([user]) => {
       console.log(user)
       const token = buildToken(user)
+      console.log(token)
       res.status(200).json({message: "You have successfully increased your permissions", token})
     })
     .catch(error => {
@@ -86,6 +86,7 @@ function buildToken(user) {
   const options = {
     expiresIn: "1d",
   }
+  console.log(payload)
   return jwt.sign(payload, JWT_SECRET, options)
 }
 
