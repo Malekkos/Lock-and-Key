@@ -1,13 +1,21 @@
 # Lock-and-Key
 An intro project to demonstrate my understanding of Authorization and Authentication
 
-
 To run:
---clone project
---cd into client, run npm start
---split console/open another
---in second console, cd into server, run npm run server
+````
 
+1. clone project
+
+2. cd into client, run npm start
+  2a cd client
+
+3. split console/open another
+
+4. in second console, cd into server, run npm run server
+  4a. cd server
+    4b. npm run server
+
+````
 
 TODO Today: 
 
