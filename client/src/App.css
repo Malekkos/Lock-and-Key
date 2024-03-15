@@ -399,6 +399,11 @@
   font-size: 19px;
   color: mintcream;
 }
+
+.gameTwoMessage {
+  color: paleturquoise;
+  font-size: 22px;
+}
 /* 850px, Home page: need to change instruction part */
 /* 800px, Home page: need to edit the locks and verifies, they are going off screen */
 /* 550px, nav bar: Should morph into bars*/
