@@ -19,7 +19,7 @@ To run:
 
 TODO Today: 
 
- ~~ Add another middleware that checks perm level, if it is at 4, then throw an error detailing why. This would be on the put endpoint.
+ ~~ Possibly done for today
 
 TODO LATER: 
 
