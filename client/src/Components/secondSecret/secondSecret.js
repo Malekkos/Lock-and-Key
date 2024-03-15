@@ -2,9 +2,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 
-
-
-
 function SecondSecret() {
 
   let [message, setMessage] = useState({message: ""})

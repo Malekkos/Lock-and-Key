@@ -383,24 +383,24 @@
   position:absolute;
 }
 
-.gameTwoMain {
+.gameTwoMain, .gameThreeMain {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
 }
 
-.gameTwoButton {
+.gameTwoButton, .gameThreeButton {
   height: 2rem;
   background-color: #e2dfdf;
   border-color:rgba(0, 0, 0, 0.50)
 }
 
-.gameTwoText {
+.gameTwoText, .gameThreeText {
   font-size: 19px;
   color: mintcream;
 }
 
-.gameTwoMessage {
+.gameTwoMessage, .gameThreeMessage {
   color: paleturquoise;
   font-size: 22px;
 }
