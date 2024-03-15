@@ -92,13 +92,13 @@ function Home() {
   // THOUGHTS: token is a bit of a doozy, tbh. To get this to work... well, I don't know. I have to check some docs to see how I am supposed 
   // cont. to A. get the token out of the header and B. verify it. The verify bit already works over the server, so thats a secondary, or possibly
   // cont. null concern, so it's mainly determing the way to get token
-  function onClick(token, lockType, lockNumber) {
+  function onClick(lockType, lockNumber) {
     let lock = document.getElementsByName(lockType)
     let error = document.getElementById(`errMessage${lockNumber}`)
 
     if (loggedIn === false) {
       errorChecker(error, "You need to be logged in first!")
-    } else if (lock[1].classList.contains("locked") && token /*have to find out how to test token, think the testing script is for servers only. TBD*/) {
+    } else if (lock[1].classList.contains("locked")) {
       setErrorMessage(initialError)
       setTimeout(() => lock[0].classList.add("locked"), 1000)
       setTimeout(() => lock[1].classList.remove("locked"), 1000)
@@ -163,7 +163,7 @@ function Home() {
             <div id="firstSecret">
               <FontAwesomeIcon id="firstLock" name="bronzeLock" className="unlocked bronzeLock" icon={faLock} size="2xl" />
               <FontAwesomeIcon id="secondLock" name="bronzeLock" className="locked bronzeLock" icon={faUnlock} size="2xl" />
-              <input type="button" id="firstButton" className="verifyBtn" onClick={() => onClick("fgsfger", "bronzeLock", "One")} value="Verify"></input>
+              <input type="button" id="firstButton" className="verifyBtn" onClick={() => onClick("bronzeLock", "One")} value="Verify"></input>
               <p id="errMessageOne" className="errorMessage">{errorMessage.errMessageOne}</p>
               <div className="secretContainer">
                 <p className="secret">{secrets.secretone}</p>
@@ -172,7 +172,7 @@ function Home() {
             <div id="secondSecret">
               <FontAwesomeIcon id="thirdLock" name="silverLock" className="unlocked silverLock" icon={faLock} size="2xl" />
               <FontAwesomeIcon id="fourthLock" name="silverLock" className="locked silverLock" icon={faUnlock} size="2xl" />
-              <input type="button" id="secondButton" className="verifyBtn" onClick={() => onClick("dasf", "silverLock", "Two")} value="Verify"></input>
+              <input type="button" id="secondButton" className="verifyBtn" onClick={() => onClick("silverLock", "Two")} value="Verify"></input>
               <p id="errMessageTwo" className="errorMessage">{errorMessage.errMessageTwo}</p>
               <div className="secretContainer">
                 <p className="secret">{secrets.secrettwo}</p>
@@ -181,7 +181,7 @@ function Home() {
             <div id="thirdSecret">
               <FontAwesomeIcon id="fifthLock" name="goldLock" className="unlocked goldLock" icon={faLock} size="2xl" />
               <FontAwesomeIcon id="sixthLock" name="goldLock" className="locked goldLock" icon={faUnlock} size="2xl" />
-              <input type="button" id="thirdButton" className="verifyBtn" onClick={() => onClick("asdfasdf", "goldLock", "Three")} value="Verify"></input>
+              <input type="button" id="thirdButton" className="verifyBtn" onClick={() => onClick("goldLock", "Three")} value="Verify"></input>
               <p id="errMessageThree" className="errorMessage">{errorMessage.errMessageThree}</p>
               <div className="secretContainer">
                 <p className="secret">{secrets.secretthree}</p>
