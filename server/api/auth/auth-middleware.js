@@ -47,7 +47,6 @@ const permTooHigh = async (req, res, next) => {
 
   Users.findBy({ "username": username})
   .then(([val]) => {
-    console.log(val.role_type)
     if(val.role_type === "best_friend") {
       next({ status: 500, message: "You can't increase permissions beyond this level!"})
     } else {
