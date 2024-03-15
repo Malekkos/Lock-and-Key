@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const router = require("express").Router()
-const { usernameTaken } = require("./auth-middleware")
+const { usernameTaken, permTooHigh } = require("./auth-middleware")
 const { JWT_SECRET, BCRYPT_ROUNDS } = require("../secrets")
 
 const Users = require("../users/users-model")
@@ -56,7 +56,7 @@ router.post("/login", (req, res, next) => {
 })
 
 //DESC: Endpoint to hit to induce a permission increase in the database. 
-router.put("/increase", (req, res, next) => {
+router.put("/increase", permTooHigh, (req, res, next) => {
   let { username } = req.body
 
   Users.increasePerms(username)

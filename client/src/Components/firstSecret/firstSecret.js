@@ -18,11 +18,12 @@ function FirstSecret() {
     
     axios.put("http://localhost:9000/api/auth/increase", { "username": localStorage.getItem("username") })
     .then(res => {
-      setMessage(res.data)
+      console.log(res.data)
+      setMessage(res.data.message)
       localStorage.setItem("tokenToBePassed", res.data.token)
     })
     .catch(error => {
-      setMessage(error)
+      setMessage(error.response.data)
     })
   }
 

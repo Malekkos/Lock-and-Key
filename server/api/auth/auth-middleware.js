@@ -42,5 +42,22 @@ const usernameTaken = async (req, res, next) => {
   }
 }
 
+const permTooHigh = async (req, res, next) => {
+  const { username } = req.body
 
-module.exports = { restricted, only, usernameTaken }
+  Users.findBy({ "username": username})
+  .then(([val]) => {
+    console.log(val.role_type)
+    if(val.role_type === "best_friend") {
+      next({ status: 500, message: "You can't increase permissions beyond this level!"})
+    } else {
+      next()
+    }
+  })
+  .catch(error => {
+    next(error)
+  }) 
+}
+
+
+module.exports = { restricted, only, usernameTaken, permTooHigh }

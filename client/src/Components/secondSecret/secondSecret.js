@@ -13,7 +13,7 @@ function SecondSecret() {
       localStorage.setItem("tokenToBePassed", res.data.token)
     })
     .catch(error => {
-      setMessage(error)
+      setMessage(error.response.data)
     })
   }
 
