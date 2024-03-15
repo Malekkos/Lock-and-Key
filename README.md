@@ -19,10 +19,6 @@ To run:
 
 TODO Today: 
 
- ~~ Haven't yet decided what I'm going to do for the other games, but I can clone over some of the logic from the first one, maybe set up something random as a placeholder.
-
- ~~ in onClick function in home.js, theres a redudnant use of token. Should remove that.
-
  ~~ Add another middleware that checks perm level, if it is at 4, then throw an error detailing why. This would be on the put endpoint.
 
 TODO LATER: 
