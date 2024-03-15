@@ -383,6 +383,22 @@
   position:absolute;
 }
 
+.gameTwoMain {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.gameTwoButton {
+  height: 2rem;
+  background-color: #e2dfdf;
+  border-color:rgba(0, 0, 0, 0.50)
+}
+
+.gameTwoText {
+  font-size: 19px;
+  color: mintcream;
+}
 /* 850px, Home page: need to change instruction part */
 /* 800px, Home page: need to edit the locks and verifies, they are going off screen */
 /* 550px, nav bar: Should morph into bars*/
