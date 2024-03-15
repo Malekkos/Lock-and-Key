@@ -19,15 +19,15 @@ To run:
 
 TODO Today: 
 
- ~~ Done for today
-
-TODO LATER: 
+ ~~ Haven't yet decided what I'm going to do for the other games, but I can clone over some of the logic from the first one, maybe set up something random as a placeholder.
 
  ~~ in onClick function in home.js, theres a redudnant use of token. Should remove that.
 
- ~~ Should add a loading overlay when stuff is running, aka when you register, it seems like nothing is happening while you wait for it to redirect you
+ ~~ Add another middleware that checks perm level, if it is at 4, then throw an error detailing why. This would be on the put endpoint.
 
- ~~ Add another middleware that checks perm level, if it is at 4, then throw an error detailing why. This would be on the put endpoint
+TODO LATER: 
+
+ ~~ Should add a loading overlay when stuff is running, aka when you register, it seems like nothing is happening while you wait for it to redirect you
 
  ~~ Need to have persistent state so Kevin can't be used to farm permissions, also don't want it to be going at all after completing it. I need to look into the React dev stuff, I remember there was a way to persist state across all levels without using something like a localStorage check, but I'm blanking on how to do it. I think its a sign of incompetence to rely on localStorage to do everything for me lol.
 
