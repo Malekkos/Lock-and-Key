@@ -19,7 +19,7 @@ To run:
 
 TODO Today: 
 
- ~~ Current issue with localStorage perisisting... well, indefinitely, until otherwise removed. Don't want that. Have to look up how to terminate the localStorage data between sessions(this would be closing the tab or logging out, something like that).
+
 
 TODO LATER: 
 
