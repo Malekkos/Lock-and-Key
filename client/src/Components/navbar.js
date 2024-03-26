@@ -7,9 +7,8 @@ function Navbar() {
   let [logOut, setLogOut] = useState(false)  
   const navigate = useNavigate();
 
-
   useEffect(() => {
-    if(localStorage.length > 0) {
+    if(sessionStorage.length > 0) {
       setLogOut(true)
     }
   }, [])
@@ -17,7 +16,7 @@ function Navbar() {
   let onclick = (event) => {
     event.preventDefault()
 
-    localStorage.clear()
+    sessionStorage.clear()
     navigate("/")
     window.location.reload()
   }

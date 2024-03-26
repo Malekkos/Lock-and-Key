@@ -16,11 +16,11 @@ function FirstSecret() {
   let onclick = (event) => {
     event.target.style.position = "static"
     
-    axios.put("http://localhost:9000/api/auth/increase", { "username": localStorage.getItem("username") })
+    axios.put("http://localhost:9000/api/auth/increase", { "username": sessionStorage.getItem("username") })
     .then(res => {
       console.log(res.data)
       setMessage(res.data.message)
-      localStorage.setItem("tokenToBePassed", res.data.token)
+      sessionStorage.setItem("tokenToBePassed", res.data.token)
     })
     .catch(error => {
       setMessage(error.response.data)

@@ -51,10 +51,10 @@ function Home() {
 
     axios.post("http://localhost:9000/api/auth/login", creds)
       .then(res => {
-        localStorage.setItem("password", creds.password)
-        localStorage.setItem("username", creds.username)
-        localStorage.setItem("token", res.data.token)
-        localStorage.removeItem("registerLogin")
+        sessionStorage.setItem("password", creds.password)
+        sessionStorage.setItem("username", creds.username)
+        sessionStorage.setItem("token", res.data.token)
+        sessionStorage.removeItem("registerLogin")
         setLoggedIn(true)
         setErrorMessage(initialError)
         setGreetingMessage(res.data.message)
@@ -73,17 +73,17 @@ function Home() {
     onLoad()
     onLoadVerify()
 
-    if (localStorage.getItem("username")) {
-      axios.post("http://localhost:9000/api/auth/login", { username: localStorage.getItem("username"), password: localStorage.getItem("password"), registerLogin: localStorage.getItem("registerLogin") })
+    if (sessionStorage.getItem("username")) {
+      axios.post("http://localhost:9000/api/auth/login", { username: sessionStorage.getItem("username"), password: sessionStorage.getItem("password"), registerLogin: sessionStorage.getItem("registerLogin") })
         .then(res => {
           setLoggedIn(true)
-          setGreetingMessage(`Hey, ${localStorage.getItem("username")}!`)
+          setGreetingMessage(`Hey, ${sessionStorage.getItem("username")}!`)
         })
     }
 
-    if (localStorage.getItem("registerLogin")) {
+    if (sessionStorage.getItem("registerLogin")) {
       window.location.reload()
-      localStorage.removeItem("registerLogin")
+      sessionStorage.removeItem("registerLogin")
     }
 
   }, [])
@@ -126,10 +126,10 @@ function Home() {
 
   function secretAdder(num) {
     const lower = num.toLowerCase()
-    let token = localStorage.getItem("token")
+    let token = sessionStorage.getItem("token")
 
-    if(localStorage.getItem("tokenToBePassed")) {
-      token = localStorage.getItem("tokenToBePassed")
+    if(sessionStorage.getItem("tokenToBePassed")) {
+      token = sessionStorage.getItem("tokenToBePassed")
     }
 
     axios.get(`http://localhost:9000/api/users/secret_${lower}`, { headers: { "Authorization": token}})

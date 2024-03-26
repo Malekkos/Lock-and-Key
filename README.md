@@ -19,12 +19,13 @@ To run:
 
 TODO Today: 
 
- ~~ Should add a loading overlay when stuff is running, aka when you register, it seems like nothing is happening while you wait for it to redirect you
-
  ~~ Current issue with localStorage perisisting... well, indefinitely, until otherwise removed. Don't want that. Have to look up how to terminate the localStorage data between sessions(this would be closing the tab or logging out, something like that).
 
 TODO LATER: 
 
+ ~~ Add disability compatibility. Need to check the guidelines for that stuff.
+  
+ ~~ Fix bug with slight hover over verify button making it permanently questioning til re-hovered
 
  ~~ Need to have persistent state so Kevin can't be used to farm permissions, also don't want it to be going at all after completing it. I need to look into the React dev stuff, I remember there was a way to persist state across all levels without using something like a localStorage check, but I'm blanking on how to do it. I think its a sign of incompetence to rely on localStorage to do everything for me lol.
 
@@ -32,3 +33,4 @@ TODO LATER:
 
  ~~ I should have it so that only one test/secret displays on the nav bar. It would make more sense than having them all, with a small hit to replayability but you can quickly make a new account to do that. It would also make not abusing the tests to quickly raise account perms SIGNIFICANTLY easier for me. Don't want to fix an issue like that.
  
+ ~~ Get into changing the css styling to conform to smaller devices

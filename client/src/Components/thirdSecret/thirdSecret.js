@@ -7,10 +7,10 @@ function ThirdSecret() {
   let [message, setMessage] = useState({message: ""})
 
   let onclick = (event) => {
-    axios.put("http://localhost:9000/api/auth/increase", { "username": localStorage.getItem("username") })
+    axios.put("http://localhost:9000/api/auth/increase", { "username": sessionStorage.getItem("username") })
     .then(res => {
       setMessage(res.data)
-      localStorage.setItem("tokenToBePassed", res.data.token)
+      sessionStorage.setItem("tokenToBePassed", res.data.token)
     })
     .catch(error => {
       setMessage(error.response.data)
