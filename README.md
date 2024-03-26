@@ -19,17 +19,14 @@ To run:
 
 TODO Today: 
 
- ~~ Possibly done for today
+ ~~ Should add a loading overlay when stuff is running, aka when you register, it seems like nothing is happening while you wait for it to redirect you
+
+ ~~ Current issue with localStorage perisisting... well, indefinitely, until otherwise removed. Don't want that. Have to look up how to terminate the localStorage data between sessions(this would be closing the tab or logging out, something like that).
 
 TODO LATER: 
 
- ~~ Should add a loading overlay when stuff is running, aka when you register, it seems like nothing is happening while you wait for it to redirect you
 
  ~~ Need to have persistent state so Kevin can't be used to farm permissions, also don't want it to be going at all after completing it. I need to look into the React dev stuff, I remember there was a way to persist state across all levels without using something like a localStorage check, but I'm blanking on how to do it. I think its a sign of incompetence to rely on localStorage to do everything for me lol.
-
- ~~ Pretty much decided that I'm gonna use localStorage for managing user activity, but it's rather insecure now. Since I can, and already am, passing the tokens down to with requests, I should have the verification procedure run throught those
-
- ~~ Current issue with localStorage perisisting... well, indefinitely, until otherwise removed. Don't want that. Have to look up how to terminate the localStorage data between sessions(this would be closing the tab or logging out, something like that).
 
  ~~ Have a display, maybe in the nav bar, that displays your current friend ranking. Possible to do that in client, not server, but I may not want to. It depends if it would make more sense to interpret the number from a call to the server, then database, and then read the info. Or, pass it down from a call, maybe when logging in/registering. Issue with that is more junk in localStorage, which isn't ideal.
 
