@@ -37,8 +37,7 @@ function Register() {
         localStorage.setItem("username", res.data.username)
         localStorage.setItem("registerLogin", true)
         localStorage.setItem("token", res.data.token)
-        // window.location.reload()
-        // navigate("/")
+        setLoading(!loading)
         setTimeout(() => navigate("/"), 1000)
       })
       .catch(err => {
@@ -52,34 +51,35 @@ function Register() {
   //cont.2 : length(shouldnt be accepting a 0length value)
   return (
     <>
-      <div id="overlay" hidden={!loading} >
-      </div>
-        <div className="regMain">
-          <div className="regContainer">
-            <div className="regInstructions">
-              <p className="regInstrText">Create a new account to get started!</p>
-              <p className="regInstrText">You'll be giving a variety of challenges</p>
-              <p className="regInstrText">to complete, with the purposes of</p>
-              <p className="regInstrText">increasing your user privilege</p>
-            </div>
-            {error ? <p className="errorMessage">{error}</p> : ""}
-            <form className="reg" onSubmit={event => onSubmit(event)}>
-              <div className="regCredsContainer">
-                <div className="regUsername">
-                  <p className="regUsernameText">Username</p>
-                  <input className="regInput" type="text" onChange={event => onChange(event, "username")} value={creds.username} />
-                </div>
-                <div className="regPassword">
-                  <p className="regPasswordText">Password</p>
-                  <input className="regInput" type="password" onChange={event => onChange(event, "password")} value={creds.password} />
-                </div>
-                <div className="submit">
-                  <input id="registerButton" className="regButton" type="submit" value="Register" />
-                </div>
-              </div>
-            </form>
+      {loading ? <div id="overlay">
+        <div className="loader" ></div>
+      </div> : ""}
+      <div className="regMain">
+        <div className="regContainer">
+          <div className="regInstructions">
+            <p className="regInstrText">Create a new account to get started!</p>
+            <p className="regInstrText">You'll be giving a variety of challenges</p>
+            <p className="regInstrText">to complete, with the purposes of</p>
+            <p className="regInstrText">increasing your user privilege</p>
           </div>
+          {error ? <p className="errorMessage">{error}</p> : ""}
+          <form className="reg" onSubmit={event => onSubmit(event)}>
+            <div className="regCredsContainer">
+              <div className="regUsername">
+                <p className="regUsernameText">Username</p>
+                <input className="regInput" type="text" onChange={event => onChange(event, "username")} value={creds.username} />
+              </div>
+              <div className="regPassword">
+                <p className="regPasswordText">Password</p>
+                <input className="regInput" type="password" onChange={event => onChange(event, "password")} value={creds.password} />
+              </div>
+              <div className="submit">
+                <input id="registerButton" className="regButton" type="submit" value="Register" />
+              </div>
+            </div>
+          </form>
         </div>
+      </div>
     </>
   )
 }
