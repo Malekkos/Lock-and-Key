@@ -17,7 +17,7 @@ router.post("/register", usernameTaken, async (req, res, next) => {
   await Users.add({ "username": username, "password": password, "role_type": role_type })
     .then(user => {
       const token = buildToken(user)
-
+      console.log("this is the user:", user)
       res.set("Authorization", token).status(201).json({ username: user[0].username, password, token })
     })
     .catch(error => {
@@ -42,9 +42,10 @@ router.post("/login", (req, res, next) => {
         res.status(200).json({ message: `Welcome back, ${username}`})
         } else {
         const token = buildToken(user)
-
+        console.log("this is the user:", user)
+        console.log(token)
         req.headers.authorization = token
-        res.set("Authorization", token).status(200).json({ message: `Welcome back, ${username}`, token })
+        res.set("Authorization", token).status(200).json({ message: `Welcome back, ${username}`, token, role: user.role_type})
       }
       } else {
         next({ status: 401, message: "Invalid credentials" })
