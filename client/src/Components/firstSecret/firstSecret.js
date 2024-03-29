@@ -2,10 +2,12 @@
 import { jamesRuns } from "../../animations/firstSecretAnimation"
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 function FirstSecret() {
 
   let [message, setMessage] = useState({message: ""})
+  const navigate = useNavigate();
 
 
   //DESC: onclick for the kevin png to make him stop moving
@@ -15,12 +17,14 @@ function FirstSecret() {
   // cont. Image in the elements tab of console, and it was following it.
   let onclick = (event) => {
     event.target.style.position = "static"
-    
     axios.put("http://localhost:9000/api/auth/increase", { "username": sessionStorage.getItem("username") })
     .then(res => {
       console.log(res.data)
       setMessage(res.data.message)
       sessionStorage.setItem("tokenToBePassed", res.data.token)
+      sessionStorage.setItem("role", "acquaintance")
+      setTimeout(() => navigate("/"), 200)
+      setTimeout(() => window.location.reload(), 300)
     })
     .catch(error => {
       setMessage(error.response.data)

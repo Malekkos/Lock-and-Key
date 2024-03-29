@@ -28,6 +28,7 @@ function Navbar() {
     if(sessionStorage.length > 0) {
       setLogOut(true)
     }
+    getFriendRanking()
   }, [])
 
   let onclick = (event) => {
@@ -55,9 +56,9 @@ function Navbar() {
           { currentFriend ? <p className="ranking">Current: <strong className="rankingText">{currentFriend}</strong></p> : ""}
           <NavLink to="/" className="link">Home</NavLink>
           { logOut ?  <p className="link logOut" onClick={(event) => onclick(event)}>Log Out</p> : <NavLink to="/register" className="link">Register</NavLink>}
-          <NavLink to="/firstSecret" className="link">First Secret</NavLink>
-          <NavLink to="/secondSecret" className="link">Second Secret</NavLink>
-          <NavLink to="/thirdSecret" className="link">Third Secret</NavLink>
+          { currentFriend === "New User" ? <NavLink to="/firstSecret" className="link">First Secret</NavLink> : <p className="shaded">First Secret</p> }
+          { currentFriend === "Acquaintance" ? <NavLink to="/secondSecret" className="link">Second Secret</NavLink> : <p className="shaded">Second Secret</p> }
+          { currentFriend === "Friend" ? <NavLink to="/thirdSecret" className="link">Third Secret</NavLink> : <p className="shaded">Third Secret</p> }
         </div>
       </nav>
     </>

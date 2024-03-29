@@ -373,6 +373,19 @@
   margin-right: 5rem;
 }
 
+.shaded {
+  width: fit-content;
+  font-size: 18px;
+  padding: 2px 15px;
+  margin: 20px 5px;
+  font-style: normal;
+  text-decoration: none;
+  color: #918888f8;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  /* transition-property: transform; */
+  /* transition-duration: 0.2s;/ */
+  /* transition-timing-function: ease; */
+}
 
  /* CSS for .loader, plus the keyframes, is courtesy of: https://css-loaders.com/spinner/, specfically spinner #20 */
 
