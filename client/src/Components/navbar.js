@@ -4,7 +4,24 @@ import { faLock } from "@fortawesome/free-solid-svg-icons"
 import React, { useState, useEffect } from "react"
 function Navbar() {
   
-  let [logOut, setLogOut] = useState(false)  
+  const getFriendRanking = () => {
+    let role = sessionStorage.getItem("role")
+    switch(role) {
+      case "best_friend":  
+        return "Best Friend"
+      case "friend":
+        return "Friend"
+      case "acquaintance":
+        return "Acquaintance"
+      case "new_user":
+        return "New User"
+      default:
+        return ""
+    }
+  }
+
+  let [logOut, setLogOut] = useState(false)
+  let [currentFriend, setCurrentFriend] = useState(getFriendRanking())
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,7 +32,6 @@ function Navbar() {
 
   let onclick = (event) => {
     event.preventDefault()
-
     sessionStorage.clear()
     navigate("/")
     window.location.reload()
@@ -36,6 +52,7 @@ function Navbar() {
           ].join(" ")}><FontAwesomeIcon icon={faLock} size="2xl" style={{ color: "whitesmoke", }} /></NavLink>
         </div>
         <div className="linksContainer">
+          { currentFriend ? <p className="ranking">Current: <strong className="rankingText">{currentFriend}</strong></p> : ""}
           <NavLink to="/" className="link">Home</NavLink>
           { logOut ?  <p className="link logOut" onClick={(event) => onclick(event)}>Log Out</p> : <NavLink to="/register" className="link">Register</NavLink>}
           <NavLink to="/firstSecret" className="link">First Secret</NavLink>

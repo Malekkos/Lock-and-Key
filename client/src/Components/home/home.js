@@ -51,10 +51,10 @@ function Home() {
 
     axios.post("http://localhost:9000/api/auth/login", creds)
       .then(res => {
-        debugger
         sessionStorage.setItem("password", creds.password)
         sessionStorage.setItem("username", creds.username)
         sessionStorage.setItem("token", res.data.token)
+        sessionStorage.setItem("role", res.data.role)
         sessionStorage.removeItem("registerLogin")
         setLoggedIn(true)
         setErrorMessage(initialError)

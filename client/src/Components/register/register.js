@@ -37,6 +37,7 @@ function Register() {
         sessionStorage.setItem("username", res.data.username)
         sessionStorage.setItem("registerLogin", true)
         sessionStorage.setItem("token", res.data.token)
+        sessionStorage.setItem("role", res.data.role)
         setLoading(!loading)
         setTimeout(() => navigate("/"), 1000)
       })

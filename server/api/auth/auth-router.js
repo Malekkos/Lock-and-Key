@@ -18,7 +18,7 @@ router.post("/register", usernameTaken, async (req, res, next) => {
     .then(user => {
       const token = buildToken(user)
       console.log("this is the user:", user)
-      res.set("Authorization", token).status(201).json({ username: user[0].username, password, token })
+      res.set("Authorization", token).status(201).json({ username: user[0].username, password, token, "role": user[0].role_type })
     })
     .catch(error => {
       next(error)
@@ -42,8 +42,6 @@ router.post("/login", (req, res, next) => {
         res.status(200).json({ message: `Welcome back, ${username}`})
         } else {
         const token = buildToken(user)
-        console.log("this is the user:", user)
-        console.log(token)
         req.headers.authorization = token
         res.set("Authorization", token).status(200).json({ message: `Welcome back, ${username}`, token, role: user.role_type})
       }
