@@ -21,8 +21,6 @@ TODO Today:
 
  ~~ Develop the second game
 
- ~~ Fix bug with slight hover over verify button making it permanently questioning til re-hovered
-
  ~~ Have a display, maybe in the nav bar, that displays your current friend ranking. Possible to do that in client, not server, but I may not want to. It depends if it would make more sense to interpret the number from a call to the server, then database, and then read the info. Or, pass it down from a call, maybe when logging in/registering. Issue with that is more junk in localStorage, which isn't ideal.
 
 TODO LATER: 
