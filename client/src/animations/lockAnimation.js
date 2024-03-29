@@ -67,7 +67,7 @@ export const hoverVerify = ("DOMContentLoaded", () => {
     val.addEventListener("mouseleave", event => {
       setTimeout(() => {
         event.target.value = "Verify"
-      }, 200)
+      }, 301)
     })
   }
 })
