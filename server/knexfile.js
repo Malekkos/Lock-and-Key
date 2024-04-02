@@ -4,7 +4,7 @@
 
 // Config for the database
 const sharedConfig = {
-  client: 'sqlite3',
+  client: 'better-sqlite3',
   useNullAsDefault: true,
   migrations: {
     directory: './data/migrations',
@@ -13,9 +13,9 @@ const sharedConfig = {
     directory: './data/seeds',
   },
   pool: {
-    afterCreate: (conn, done) => {
-      conn.run('PRAGMA foreign_keys = ON', done)
-    },
+    // afterCreate: (conn, done) => {
+    //   conn.run('PRAGMA foreign_keys = ON', done)
+    // },
   },
 }
 
