@@ -33,11 +33,11 @@ server.use((req, res, next) => {
 server.use("/api/auth", authRouter)
 server.use("/api/users", usersRouter)
 
-server.use(express.static(path.join(__dirname, 'build')));
+// server.use(express.static(path.join(__dirname, 'build')));
 
-server.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+// server.get('/', function (req, res) {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 // Error handling stuff.
 server.use((err, req, res, next) => { //eslint-disable-line
