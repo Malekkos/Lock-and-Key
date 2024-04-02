@@ -1,4 +1,4 @@
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const router = require("express").Router()
 const { usernameTaken, permTooHigh } = require("./auth-middleware")

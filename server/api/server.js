@@ -2,7 +2,7 @@ const express = require("express")
 const helmet = require("helmet")
 const cors = require("./cors/index")
 const cookieParser = require("cookie-parser")
-const path = require("path")
+// const path = require("path")
 
 const authRouter = require("./auth/auth-router")
 const usersRouter = require("./users/users-router")
