@@ -19,7 +19,7 @@ To run:
 
 TODO Today: 
 
- ~~ Convert over from node-sqlite3 to better-sqlite3
+ ~~ Seems to have worked...?
 
 TODO LATER: 
 
