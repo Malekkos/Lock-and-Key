@@ -2,6 +2,7 @@ const express = require("express")
 const helmet = require("helmet")
 const cors = require("./cors/index")
 const cookieParser = require("cookie-parser")
+const path = require("path")
 
 const authRouter = require("./auth/auth-router")
 const usersRouter = require("./users/users-router")
@@ -32,6 +33,11 @@ server.use((req, res, next) => {
 server.use("/api/auth", authRouter)
 server.use("/api/users", usersRouter)
 
+server.use(express.static(path.join(__dirname, 'build')));
+
+server.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // Error handling stuff.
 server.use((err, req, res, next) => { //eslint-disable-line
