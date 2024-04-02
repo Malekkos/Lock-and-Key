@@ -19,9 +19,11 @@ To run:
 
 TODO Today: 
 
- ~~ Develop the second game
+ ~~ Convert over from node-sqlite3 to better-sqlite3
 
 TODO LATER: 
+
+ ~~ Develop the second game
 
  ~~ Persistent state would still be cool & ideal, but we dont have to worry about farming permissions anymore.
 
