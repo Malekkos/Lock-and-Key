@@ -44,6 +44,7 @@ router.post("/login", (req, res, next) => {
         } else {
         const token = buildToken(user)
         req.headers.authorization = token
+        res.header("Access-Control-Allow-Origin", "*")
         res.set("Authorization", token).status(200).json({ message: `Welcome back, ${username}`, token, role: user.role_type})
       }
       } else {
