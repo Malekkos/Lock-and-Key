@@ -4,8 +4,8 @@ import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons"
 import axios from "axios"
 import { lockAnim, hoverVerify } from "../../animations/lockAnimation"
 
-axios.defaults = {"withCredentials": true, "Access-Control-Allow-Origin": true}
-
+axios.defaults.withCredentials = true
+axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"
 function Home() {
 
   //DESC: Your general state
