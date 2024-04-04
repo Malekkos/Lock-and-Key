@@ -20,7 +20,7 @@ server.use(helmet())
 server.use(express.json())
 server.use(cors())
 server.use(cookieParser(JWT_SECRET.JWT_SECRET))
-
+console.log("Made it past the adding stuff.")
 // THOUGHTS: Add while trying to apply the Authorization header, as well as the token, so that I could grab it for later
 // cont: I dont actually know how useful it is, I need to come by later, delete this, and see if it bricks the project
 server.use((req, res, next) => {
