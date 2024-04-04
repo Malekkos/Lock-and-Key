@@ -29,6 +29,7 @@ router.post("/register", usernameTaken, async (req, res, next) => {
 // THOUGHTS: Leaving the cookie for now, despite myself not knowing if its particularily useful. Its not being used meaningfully
 // cont. : at the moment, but I'm hoping to make it work for persistance sake(not loggin in constantly)
 router.post("/login", (req, res, next) => {
+  console.log("Made it to Login")
   let { username, password, registerLogin } = req.body
 
   if (!username || !password) {
