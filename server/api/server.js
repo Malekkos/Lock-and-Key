@@ -25,8 +25,8 @@ console.log("Made it past the adding stuff.")
 // cont: I dont actually know how useful it is, I need to come by later, delete this, and see if it bricks the project
 server.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", true)
-  res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.append('Access-Control-Allow-Headers', 'Authorization');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', '*');
   res.header("Access-Control-Allow-Origin", "*")
   next();
 })
