@@ -46,10 +46,10 @@ function Home() {
   // cont. make some changes to an actual server fail, not bad creds. I'll have to, at some point, 
   // cont. try to run this without the server running. But then how would it get the custom message
   // cont. from it, if server isn't running? TBD
-  let onSubmit = event => {
+  let onSubmit = async event => {
     event.preventDefault()
 
-    axios.post("http://localhost:9000/api/auth/login", creds)
+    await axios.post("http://localhost:9000/api/auth/login", creds)
       .then(res => {
         sessionStorage.setItem("password", creds.password)
         sessionStorage.setItem("username", creds.username)
