@@ -23,6 +23,8 @@ TODO Today:
 
 TODO LATER: 
 
+ ~~ Kevin james PNG quest is bugged, he spawns at the bottom on first render. Should do a hard move to the middle so that wont happen
+
  ~~ Okay, so, the issue was because the frontend was a static site. I get that now. New issue; I'm getting network errors when I try to hit my endpoints using login and register. I have an idea of what I could do to fix that, which making the actions asynchronous. I've noticed when loading into the page, it takes milennia, so im thinking that its trying to resolve something on my page without actually being finished with its call, hence the network error.
 
  ~~ Develop the second game
