@@ -63,6 +63,7 @@ function Home() {
         window.location.reload()
       })
       .catch(err => {
+        console.log(err)
         console.log(err.response)
         errorChecker("errMessageFour", err.response.data.message)
       })
