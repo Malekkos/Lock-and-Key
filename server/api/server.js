@@ -24,9 +24,7 @@ console.log("Made it past the adding stuff.")
 // THOUGHTS: Add while trying to apply the Authorization header, as well as the token, so that I could grab it for later
 // cont: I dont actually know how useful it is, I need to come by later, delete this, and see if it bricks the project
 server.use((req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", true)
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', '*');
+  console.log("This ran!")
   res.header("Access-Control-Allow-Origin", "*")
   next();
 })
