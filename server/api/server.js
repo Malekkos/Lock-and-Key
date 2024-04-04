@@ -26,6 +26,7 @@ console.log("Made it past the adding stuff.")
 server.use((req, res, next) => {
   res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.append('Access-Control-Allow-Headers', 'Authorization');
+  res.header("Access-Control-Allow-Origin", "*")
   next();
 })
 
