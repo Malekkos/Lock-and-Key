@@ -6,6 +6,9 @@ import { lockAnim, hoverVerify } from "../../animations/lockAnimation"
 
 axios.defaults.withCredentials = true
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"
+axios.defaults.headers.common["Access-Control-Allow-Headers"] = "*"
+axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "true"
+
 function Home() {
 
   //DESC: Your general state
