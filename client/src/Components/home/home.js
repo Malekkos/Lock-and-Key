@@ -22,6 +22,12 @@ function Home() {
   const [creds, setCreds] = useState({ username: "", password: "" })
   const [greetingMessage, setGreetingMessage] = useState()
 
+  const proxy = {
+    protocol: "http",
+    host: "52.41.36.82",
+    port: 10000
+  }
+
   let onLoad = window.onload = lockAnim
   let onLoadVerify = window.onload = hoverVerify
 
@@ -52,7 +58,7 @@ function Home() {
   let onSubmit = async event => {
     event.preventDefault()
     console.log("login ran")
-    await axios.post("http://lock-and-key-backend-jofm:10000/api/auth/login", creds)
+    await axios.post("http://lock-and-key-backend-jofm:10000/api/auth/login", creds, {proxy: proxy})
       .then(res => {
         sessionStorage.setItem("password", creds.password)
         sessionStorage.setItem("username", creds.username)
