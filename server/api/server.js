@@ -21,7 +21,7 @@ const JWT_SECRET = require("./secrets/index")
 // THOUGHTS 2: Just realized, I need to still add all the testing for my endpoints and functions. I brought in supertest and jest for a reason.
 server.use(helmet())
 server.use(express.json())
-server.use(cors())
+server.use(cors({origin: true, credentials: true}))
 server.use(cookieParser(JWT_SECRET.JWT_SECRET))
 console.log("Made it past the adding stuff.")
 
