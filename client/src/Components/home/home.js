@@ -58,7 +58,7 @@ function Home() {
   let onSubmit = async event => {
     event.preventDefault()
     console.log("login ran")
-    await axios.post("http://lock-and-key-backend-jofm:10000/api/auth/login", creds, {proxy: proxy})
+    await axios.post("https://lock-and-key-backend-jofm:10000/api/auth/login", creds, {proxy: proxy})
       .then(res => {
         sessionStorage.setItem("password", creds.password)
         sessionStorage.setItem("username", creds.username)
