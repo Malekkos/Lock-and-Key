@@ -7,7 +7,7 @@ const { JWT_SECRET, BCRYPT_ROUNDS } = require("../secrets")
 const Users = require("../users/users-model")
 
 router.use((req, res, next) => {
-  res.append("content-length", 123)
+  res.set("Content-Length", 123)
   res.append('Access-Control-Allow-Origin', ['*']);
   res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.append('Access-Control-Allow-Headers', 'Content-Type');
@@ -18,14 +18,14 @@ router.post("/register", usernameTaken, async (req, res, next) => {
   let { username, password } = req.body
   const role_type = "new_user"
   const hash = bcrypt.hashSync(password, BCRYPT_ROUNDS)
-  
+  res.set('Access-Control-Allow-Origin', ['*']);
   password = hash
 
   await Users.add({ "username": username, "password": password, "role_type": role_type })
     .then(user => {
       const token = buildToken(user)
       console.log("this is the user:", user)
-      res.set("Authorization", token).status(201).json({ username: user[0].username, password, token, "role": user[0].role_type })
+      res.set({"Authorization": token,'Access-Control-Allow-Origin': ['*']}).status(201).json({ username: user[0].username, password, token, "role": user[0].role_type })
     })
     .catch(error => {
       next(error)
