@@ -31,9 +31,10 @@ server.use("/api/users", usersRouter)
 
 // server.use(express.static(path.join(__dirname, 'build')));
 
-// server.get('/', function (req, res) {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
+server.get('/', function (req, res) {
+  console.log("GHAGAHAHAHAHA")
+  res.send("HAHAHAHAHAH")
+});
 
 // Error handling stuff.
 server.use((err, req, res, next) => { //eslint-disable-line
