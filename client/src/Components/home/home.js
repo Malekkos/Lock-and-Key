@@ -51,8 +51,8 @@ function Home() {
   // cont. from it, if server isn't running? TBD
   let onSubmit = async event => {
     event.preventDefault()
-
-    await axios.post("http://lock-and-key-backend-jofm:10000/api/auth/login/", creds)
+    console.log("login ran")
+    await axios.post("http://lock-and-key-backend-jofm:10000/api/auth/login", creds)
       .then(res => {
         sessionStorage.setItem("password", creds.password)
         sessionStorage.setItem("username", creds.username)
@@ -78,7 +78,7 @@ function Home() {
   useEffect(() => {
     onLoad()
     onLoadVerify()
-
+    console.log("useEffect ran")
     if (sessionStorage.getItem("username")) {
       axios.post("http://localhost:9000/api/auth/login", { username: sessionStorage.getItem("username"), password: sessionStorage.getItem("password"), registerLogin: sessionStorage.getItem("registerLogin") })
         .then(res => {
