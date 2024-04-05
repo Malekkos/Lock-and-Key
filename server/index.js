@@ -8,7 +8,7 @@ const port = process.env.PORT || 9000
 // Simple launching point for server to start
 server.use((req, res, next) => {
   console.log("This ran!")
-  res.header("Access-Control-Allow-Origin", "*")
+  res.set("Access-Control-Allow-Origin", "*")
   next();
 })
 
