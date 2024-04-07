@@ -2,7 +2,7 @@ const express = require("express")
 const helmet = require("helmet")
 const cors = require("cors")
 const cookieParser = require("cookie-parser")
-// const path = require("path")
+const path = require("path")
 
 const authRouter = require("./auth/auth-router")
 const usersRouter = require("./users/users-router")
@@ -23,7 +23,8 @@ server.use(helmet())
 server.use(express.json())
 server.use(cors({origin: true, credentials: true}))
 server.use(cookieParser(JWT_SECRET.JWT_SECRET))
-console.log("Made it past the adding stuff.")
+// console.log("Made it past the adding stuff.")
+server.use(express.static(path.join(__dirname, "public")));
 
 // Simple pathways for server to recieve request on the routers.
 server.use("/api/auth", authRouter)
