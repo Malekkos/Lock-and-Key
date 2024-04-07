@@ -58,10 +58,10 @@ function Home() {
 
   // await axios.post("https://lock-and-key-backend-jofm:10000/api/auth/login", creds)
 
-  let onSubmit = async event => {
+  let onSubmit = event => {
     event.preventDefault()
     console.log("login ran")
-    await axios.get("https://lock-and-key-backend-jofm:10000/", creds)
+    axios.get("https://lock-and-key-backend-jofm:10000/", creds)
       .then(res => {
         sessionStorage.setItem("password", creds.password)
         sessionStorage.setItem("username", creds.username)
