@@ -7,7 +7,7 @@ function ThirdSecret() {
   let [message, setMessage] = useState({message: ""})
   let navigate = useNavigate()
   let onclick = (event) => {
-    axios.put("http://localhost:9000/api/auth/increase", { "username": sessionStorage.getItem("username") })
+    axios.put("https://lock-and-key-server.onrender.com/api/auth/increase", { "username": sessionStorage.getItem("username") })
     .then(res => {
       setMessage(res.data)
       sessionStorage.setItem("tokenToBePassed", res.data.token)

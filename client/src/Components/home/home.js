@@ -4,7 +4,7 @@ import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons"
 import axios from "axios"
 import { lockAnim, hoverVerify } from "../../animations/lockAnimation"
 
-axios.defaults.withCredentials = false
+axios.defaults.withCredentials = true
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"
 axios.defaults.headers.common["Access-Control-Allow-Headers"] = "*"
 // axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "true"
@@ -89,7 +89,7 @@ function Home() {
     onLoadVerify()
     console.log("useEffect ran")
     if (sessionStorage.getItem("username")) {
-      axios.post("http://localhost:9000/api/auth/login", { username: sessionStorage.getItem("username"), password: sessionStorage.getItem("password"), registerLogin: sessionStorage.getItem("registerLogin") })
+      axios.post("https://lock-and-key-server.onrender.com/api/auth/login", { username: sessionStorage.getItem("username"), password: sessionStorage.getItem("password"), registerLogin: sessionStorage.getItem("registerLogin") })
         .then(res => {
           setLoggedIn(true)
           setGreetingMessage(`Hey, ${sessionStorage.getItem("username")}!`)
@@ -147,7 +147,7 @@ function Home() {
       token = sessionStorage.getItem("tokenToBePassed")
     }
 
-    axios.get(`http://localhost:9000/api/users/secret_${lower}`, { headers: { "Authorization": token}})
+    axios.get(`https://lock-and-key-server.onrender.com/api/users/secret_${lower}`, { headers: { "Authorization": token}})
       .then(res => {
         setSecrets({
           [`secret${lower}`]: res.data.secret

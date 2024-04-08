@@ -28,7 +28,7 @@ function Register() {
   // cont2 : That would probably be best
   const onSubmit = event => {
     event.preventDefault()
-    axios.post("http://localhost:9000/api/auth/register", creds)
+    axios.post("https://lock-and-key-server.onrender.com/api/auth/register", creds)
       .then(res => {
         console.log(res)
         setError(initialError)
