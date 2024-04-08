@@ -61,7 +61,7 @@ function Home() {
   let onSubmit = event => {
     event.preventDefault()
     console.log("login ran")
-    axios.post("http://52.41.36.82:10000/api/auth/login", creds)
+    axios.post("https://lock-and-key-server.onrender.com/api/auth/login", creds)
       .then(res => {
         sessionStorage.setItem("password", creds.password)
         sessionStorage.setItem("username", creds.username)
