@@ -7,7 +7,6 @@ import { lockAnim, hoverVerify } from "../../animations/lockAnimation"
 axios.defaults.withCredentials = false
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"
 axios.defaults.headers.common["Access-Control-Allow-Headers"] = "*"
-// axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "true"
 
 function Home() {
 
@@ -21,12 +20,6 @@ function Home() {
   const [errorMessage, setErrorMessage] = useState(initialError)
   const [creds, setCreds] = useState({ username: "", password: "" })
   const [greetingMessage, setGreetingMessage] = useState()
-
-  const proxy = {
-    protocol: "http",
-    host: "52.41.36.82",
-    port: 10000
-  }
 
   let onLoad = window.onload = lockAnim
   let onLoadVerify = window.onload = hoverVerify
@@ -55,12 +48,9 @@ function Home() {
   // cont. make some changes to an actual server fail, not bad creds. I'll have to, at some point, 
   // cont. try to run this without the server running. But then how would it get the custom message
   // cont. from it, if server isn't running? TBD
-
-  // await axios.post("https://lock-and-key-backend-jofm:10000/api/auth/login", creds)
-
   let onSubmit = event => {
     event.preventDefault()
-    console.log("login ran")
+
     axios.post("https://lock-and-key-server.onrender.com/api/auth/login", creds)
       .then(res => {
         sessionStorage.setItem("password", creds.password)
@@ -75,8 +65,6 @@ function Home() {
         window.location.reload()
       })
       .catch(err => {
-        console.log(err)
-        console.log(err.response)
         errorChecker("errMessageFour", err.response.data.message)
       })
   }
@@ -87,7 +75,7 @@ function Home() {
   useEffect(() => {
     onLoad()
     onLoadVerify()
-    console.log("useEffect ran")
+
     if (sessionStorage.getItem("username")) {
       axios.post("https://lock-and-key-server.onrender.com/api/auth/login", { username: sessionStorage.getItem("username"), password: sessionStorage.getItem("password"), registerLogin: sessionStorage.getItem("registerLogin") })
         .then(res => {

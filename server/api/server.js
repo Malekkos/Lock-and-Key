@@ -1,5 +1,4 @@
 const express = require("express")
-// const helmet = require("helmet")
 const cors = require("cors")
 const cookieParser = require("cookie-parser")
 const path = require("path")
@@ -19,23 +18,15 @@ const JWT_SECRET = require("./secrets/index")
 
 
 // THOUGHTS 2: Just realized, I need to still add all the testing for my endpoints and functions. I brought in supertest and jest for a reason.
-// server.use(helmet())
 server.use(express.json())
 server.use(cors({origin: true, credentials: true}))
 server.use(cookieParser(JWT_SECRET.JWT_SECRET))
-// console.log("Made it past the adding stuff.")
 server.use(express.static(path.join(__dirname, "public")));
 
 // Simple pathways for server to recieve request on the routers.
 server.use("/api/auth", authRouter)
 server.use("/api/users", usersRouter)
 
-// server.use(express.static(path.join(__dirname, 'build')));
-
-server.get('/', function (req, res) {
-  console.log("GHAGAHAHAHAHA")
-  res.send("HAHAHAHAHAH")
-});
 
 // Error handling stuff.
 server.use((err, req, res, next) => { //eslint-disable-line

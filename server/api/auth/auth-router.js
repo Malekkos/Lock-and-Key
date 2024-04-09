@@ -17,17 +17,17 @@ router.use((req, res, next) => {
 
 //DESC: Method to create an account
 router.post("/register", usernameTaken, async (req, res, next) => {
-  console.log("made it to register")
   let { username, password } = req.body
   const role_type = "new_user"
   const hash = bcrypt.hashSync(password, BCRYPT_ROUNDS)
+
   res.set('Access-Control-Allow-Origin', ['*']);
   password = hash
 
   await Users.add({ "username": username, "password": password, "role_type": role_type })
     .then(user => {
       const token = buildToken(user)
-      console.log("this is the user:", user)
+      
       res.set({"Authorization": token,'Access-Control-Allow-Origin': ['*']}).status(201).json({ username: user[0].username, password, token, "role": user[0].role_type })
     })
     .catch(error => {
@@ -38,7 +38,6 @@ router.post("/register", usernameTaken, async (req, res, next) => {
 // THOUGHTS: Leaving the cookie for now, despite myself not knowing if its particularily useful. Its not being used meaningfully
 // cont. : at the moment, but I'm hoping to make it work for persistance sake(not loggin in constantly)
 router.post("/login", (req, res, next) => {
-  console.log("Made it to Login")
   let { username, password, registerLogin } = req.body
 
   if (!username || !password) {
@@ -52,6 +51,7 @@ router.post("/login", (req, res, next) => {
         res.status(200).json({ message: `Welcome back, ${username}`})
         } else {
         const token = buildToken(user)
+
         req.headers.authorization = token
         res.header("Access-Control-Allow-Origin", "*")
         res.set("Authorization", token).status(200).json({ message: `Welcome back, ${username}`, token, role: user.role_type})
@@ -68,15 +68,11 @@ router.post("/login", (req, res, next) => {
 //DESC: Endpoint to hit to induce a permission increase in the database. 
 router.put("/increase", permTooHigh, (req, res, next) => {
   let { username } = req.body
-  console.log("this is the username ", username)
-  console.log("git into increase")
+
   Users.increasePerms(username)
   .then(() => {
-    console.log("mad it past increasePerms")
     Users.findBy({ username })
     .then(([user]) => {
-      console.log("found!")
-      console.log(user)
       const token = buildToken(user)
       
       req.headers.authorization = token
@@ -92,7 +88,7 @@ router.put("/increase", permTooHigh, (req, res, next) => {
   })
 })
 
-router.get("/", (req, res, next) => {
+router.get("/", (req, res, next) => { //eslint-disable-line
   console.log("you hit the testing endpoint!")
 
   res.status(200).json("Well... this is awkward.")

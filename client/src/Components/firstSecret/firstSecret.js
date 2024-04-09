@@ -4,10 +4,6 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
-axios.defaults.withCredentials = true
-axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"
-axios.defaults.headers.common["Access-Control-Allow-Headers"] = "*"
-
 function FirstSecret() {
 
   let [message, setMessage] = useState({message: ""})
@@ -23,7 +19,6 @@ function FirstSecret() {
     event.target.style.position = "static"
     axios.put("https://lock-and-key-server.onrender.com/api/auth/increase", { "username": sessionStorage.getItem("username") })
     .then(res => {
-      console.log(res.data)
       setMessage(res.data.message)
       sessionStorage.setItem("tokenToBePassed", res.data.token)
       sessionStorage.setItem("role", "acquaintance")
@@ -31,7 +26,6 @@ function FirstSecret() {
       setTimeout(() => window.location.reload(), 300)
     })
     .catch(error => {
-      console.log(error)
       setMessage(error.response.data)
     })
   }
