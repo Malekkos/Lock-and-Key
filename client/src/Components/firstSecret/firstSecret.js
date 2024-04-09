@@ -27,6 +27,7 @@ function FirstSecret() {
       setTimeout(() => window.location.reload(), 300)
     })
     .catch(error => {
+      console.log(error)
       setMessage(error.response.data)
     })
   }
