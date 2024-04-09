@@ -3,6 +3,10 @@ import React, { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
+axios.defaults.withCredentials = false
+axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"
+axios.defaults.headers.common["Access-Control-Allow-Headers"] = "*"
+
 function Register() {
   const initialError = ""
   const initialCreds = { username: "", password: "" }
@@ -28,6 +32,7 @@ function Register() {
   // cont2 : That would probably be best
   const onSubmit = event => {
     event.preventDefault()
+    setLoading(!loading)
     axios.post("https://lock-and-key-server.onrender.com/api/auth/register", creds)
       .then(res => {
         console.log(res)
@@ -38,7 +43,6 @@ function Register() {
         sessionStorage.setItem("registerLogin", true)
         sessionStorage.setItem("token", res.data.token)
         sessionStorage.setItem("role", res.data.role)
-        setLoading(!loading)
         setTimeout(() => navigate("/"), 1000)
       })
       .catch(err => {
