@@ -80,6 +80,7 @@ router.put("/increase", permTooHigh, (req, res, next) => {
       const token = buildToken(user)
       
       req.headers.authorization = token
+      res.header("Access-Control-Allow-Origin", "*")
       res.status(200).json({message: "You have successfully increased your permissions", token})
     })
     .catch(error => {
