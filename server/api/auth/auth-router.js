@@ -14,11 +14,7 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get("/", (req, res, next) => {
-  console.log("you hit the testing endpoint!")
 
-  res.status(200).json("Well... this is awkward.")
-})
 //DESC: Method to create an account
 router.post("/register", usernameTaken, async (req, res, next) => {
   console.log("made it to register")
@@ -72,7 +68,7 @@ router.post("/login", (req, res, next) => {
 //DESC: Endpoint to hit to induce a permission increase in the database. 
 router.put("/increase", permTooHigh, (req, res, next) => {
   let { username } = req.body
-
+  console.log("git into increase")
   Users.increasePerms(username)
   .then(() => {
     Users.findBy({ username })
@@ -89,6 +85,12 @@ router.put("/increase", permTooHigh, (req, res, next) => {
   .catch(() => {
     next({message: "You are already at the highest perm level"})
   })
+})
+
+router.get("/", (req, res, next) => {
+  console.log("you hit the testing endpoint!")
+
+  res.status(200).json("Well... this is awkward.")
 })
 
 //DESC: Method to build a token for the user, supplying params for said token and whatnot

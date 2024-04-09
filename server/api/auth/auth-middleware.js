@@ -32,6 +32,7 @@ const only = role_type => (req, res, next) => {
 
 // checker for register to see if an username is taken
 const usernameTaken = async (req, res, next) => {
+  console.log("made it into usernameTaken")
   const { username } = req.body
 
   const [exists] = await Users.findBy({ "username": username })
@@ -43,6 +44,7 @@ const usernameTaken = async (req, res, next) => {
 }
 
 const permTooHigh = async (req, res, next) => {
+  console.log("made it into permTooHigh")
   const { username } = req.body
 
   Users.findBy({ "username": username})

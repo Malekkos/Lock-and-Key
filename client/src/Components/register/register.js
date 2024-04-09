@@ -3,9 +3,9 @@ import React, { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
-axios.defaults.withCredentials = false
-axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"
-axios.defaults.headers.common["Access-Control-Allow-Headers"] = "*"
+// axios.defaults.withCredentials = false
+// axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"
+// axios.defaults.headers.common["Access-Control-Allow-Headers"] = "*"
 
 function Register() {
   const initialError = ""
@@ -43,7 +43,7 @@ function Register() {
         sessionStorage.setItem("registerLogin", true)
         sessionStorage.setItem("token", res.data.token)
         sessionStorage.setItem("role", res.data.role)
-        setTimeout(() => navigate("/"), 1000)
+        setTimeout(() => navigate("/"), 10000)
       })
       .catch(err => {
         setError(err.response.data.message)
