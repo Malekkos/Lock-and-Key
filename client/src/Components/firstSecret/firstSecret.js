@@ -21,7 +21,7 @@ function FirstSecret() {
   // cont. Image in the elements tab of console, and it was following it.
   let onclick = (event) => {
     event.target.style.position = "static"
-    axios.put("https://lock-and-key-server.onrender.com/api/auth/increase/", { "username": sessionStorage.getItem("username") })
+    axios.put("https://lock-and-key-server.onrender.com/api/auth/increase", { "username": sessionStorage.getItem("username") })
     .then(res => {
       console.log(res.data)
       setMessage(res.data.message)
