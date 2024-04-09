@@ -43,7 +43,7 @@ function Register() {
         sessionStorage.setItem("registerLogin", true)
         sessionStorage.setItem("token", res.data.token)
         sessionStorage.setItem("role", res.data.role)
-        setTimeout(() => navigate("/"), 10000)
+        setTimeout(() => navigate("/"), 1000)
       })
       .catch(err => {
         setError(err.response.data.message)

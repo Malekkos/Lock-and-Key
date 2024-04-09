@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
-axios.defaults.withCredentials = false
+axios.defaults.withCredentials = true
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"
 axios.defaults.headers.common["Access-Control-Allow-Headers"] = "*"
 

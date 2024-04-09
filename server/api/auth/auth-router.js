@@ -68,13 +68,17 @@ router.post("/login", (req, res, next) => {
 //DESC: Endpoint to hit to induce a permission increase in the database. 
 router.put("/increase", permTooHigh, (req, res, next) => {
   let { username } = req.body
+  console.log("this is the username ", username)
   console.log("git into increase")
   Users.increasePerms(username)
   .then(() => {
+    console.log("mad it past increasePerms")
     Users.findBy({ username })
     .then(([user]) => {
+      console.log("found!")
+      console.log(user)
       const token = buildToken(user)
-
+      
       req.headers.authorization = token
       res.status(200).json({message: "You have successfully increased your permissions", token})
     })
