@@ -13,8 +13,15 @@ router.use((req, res, next) => {
   res.append('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
+
+router.get("/", (req, res, next) => {
+  console.log("you hit the testing endpoint!")
+
+  res.status(200).json("Well... this is awkward.")
+})
 //DESC: Method to create an account
 router.post("/register", usernameTaken, async (req, res, next) => {
+  console.log("made it to register")
   let { username, password } = req.body
   const role_type = "new_user"
   const hash = bcrypt.hashSync(password, BCRYPT_ROUNDS)
@@ -30,12 +37,6 @@ router.post("/register", usernameTaken, async (req, res, next) => {
     .catch(error => {
       next(error)
     })
-})
-
-router.get("/", (req, res, next) => {
-  console.log("you hit the testing endpoint!")
-
-  res.status(200).json("Well... this is awkward.")
 })
 //DESC: Method to login to an existing account, I should make it so that logging in places a token in the auth header autimatically(it might?)
 // THOUGHTS: Leaving the cookie for now, despite myself not knowing if its particularily useful. Its not being used meaningfully
