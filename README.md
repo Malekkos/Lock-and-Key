@@ -23,9 +23,9 @@ TODO Today:
 
 TODO LATER: 
 
- ~~ Okay, so, the issue was because the frontend was a static site. I get that now. New issue; I'm getting network errors when I try to hit my endpoints using login and register. I have an idea of what I could do to fix that, which making the actions asynchronous. I've noticed when loading into the page, it takes milennia, so im thinking that its trying to resolve something on my page without actually being finished with its call, hence the network error.
+ ~~ Add redirects to pages where you aren't supposed to be.
 
- ~~ Develop the second game
+ ~~ Okay, so, the issue was because the frontend was a static site. I get that now. New issue; I'm getting network errors when I try to hit my endpoints using login and register. I have an idea of what I could do to fix that, which making the actions asynchronous. I've noticed when loading into the page, it takes milennia, so im thinking that its trying to resolve something on my page without actually being finished with its call, hence the network error.
 
  ~~ Persistent state would still be cool & ideal, but we dont have to worry about farming permissions anymore.
 
