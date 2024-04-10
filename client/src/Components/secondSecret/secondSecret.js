@@ -44,7 +44,7 @@ function SecondSecret() {
           return (
           line.map((num) => {
             return (
-              num == 0 ? <div className="gameTwoHole">{num}</div> : <div className="gameTwoHole gopher">{num}</div>
+              num === 0 ? <div className="gameTwoHole">{num}</div> : <div className="gameTwoHole gopher">{num}</div>
           )
           }))
         })}

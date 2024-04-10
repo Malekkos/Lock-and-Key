@@ -19,7 +19,7 @@ To run:
 
 TODO Today: 
 
- ~~ Start working on the new minigame, goal is to make it a whack-a-mole clone
+ ~~ Flesh out second game, add explanation, add CSS, convert the divs to buttons(probably?), create methods for which it will work and then connect them, kinda like the onclick increasing perms button.
 
 TODO LATER: 
 
