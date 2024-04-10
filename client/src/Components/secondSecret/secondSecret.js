@@ -4,9 +4,15 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 function SecondSecret() {
 
-  let [message, setMessage] = useState({message: ""})
-  const navigate = useNavigate();
+  let lineOne = [0, 0, 1, 0, 0]
+  let lineTwo = [1, 0, 0, 0, 0]
+  let lineThree = [0, 0, 0, 1, 0]
 
+  let [message, setMessage] = useState({message: ""})
+  let [score, setScore] = useState(0)
+  let [lines, setLines] = useState([lineOne, lineTwo, lineThree])
+  const navigate = useNavigate();
+  
   let onclick = (event) => {
     axios.put("https://lock-and-key-server.onrender.com/api/auth/increase", { "username": sessionStorage.getItem("username") })
     .then(res => {
@@ -24,10 +30,25 @@ function SecondSecret() {
   return (
     <>
     <div className="gameTwoMain">
-      <div className="gameTwoExplanation"></div>
-      <div className="gameTwoScore"></div>
-      <div className="gameTwoButton"></div>
-      <div className="gameTwoBoard"></div>
+      <div className="gameTwoExplanation">...Explanation</div>
+      <div className="gameTwoScore">
+        <strong>Score:</strong>
+        <b>{score}</b>
+      </div>
+      <div className="gameTwoButton">
+        <input type="button" value="start" />
+      </div>
+      <div className="gameTwoBoard">
+        {lines.map((line) => {
+          console.log("this is the line", line)
+          return (
+          line.map((num) => {
+            return (
+              num == 0 ? <div className="gameTwoHole">{num}</div> : <div className="gameTwoHole gopher">{num}</div>
+          )
+          }))
+        })}
+      </div>
     </div>
     </>
   )
