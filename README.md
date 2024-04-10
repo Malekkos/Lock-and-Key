@@ -19,19 +19,9 @@ To run:
 
 TODO Today: 
 
- ~~ Diagnose issues with minigames
-
- ~~ Remove all the random stuff I added.
-
- ~~ Kevin james PNG quest is bugged, he spawns at the bottom on first render. Should do a hard move to the middle so that wont happen
-
  ~~ Start working on the new minigame, goal is to make it a whack-a-mole clone
 
- ~~ Add the project to the resume thingy
-
 TODO LATER: 
-
-
 
  ~~ Okay, so, the issue was because the frontend was a static site. I get that now. New issue; I'm getting network errors when I try to hit my endpoints using login and register. I have an idea of what I could do to fix that, which making the actions asynchronous. I've noticed when loading into the page, it takes milennia, so im thinking that its trying to resolve something on my page without actually being finished with its call, hence the network error.
 
@@ -44,3 +34,5 @@ TODO LATER:
  ~~ Get into changing the css styling to conform to smaller devices
 
  ~~ Add disability compatibility. Need to check the guidelines for that stuff.
+
+  ~~ Kevin james PNG quest is bugged(kinda), he spawns at the bottom on first render(locally). Should do a hard move to the middle so that wont happen
