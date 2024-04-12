@@ -19,7 +19,7 @@ To run:
 
 TODO Today: 
 
- ~~ Flesh out second game, add explanation, add CSS, convert the divs to buttons(probably?), create methods for which it will work and then connect them, kinda like the onclick increasing perms button.
+ ~~ Flesh out second game, add CSS, Hook up functionality to work like the whack-a-mole minigame.
 
 TODO LATER: 
 
