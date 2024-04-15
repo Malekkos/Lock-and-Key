@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+
 function SecondSecret() {
   let lineOne = [0, 0, 0, 0, 0]
   let lineTwo = [0, 0, 0, 0, 0]
@@ -38,6 +39,7 @@ function SecondSecret() {
         setTimeout(() => window.location.reload(), 300)
       })
       .catch(error => {
+        console.log(error)
         setMessage(error.response.data)
       })
   }
@@ -54,7 +56,7 @@ function SecondSecret() {
   return (
     <>
       <div className="gameTwoMain">
-        <div className="gameTwoExplanation">We just got info that Adam Sandler is making Jack & Jill 2! Smash his face 20 times to to make that stupid idea go away!</div>
+        <div className="gameTwoExplanation">We just got info that Adam Sandler is making Jack & Jill 2! Smash his face 20 times to make that stupid idea go away!</div>
         <div className="gameTwoScore">
           <strong>Score:</strong>
           <b>{score}</b>
@@ -67,7 +69,7 @@ function SecondSecret() {
             return (
               val.map((line) => {
                 return (
-                  line === 0 ? <div className="gameTwoHole">{line}</div> : <div className="gameTwoHole gopher" onClick={() => boop()}>{line}</div>
+                  line === 0 ? <div className="gameTwoHole"></div> : <img className="gameTwoHole gopher" alt="Adam Sandler PNG" src="https://p7.hiclipart.com/preview/557/662/480/adam-sandler-saturday-night-live-comedian-musician-actor.jpg" onClick={() => boop()}></img>
                 )
               })
             )

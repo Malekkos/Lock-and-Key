@@ -382,9 +382,7 @@
   text-decoration: none;
   color: #918888f8;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  /* transition-property: transform; */
-  /* transition-duration: 0.2s;/ */
-  /* transition-timing-function: ease; */
+
 }
 
  /* CSS for .loader, plus the keyframes, is courtesy of: https://css-loaders.com/spinner/, specfically spinner #20 */
@@ -469,7 +467,24 @@
   font-size: 22px;
 }
 
-
+/* \/\/\/\/ Second Secret \/\/\/\/ */
+.gameTwoBoard {
+  width: 50%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+.gameTwoHole {
+  color:rgba(0, 0, 0, 0);
+  display:flex;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  margin: 1rem;
+  border: 0.4rem solid black;
+  border-radius: 40%;
+}
 
 /* 850px, Home page: need to change instruction part */
 /* 800px, Home page: need to edit the locks and verifies, they are going off screen */
