@@ -56,13 +56,13 @@ function SecondSecret() {
   return (
     <>
       <div className="gameTwoMain">
-        <div className="gameTwoExplanation">We just got info that Adam Sandler is making Jack & Jill 2! Smash his face 20 times to make that stupid idea go away!</div>
+        <div className="gameTwoExplanation">We just got info that Adam Sandler is making <span className="danger">Jack & Jill 2</span>! Smash his face 20 times to make that stupid idea go away!</div>
         <div className="gameTwoScore">
-          <strong>Score:</strong>
+          <strong className="offset">Score:&nbsp;&nbsp;</strong>
           <b>{score}</b>
         </div>
-        <div className="gameTwoButton">
-          <input type="button" value="start" onClick={(event) => startGame(event)} />
+        <div>
+          <input className="gameTwoButton" type="button" value="Start" onClick={(event) => startGame(event)} />
         </div>
         <div className="gameTwoBoard">
           {lines.map((val) => {

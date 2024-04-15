@@ -445,29 +445,78 @@
   position:absolute;
 }
 
-.gameTwoMain, .gameThreeMain {
+.gameThreeMain {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
 }
 
-.gameTwoButton, .gameThreeButton {
+.gameThreeButton {
   height: 2rem;
   background-color: #e2dfdf;
   border-color:rgba(0, 0, 0, 0.50)
 }
 
-.gameTwoText, .gameThreeText {
+.gameThreeText {
   font-size: 19px;
   color: mintcream;
 }
 
-.gameTwoMessage, .gameThreeMessage {
+.gameThreeMessage {
   color: paleturquoise;
   font-size: 22px;
 }
 
 /* \/\/\/\/ Second Secret \/\/\/\/ */
+
+.gameTwoMain {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.danger {
+  color: crimson;
+}
+
+.offset {
+  color: #735DA5;
+}
+
+.gameTwoButton {
+  color: #735DA5;
+  font-size: 20px;
+  background: none;
+  border-width: 0.1rem;
+  border-color: #e2dfdf;
+  background-color:rgba(0, 0, 0, 0.16);
+  border-radius: 30%;
+  transition-property: transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+:hover.gameTwoButton{
+  color: #e2dfdf;
+  transform: translateY(-2px)
+}
+
+.gameTwoExplanation {
+  width: 60%;
+  color: #e2dfdf;
+  margin-bottom: 1rem;
+}
+
+.gameTwoScore {
+  color: #D3C5E5;
+  width: 30%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
 .gameTwoBoard {
   width: 50%;
   display: flex;
