@@ -19,7 +19,6 @@ To run:
 
 TODO Today: 
 
- ~~ Flesh out second game, add CSS, Hook up functionality to work like the whack-a-mole minigame.
 
 TODO LATER: 
 
