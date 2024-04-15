@@ -6,29 +6,29 @@ function SecondSecret() {
   let lineOne = [0, 0, 0, 0, 0]
   let lineTwo = [0, 0, 0, 0, 0]
   let lineThree = [0, 0, 0, 0, 0]
-  
-  let initialLine = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
 
+  let initialLine = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
 
   let [message, setMessage] = useState({ message: "" })
   let [score, setScore] = useState(0)
   let [lines, setLines] = useState([lineOne, lineTwo, lineThree])
   const navigate = useNavigate();
 
-  let setAdam = (event) => {
+  let setAdam = () => {
     let randomLine = Math.floor(Math.random() * (2 - 0 + 1) + 0);
     let randomNumber = Math.floor(Math.random() * (4 - 0 + 1) + 0);
     let newLines = initialLine
+
     newLines[randomLine][randomNumber] = 1
-    setLines(
-      newLines
-    )
+
+    setLines(newLines)
   }
 
-  let startGame = (event) => {
-    setAdam(event)
+  let startGame = () => {
+    setAdam()
   }
-  let onclick = (event) => {
+
+  let onclick = () => {
     axios.put("https://lock-and-key-server.onrender.com/api/auth/increase", { "username": sessionStorage.getItem("username") })
       .then(res => {
         setMessage(res.data)
@@ -43,14 +43,12 @@ function SecondSecret() {
   }
 
 
-  let boop = (event) => {
-    // console.log(event)
+  let boop = () => {
     setScore(score + 1);
-    if(score === 20) {
-      console.log("You win!")
+    if (score === 20) {
       onclick()
     } else {
-    setAdam(event)
+      setAdam()
     }
   }
   return (
@@ -66,12 +64,10 @@ function SecondSecret() {
         </div>
         <div className="gameTwoBoard">
           {lines.map((val) => {
-            console.log(val)
-            return(
+            return (
               val.map((line) => {
-                console.log(line)
-                return(
-                  line === 0 ? <div className="gameTwoHole">{line}</div> : <div className="gameTwoHole gopher">{line}</div>
+                return (
+                  line === 0 ? <div className="gameTwoHole">{line}</div> : <div className="gameTwoHole gopher" onClick={() => boop()}>{line}</div>
                 )
               })
             )
